@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dota Patch-Aware Coach"
+  short_description: "Build the Dota patch-aware coach."
+  default_prompt: "Use this skill to design, build, validate, or extend the Dota Patch-Aware Coach."

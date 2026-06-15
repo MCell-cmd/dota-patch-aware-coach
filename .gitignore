@@ -1,0 +1,47 @@
+# OS/editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Node/frontend
+node_modules/
+dist/
+build/
+.next/
+.vite/
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Local env/secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.token
+secrets/
+
+# Generated outputs
+tmp/
+temp/
+reports/generated/
+exports/
+
+# Codex/local logs
+.codex-log/
+*.log
