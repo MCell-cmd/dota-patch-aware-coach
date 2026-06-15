@@ -134,6 +134,8 @@ Crear un prototipo sin plataforma:
 - Creada primera pantalla web en Next.js con modos Draft, Patch Coach y Replay.
 - El modo Draft ya consume el motor de scoring local y muestra parche,
   confianza, riesgos, items iniciales, primer core y plan por tiempos.
+- Se agrego un modo Timer Coach manual para recordar eventos publicos por minuto:
+  runas, Lotus, Wisdom, catapultas, Roshan y Tormentor.
 - El flujo sigue siendo seguro: entrada manual, sin overlay, sin lectura del
   cliente y sin automatizar acciones.
 - Validacion ejecutada: `npm run typecheck`, `npm run build`, HTTP local 200 y

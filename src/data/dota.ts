@@ -481,3 +481,133 @@ export const HEROES: Hero[] = [
 ];
 
 export const HERO_BY_ID = new Map(HEROES.map((hero) => [hero.id, hero]));
+
+export const PATCH_NOTES_BY_HERO: Record<string, string[]> = {
+  axe: [
+    "+2 Armadura inicial para resistir mejor los ataques físicos en línea.",
+    "El radio de Berserker's Call aumentó de 300 a 315.",
+    "Multiplicador de daño de Counter Helix contra creeps reducido de 1.0 a 0.9."
+  ],
+  "crystal-maiden": [
+    "Velocidad de movimiento base aumentada de 280 a 285.",
+    "Costo de maná de Frostbite reducido de 115/125/135/145 a 100/110/120/130.",
+    "Regeneración de maná propia otorgada por Arcane Aura aumentada en 0.25."
+  ],
+  sniper: [
+    "Daño base de ataque reducido en 3.",
+    "Costo de maná de Shrapnel aumentado de 50 a 65.",
+    "El rango de ataque de Take Aim ahora da 25 unidades menos en el nivel 1."
+  ],
+  "phantom-assassin": [
+    "La ganancia de Agilidad por nivel aumentó de 3.2 a 3.4.",
+    "Costo de maná de Stifling Dagger reducido a 30 en todos los niveles.",
+    "La probabilidad de crítico de Coupe de Grace aumentó de 17% a 18%."
+  ],
+  lion: [
+    "Costo de maná de Earth Spike aumentado en 10 en los primeros niveles.",
+    "El rango de casteo de Hex se redujo de 600 a 575.",
+    "Daño base de Finger of Death aumentado en 50 en nivel 1."
+  ],
+  viper: [
+    "Costo de maná de Poison Attack reducido de 18/20/22/24 a 16/18/20/22.",
+    "Nethertoxin ahora inflige un 5% más de daño máximo.",
+    "Resistencia mágica base aumentada a 30%."
+  ],
+  pudge: [
+    "Rango de Meat Hook reducido en 50 en nivel 1.",
+    "Daño base de Rot reducido en 5 en todos los niveles.",
+    "Armadura inicial reducida en 1."
+  ],
+  juggernaut: [
+    "El daño de Blade Fury aumentó en 10 en todos los niveles.",
+    "El maná base de Juggernaut se incrementó a 300.",
+    "El enfriamiento de Healing Ward se redujo de 60s a 55s."
+  ],
+  mars: [
+    "Daño base de God's Rebuke aumentado de 150% a 165%.",
+    "La duración de la Arena of Blood aumentó de 5/6/7s a 6/7/8s."
+  ]
+};
+
+export type MockReplayReport = {
+  matchId: string;
+  duration: string;
+  result: "Victoria" | "Derrota";
+  hero: string;
+  role: string;
+  bracket: string;
+  question: string;
+  verdict: string;
+  phases: {
+    lane: { good: string; error: string; change: string };
+    mid: { good: string; error: string; change: string };
+    late: { good: string; error: string; change: string };
+  };
+  errors: Array<{ title: string; evidence: string; impact: string; fix: string; practice: string }>;
+  plan: string[];
+  nextSteps: { objective: string; metric: string; question: string };
+};
+
+export const MOCK_REPLAY_REPORTS: Record<string, MockReplayReport> = {
+  "8850507008": {
+    matchId: "8850507008",
+    duration: "34:12",
+    result: "Derrota",
+    hero: "Viper",
+    role: "Midlaner",
+    bracket: "Archon",
+    question: "Que decision me hizo perder mas impacto?",
+    verdict: "Ganaste la línea con holgura pero jugaste de forma pasiva en tu jungla en lugar de presionar las torres y anular el espacio de farm de la Phantom Assassin enemiga.",
+    phases: {
+      lane: {
+        good: "Denegaste 14 creeps a Lina y le sacaste una ventaja de 1.2k de net worth al minuto 8.",
+        error: "Ignoraste las runas de agua del minuto 4 y permitiste que Lina se reabasteciera gratis.",
+        change: "Mantener el creep equilibrium cerca de tu río y forzar a Lina bajo torre usando Poison Attack."
+      },
+      mid: {
+        good: "Buen posicionamiento defensivo en la pelea del minuto 15 cerca de tu torre Tier 1 de Mid.",
+        error: "Farmear jungla propia en lugar de liderar invasiones con Axe en el triángulo enemigo.",
+        change: "Hacer call de smoke con CM y Axe para cazar a la PA enemiga que estaba farmeando sola en bot."
+      },
+      late: {
+        good: "Excelente uso de Viper Strike sobre Tidehunter anulando su combo de Ravage a tiempo.",
+        error: "Pelear sin oro de Buyback en el pit de Roshan al minuto 28, lo que entregó el juego.",
+        change: "Evitar el pit por completo si el carry aliado no tiene Aegis y tú no tienes Buyback."
+      }
+    },
+    errors: [
+      {
+        title: "Pelear en Roshan sin oro para Buyback en el minuto 28",
+        evidence: "Tu oro disponible era de 420. Moriste por el foco de la PA enemiga y no pudiste regresar a defender.",
+        impact: "El enemigo tomó Roshan, Aegis y empujó directamente por el carril central destruyendo dos sets de barracas.",
+        fix: "Monitorear el indicador de Buyback por encima de tu oro a partir del minuto 20. Si no está en verde, juega pasivo.",
+        practice: "Coloca un recordatorio visual: no cruces el río si Roshan está vivo y no tienes Buyback."
+      },
+      {
+        title: "Falta de invasión y presión activa tras ganar la línea de Mid",
+        evidence: "Entre el minuto 10 y 16 gastaste el 60% de tu tiempo en campos de jungla neutrales propios.",
+        impact: "PA enemiga recuperó su línea de farm en la jungla de bot sin ninguna presión, logrando su Battle Fury al minuto 15.",
+        fix: "Como Viper, tu rol es ocupar la jungla enemiga y forzar al equipo rival a defender sus torres de Tier 1 y Tier 2.",
+        practice: "Tira la T1 de Mid e inmediatamente viaja a la safe lane enemiga con un support para tomar control de su jungla."
+      },
+      {
+        title: "Pérdida de control de Runas de Sabiduría al minuto 7 y 14",
+        evidence: "Las runas de sabiduría aliadas fueron robadas por el Lion enemigo en ambas ocasiones.",
+        impact: "Los supports enemigos alcanzaron el nivel 6 un 20% más rápido que los tuyos, ganando peleas en bot.",
+        fix: "Escribe en el chat o pintea a los 6:30 y 13:30 para que tu support pos 4 controle la runa con un TP listo.",
+        practice: "Acostúmbrate a mirar el reloj del juego y planificar movimientos 30 segundos antes de los múltiplos de 7."
+      }
+    ],
+    plan: [
+      "Día 1-2: Enfócate en creep aggro y denegar creeps en el río de Mid.",
+      "Día 3-4: Practica la transición ofensiva tras tirar la torre T1 (mínimo 3 oleadas en jungla enemiga).",
+      "Día 5-6: Juega partidas ranked manteniendo siempre el Buyback activo a partir del minuto 22.",
+      "Día 7: Revisa el replay de tu propia partida en velocidad 4x enfocándote únicamente en el posicionamiento en peleas."
+    ],
+    nextSteps: {
+      objective: "Mantener el buyback disponible y no farmear en jungla propia tras ganar la línea.",
+      metric: "Minutos de presión ofensiva en el mapa y net worth de buyback reservado.",
+      question: "¿Logré iniciar la presión en el triángulo enemigo al minuto 12?"
+    }
+  }
+};
