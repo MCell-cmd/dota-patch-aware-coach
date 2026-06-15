@@ -128,3 +128,15 @@ Crear un prototipo sin plataforma:
 - asistente manual de draft;
 - 10 reportes manuales;
 - landing o mensaje de Discord con oferta clara.
+
+## Avance tecnico 2026-06-15
+
+- Creada primera pantalla web en Next.js con modos Draft, Patch Coach y Replay.
+- El modo Draft ya consume el motor de scoring local y muestra parche,
+  confianza, riesgos, items iniciales, primer core y plan por tiempos.
+- El flujo sigue siendo seguro: entrada manual, sin overlay, sin lectura del
+  cliente y sin automatizar acciones.
+- Validacion ejecutada: `npm run typecheck`, `npm run build`, HTTP local 200 y
+  capturas Playwright desktop/mobile.
+- Pendiente inmediato: conectar Replay con OpenDota y generar un reporte
+  Markdown real para un match ID publico.
