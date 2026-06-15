@@ -5,6 +5,7 @@ import {
   normalizeMatch,
   OpenDotaError,
   pickPerspective,
+  requestParse,
 } from "@/lib/opendota";
 import { buildDeterministicReport, buildFacts } from "@/lib/report";
 import { enrichReportWithAI } from "@/lib/ai";
@@ -12,8 +13,10 @@ import { enrichReportWithAI } from "@/lib/ai";
 type ReportRequest = {
   matchId?: string;
   accountId?: number | string | null;
+  heroName?: string | null;
   role?: string;
   question?: string;
+  parse?: boolean;
 };
 
 export async function POST(request: Request) {
@@ -36,12 +39,17 @@ export async function POST(request: Request) {
       : null;
 
   try {
+    // Si se pide parse, lo dispara y relee sin cache (el parseo puede seguir
+    // en cola; en ese caso `parsed` saldrá false y se reintenta más tarde).
+    if (body.parse) {
+      await requestParse(matchId).catch(() => false);
+    }
     const [match, heroes] = await Promise.all([
-      fetchMatch(matchId),
+      fetchMatch(matchId, { noCache: body.parse === true }),
       fetchHeroConstants(),
     ]);
     const normalized = normalizeMatch(match, heroes);
-    const me = pickPerspective(normalized, accountId);
+    const me = pickPerspective(normalized, accountId, body.heroName ?? null);
 
     const facts = buildFacts(normalized, me, { role: body.role, question });
     const deterministic = buildDeterministicReport(facts, question);

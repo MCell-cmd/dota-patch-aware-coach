@@ -27,6 +27,10 @@ export type OpenDotaPlayer = {
   item_3: number;
   item_4: number;
   item_5: number;
+  // Solo presentes en partidas parseadas (series por minuto).
+  lh_t?: number[] | null;
+  gold_t?: number[] | null;
+  xp_t?: number[] | null;
 };
 
 export type OpenDotaMatch = {
@@ -60,6 +64,9 @@ export type NormalizedPlayer = {
   netWorth: number;
   laneRole: number | null;
   won: boolean;
+  // Derivados de la serie por minuto (null si la partida no está parseada).
+  lastHitsAt10: number | null;
+  goldAt10: number | null;
 };
 
 export type NormalizedMatch = {
@@ -110,15 +117,19 @@ export async function fetchHeroConstants(): Promise<Map<number, string>> {
   return map;
 }
 
-export async function fetchMatch(matchId: string | number): Promise<OpenDotaMatch> {
+export async function fetchMatch(
+  matchId: string | number,
+  options: { noCache?: boolean } = {},
+): Promise<OpenDotaMatch> {
   const id = String(matchId).trim();
   if (!/^\d{6,}$/.test(id)) {
     throw new OpenDotaError("Match ID inválido: debe ser numérico y público.", 400);
   }
 
-  const res = await fetch(withKey(`${OPENDOTA_BASE}/matches/${id}`), {
-    next: { revalidate: 600 },
-  });
+  const res = await fetch(
+    withKey(`${OPENDOTA_BASE}/matches/${id}`),
+    options.noCache ? { cache: "no-store" } : { next: { revalidate: 600 } },
+  );
 
   if (res.status === 404) {
     throw new OpenDotaError("Partida no encontrada en OpenDota.", 404);
@@ -135,6 +146,27 @@ export async function fetchMatch(matchId: string | number): Promise<OpenDotaMatc
     throw new OpenDotaError("Respuesta de OpenDota sin datos de jugadores.", 502);
   }
   return match;
+}
+
+/**
+ * Pide a OpenDota que parsee una partida (genera la serie por minuto, lanes,
+ * objetivos, etc.). El parseo es asíncrono en sus workers; devuelve true si la
+ * solicitud se aceptó. Reconsulta la partida pasados unos minutos para ver
+ * `parsed: true`.
+ */
+export async function requestParse(matchId: string | number): Promise<boolean> {
+  const id = String(matchId).trim();
+  if (!/^\d{6,}$/.test(id)) {
+    throw new OpenDotaError("Match ID inválido: debe ser numérico y público.", 400);
+  }
+  const res = await fetch(withKey(`${OPENDOTA_BASE}/request/${id}`), {
+    method: "POST",
+    cache: "no-store",
+  });
+  if (res.status === 429) {
+    throw new OpenDotaError("Límite de OpenDota alcanzado, intenta en un minuto.", 429);
+  }
+  return res.ok;
 }
 
 export function formatDuration(seconds: number): string {
@@ -172,6 +204,8 @@ export function normalizeMatch(
       netWorth: p.net_worth || 0,
       laneRole: p.lane_role ?? null,
       won: isRadiant === match.radiant_win,
+      lastHitsAt10: Array.isArray(p.lh_t) ? p.lh_t[10] ?? null : null,
+      goldAt10: Array.isArray(p.gold_t) ? p.gold_t[10] ?? null : null,
     };
   });
 
@@ -188,15 +222,22 @@ export function normalizeMatch(
 
 /**
  * Elige el jugador "perspectiva" del reporte.
- * Prioridad: accountId explícito -> mayor net worth (carry probable) -> primero.
+ * Prioridad: accountId explícito -> nombre de héroe (útil en partidas con cuentas
+ * anónimas) -> mayor net worth (carry probable) -> primero.
  */
 export function pickPerspective(
   match: NormalizedMatch,
   accountId?: number | null,
+  heroName?: string | null,
 ): NormalizedPlayer {
   if (accountId != null) {
     const byAccount = match.players.find((p) => p.accountId === accountId);
     if (byAccount) return byAccount;
+  }
+  if (heroName) {
+    const target = heroName.trim().toLowerCase();
+    const byHero = match.players.find((p) => p.heroName.toLowerCase() === target);
+    if (byHero) return byHero;
   }
   return [...match.players].sort((a, b) => b.netWorth - a.netWorth)[0];
 }

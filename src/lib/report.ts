@@ -34,6 +34,7 @@ export type ReportFacts = {
   enemyCarryHero: string;
   enemyCarryNetWorth: number;
   netWorthDelta: number; // perspectiva - carry enemigo
+  lastHitsAt10: number | null; // solo si la partida está parseada
   flags: string[];
 };
 
@@ -61,12 +62,17 @@ export function buildFacts(
     (me.laneRole != null ? LANE_ROLE_LABELS[me.laneRole] : undefined) ||
     "Core";
 
+  const isCore = role !== "Support";
   const flags: string[] = [];
   if (me.deaths >= 9) flags.push("muertes-altas");
   if (me.netWorth < enemyCarry.netWorth * 0.8) flags.push("net-worth-bajo-vs-carry");
   if (me.towerDamage < 2000) flags.push("dano-torres-bajo");
-  if (me.lastHits < me.gpm * 0.3 && role !== "Support") flags.push("last-hits-bajos");
+  if (me.lastHits < me.gpm * 0.3 && isCore) flags.push("last-hits-bajos");
   if (me.kda < 2) flags.push("kda-bajo");
+  // Solo evaluable con datos parseados: CS al minuto 10 bajo para un core.
+  if (me.lastHitsAt10 != null && isCore && me.lastHitsAt10 < 40) {
+    flags.push("farm-lento-min10");
+  }
   if (!match.parsed) flags.push("match-sin-parsear");
 
   return {
@@ -92,6 +98,7 @@ export function buildFacts(
     enemyCarryHero: enemyCarry.heroName,
     enemyCarryNetWorth: enemyCarry.netWorth,
     netWorthDelta: me.netWorth - enemyCarry.netWorth,
+    lastHitsAt10: me.lastHitsAt10,
     flags,
   };
 }
@@ -126,10 +133,15 @@ export function buildDeterministicReport(
     verdict: verdict + parseNote,
     phases: {
       lane: {
-        good: `Cerraste con ${facts.lastHits} last hits y ${facts.denies} denies.`,
-        error: facts.flags.includes("last-hits-bajos")
-          ? "Tu farm de línea quedó por debajo de lo esperado para tu GPM."
-          : "Sin errores graves de farm detectables con los datos disponibles.",
+        good:
+          facts.lastHitsAt10 != null
+            ? `Al minuto 10 llevabas ${facts.lastHitsAt10} last hits (cerraste con ${facts.lastHits}).`
+            : `Cerraste con ${facts.lastHits} last hits y ${facts.denies} denies.`,
+        error: facts.flags.includes("farm-lento-min10")
+          ? `Farm lento en la fase de línea: ${facts.lastHitsAt10} CS al minuto 10 es bajo para un core (apunta a 40+).`
+          : facts.flags.includes("last-hits-bajos")
+            ? "Tu farm de línea quedó por debajo de lo esperado para tu GPM."
+            : "Sin errores graves de farm detectables con los datos disponibles.",
         change: "Asegura el creep equilibrium y convierte ventaja de línea en presión de torre.",
       },
       mid: {

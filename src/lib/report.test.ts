@@ -23,6 +23,8 @@ function player(overrides: Partial<NormalizedPlayer>): NormalizedPlayer {
     netWorth: 15000,
     laneRole: 2,
     won: true,
+    lastHitsAt10: null,
+    goldAt10: null,
     ...overrides,
   };
 }
@@ -72,6 +74,22 @@ describe("buildFacts + buildDeterministicReport", () => {
     expect(report.errors).toHaveLength(3);
     expect(report.plan).toHaveLength(4);
     expect(report.matchId).toBe("8850507008");
+  });
+
+  it("usa el CS al minuto 10 cuando la partida está parseada", () => {
+    const me = player({ lastHitsAt10: 22 });
+    const facts = buildFacts(match(me, 14000), me, { question: "q", role: "Carry" });
+    expect(facts.lastHitsAt10).toBe(22);
+    expect(facts.flags).toContain("farm-lento-min10");
+    const report = buildDeterministicReport(facts, "q");
+    expect(report.phases.lane.good).toContain("minuto 10");
+    expect(report.phases.lane.error).toContain("22 CS");
+  });
+
+  it("no marca farm-lento-min10 sin datos parseados", () => {
+    const me = player({ lastHitsAt10: null });
+    const facts = buildFacts(match(me, 14000), me, { question: "q", role: "Carry" });
+    expect(facts.flags).not.toContain("farm-lento-min10");
   });
 
   it("conserva la pregunta del jugador en el reporte", () => {
