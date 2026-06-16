@@ -76,8 +76,6 @@ test("navegación entre las pestañas principales", async ({ page }) => {
   await expect(page.locator(".toolTitle")).toContainText(/vision/i);
   await page.getByRole("button", { name: /Replay Analysis/ }).click();
   await expect(page.locator(".toolTitle")).toContainText(/post-partida/i);
-  await page.getByRole("button", { name: /Workspace Coach/ }).click();
-  await expect(page.locator(".toolTitle")).toContainText(/workspace/i);
 });
 
 test("vision coach permite seleccionar escenarios", async ({ page }) => {
@@ -96,22 +94,6 @@ test("replay: un match ID inválido muestra un error claro", async ({ page }) =>
   await page.locator(".runActionBtn").click();
   await expect(page.locator(".displayPanelBody .emptyStateTitle")).toContainText(/no se pudo/i);
   await expect(page.locator(".displayPanelBody .emptyStateText")).toContainText(/inválido/i);
-});
-
-test("workspace: agregar alumno y respetar el mínimo de 1 al borrar", async ({ page }) => {
-  await gotoApp(page);
-  await page.getByRole("button", { name: /Workspace Coach/ }).click();
-
-  await page.locator(".addStudentForm input").fill("QA Alumno E2E");
-  await page.getByRole("button", { name: /Añadir Alumno/ }).click();
-  await expect(page.locator(".studentRowWrapper")).toHaveCount(4);
-
-  // borrar mientras existan botones de borrar; debe quedar al menos 1
-  const del = page.locator(".deleteStudentBtn");
-  while ((await del.count()) > 0) {
-    await del.first().click();
-  }
-  await expect(page.locator(".studentRowWrapper")).toHaveCount(1);
 });
 
 test("la página de privacidad carga", async ({ page }) => {

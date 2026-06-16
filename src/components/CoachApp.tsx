@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Award,
   BarChart3,
   BookOpen,
   Crosshair,
@@ -39,15 +38,13 @@ import { Analytics } from "@/components/Analytics";
 import { track } from "@/lib/analytics";
 import { PatchCoachPanel } from "@/components/PatchCoachPanel";
 import { ReplayPanel } from "@/components/ReplayPanel";
-import { CoachWorkspacePanel } from "@/components/CoachWorkspacePanel";
 import { VisionCoachPanel } from "@/components/VisionCoachPanel";
 import type { VisionPhase } from "@/data/vision";
 import { useDraftController } from "@/hooks/useDraftController";
 import { useReplayController } from "@/hooks/useReplayController";
-import { useCoachWorkspace } from "@/hooks/useCoachWorkspace";
 import { generateMarkdown } from "@/lib/markdown";
 
-type Mode = "draft" | "patch" | "vision" | "replay" | "coach";
+type Mode = "draft" | "patch" | "vision" | "replay";
 
 const MODE_COPY: Record<Mode, { title: string; subtitle: string }> = {
   draft: {
@@ -70,11 +67,6 @@ const MODE_COPY: Record<Mode, { title: string; subtitle: string }> = {
     subtitle:
       "Ingresa el identificador público de tu partida y tu duda. El sistema consultará OpenDota y generará un reporte con datos reales.",
   },
-  coach: {
-    title: "Workspace del Coach (B2B)",
-    subtitle:
-      "Gestiona tu lista de alumnos, edita los reportes generados por la IA con tus propios comentarios y personaliza la marca de exportación.",
-  },
 };
 
 const ROLES = Object.keys(ROLE_LABELS) as Role[];
@@ -86,7 +78,6 @@ export function CoachApp() {
   const appShellRef = useRef<HTMLElement>(null);
   const draft = useDraftController();
   const replay = useReplayController(draft.role);
-  const coach = useCoachWorkspace();
   const [copyStatus, setCopyStatus] = useState(false);
 
   // Patch states
@@ -123,8 +114,7 @@ export function CoachApp() {
       modeParam === "replay" ||
       modeParam === "draft" ||
       modeParam === "patch" ||
-      modeParam === "vision" ||
-      modeParam === "coach"
+      modeParam === "vision"
     ) {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- one-shot URL param consumption on mount
       setMode(modeParam);
@@ -143,19 +133,6 @@ export function CoachApp() {
         setTimeout(() => setCopyStatus(false), 2000);
         toast.success("Reporte copiado al portapapeles en Markdown.");
         track("Reporte copiado");
-      },
-      () => toast.error("No se pudo copiar. Revisa los permisos del portapapeles."),
-    );
-  };
-
-  const copyCoachReport = () => {
-    if (!coach.coachReport) return;
-    const md = generateMarkdown(coach.coachReport, coach.academyName);
-    navigator.clipboard.writeText(md).then(
-      () => {
-        setCopyStatus(true);
-        setTimeout(() => setCopyStatus(false), 2000);
-        toast.success(`Reporte exportado con la marca de ${coach.academyName || "tu academia"}.`);
       },
       () => toast.error("No se pudo copiar. Revisa los permisos del portapapeles."),
     );
@@ -210,9 +187,6 @@ export function CoachApp() {
           </ModeButton>
           <ModeButton active={mode === "replay"} icon={<FileText size={18} />} onClick={() => setMode("replay")}>
             Replay Analysis
-          </ModeButton>
-          <ModeButton active={mode === "coach"} icon={<Award size={18} />} onClick={() => setMode("coach")}>
-            Workspace Coach
           </ModeButton>
         </nav>
 
@@ -330,30 +304,6 @@ export function CoachApp() {
               replayReport={replay.replayReport}
               startAnalysis={replay.startReplayAnalysis}
               copyReport={copyMarkdownReport}
-              copyStatus={copyStatus}
-            />
-          )}
-
-          {mode === "coach" && (
-            <CoachWorkspacePanel
-              students={coach.students}
-              activeStudentId={coach.activeStudentId}
-              setActiveStudent={coach.handleSelectStudent}
-              newStudentName={coach.newStudentName}
-              setNewStudentName={coach.setNewStudentName}
-              newStudentMMR={coach.newStudentMMR}
-              setNewStudentMMR={coach.setNewStudentMMR}
-              newStudentHero={coach.newStudentHero}
-              setNewStudentHero={coach.setNewStudentHero}
-              handleAddStudent={coach.handleAddStudent}
-              handleDeleteStudent={coach.handleDeleteStudent}
-              academyName={coach.academyName}
-              setAcademyName={coach.setAcademyName}
-              brandingColor={coach.brandingColor}
-              setBrandingColor={coach.setBrandingColor}
-              coachReport={coach.coachReport}
-              setCoachReport={coach.setCoachReport}
-              copyReport={copyCoachReport}
               copyStatus={copyStatus}
             />
           )}

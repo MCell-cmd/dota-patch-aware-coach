@@ -13,7 +13,7 @@ const STEPS = [
     popover: {
       title: "Tus 4 herramientas",
       description:
-        "Draft, Patch Coach, Replay y Workspace de coach. Cambia de modo desde aquí en cualquier momento.",
+        "Draft, Patch Coach, Vision Coach y Replay Analysis. Cambia de modo desde aquí en cualquier momento.",
     },
   },
   {

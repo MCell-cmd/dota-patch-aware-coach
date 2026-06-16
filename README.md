@@ -1,19 +1,21 @@
 # Dota Patch-Aware Coach
 
-Patch-aware Dota 2 coaching MVP for draft preparation, patch education, vision
-practice, and post-match reports powered by public match data.
+Your personal Dota 2 coach in the browser: draft preparation, patch study,
+vision practice, and post-match reports — all from public match data.
 
-This is an independent educational tool. It does not read game memory, automate
-inputs, provide prohibited real-time advantage, support boosting, or store player
-credentials. It is not affiliated with Valve Corporation.
+This is an independent educational tool for the player. It does not read game
+memory, automate inputs, provide prohibited real-time advantage, support
+boosting, or store player credentials. It is not affiliated with Valve
+Corporation.
 
 ## What Works
 
 - Draft assistant with deterministic, explainable scoring.
 - Patch coach with versioned source/confidence metadata.
 - Vision coach with practical warding and map-control scenarios.
-- Post-match reports from public OpenDota data.
-- Optional AI prose enrichment with deterministic fallback.
+- Post-match reports from public OpenDota data, with shareable
+  `/match/[id]` landings and dynamic Open Graph previews.
+- Optional AI prose enrichment via OpenRouter with deterministic fallback.
 - Role-aware coaching logic for carry, mid, offlane, soft support, and hard
   support.
 - Product research notes in `investigacion/`, `evidencia/`, and `producto/`.
