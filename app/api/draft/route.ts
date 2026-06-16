@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { analyzeDraft, type DraftInput } from "@/lib/draft";
+import { clientIp, rateLimit } from "@/lib/rateLimit";
+
+// El cliente llama a este endpoint con debounce en cada cambio del draft, así
+// que el límite es generoso: protege contra flooding sin estorbar el uso normal.
+const RATE_LIMIT = 60; // peticiones
+const RATE_WINDOW_MS = 60_000; // por minuto y por IP
 
 function json(data: unknown, init?: ResponseInit) {
   const headers = new Headers(init?.headers);
@@ -12,6 +18,14 @@ function json(data: unknown, init?: ResponseInit) {
 }
 
 export async function POST(request: NextRequest) {
+  const rl = rateLimit(`draft:${clientIp(request)}`, RATE_LIMIT, RATE_WINDOW_MS);
+  if (!rl.ok) {
+    return json(
+      { error: "Demasiadas solicitudes. Intenta de nuevo en un momento." },
+      { status: 429, headers: { "Retry-After": String(Math.ceil(rl.retryAfterMs / 1000)) } },
+    );
+  }
+
   try {
     const body: DraftInput = await request.json();
 

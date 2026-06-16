@@ -7,6 +7,12 @@ const buckets = new Map<string, Bucket>();
 
 export type RateResult = { ok: boolean; remaining: number; retryAfterMs: number };
 
+/** IP del cliente a partir de las cabeceras del proxy (o "anon" en local). */
+export function clientIp(request: Request): string {
+  const fwd = request.headers.get("x-forwarded-for") ?? "";
+  return fwd.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "anon";
+}
+
 /**
  * Ventana fija por clave (p.ej. `report:<ip>`). Devuelve si la petición pasa,
  * cuántas quedan en la ventana y, si se rechaza, cuánto esperar.

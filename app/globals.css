@@ -2410,3 +2410,84 @@ button:focus-visible {
     max-width: none;
   }
 }
+
+/* ===================== Página legal (privacidad) ===================== */
+.legalPage {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 56px 24px 80px;
+}
+
+.legalInner {
+  width: 100%;
+  max-width: 720px;
+}
+
+.legalBack {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  margin-bottom: 28px;
+  transition: color 0.2s ease;
+}
+
+.legalBack:hover { color: var(--radiant); }
+
+.legalTitle {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 6vw, 44px);
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 12px;
+}
+
+.legalLead {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+
+.legalSection {
+  margin-top: 28px;
+}
+
+.legalSection h2 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  border-left: 3px solid var(--accent);
+  padding-left: 10px;
+  margin: 0 0 10px;
+}
+
+.legalSection p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--muted);
+  margin: 0;
+}
+
+.legalSection p strong { color: var(--ink); }
+
+.legalFootnote {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--muted);
+}

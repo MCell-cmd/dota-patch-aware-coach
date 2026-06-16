@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { LogOut, User } from "lucide-react";
 import { toast } from "sonner";
+import { track } from "@/lib/analytics";
 
 export type SteamUser = {
   steamId64: string;
@@ -66,7 +67,7 @@ export function SteamAuth({ onUser }: { onUser?: (user: SteamUser | null) => voi
   }
 
   return (
-    <a className="steamLoginBtn" href="/api/auth/steam/login">
+    <a className="steamLoginBtn" href="/api/auth/steam/login" onClick={() => track("Login Steam")}>
       <SteamGlyph />
       Entrar con Steam
     </a>

@@ -39,6 +39,8 @@ import { DraftResult } from "@/components/DraftResult";
 import { OnboardingTour } from "@/components/OnboardingTour";
 import { SteamAuth } from "@/components/SteamAuth";
 import { Footer } from "@/components/Footer";
+import { Analytics } from "@/components/Analytics";
+import { track } from "@/lib/analytics";
 import { PatchCoachPanel } from "@/components/PatchCoachPanel";
 import { ReplayPanel, type ReportPerspective } from "@/components/ReplayPanel";
 import { CoachWorkspacePanel } from "@/components/CoachWorkspacePanel";
@@ -220,6 +222,10 @@ export function CoachApp() {
       setReportSource(payload.source ?? "deterministic");
       setReportParsed(payload.parsed ?? null);
       setReportPerspective(payload.perspective ?? null);
+      track("Reporte generado", {
+        source: payload.source ?? "deterministic",
+        parsed: String(payload.parsed ?? false),
+      });
     } catch (error) {
       setAnalysisError(error instanceof Error ? error.message : "Error inesperado generando el reporte.");
     } finally {
@@ -236,6 +242,7 @@ export function CoachApp() {
         setCopyStatus(true);
         setTimeout(() => setCopyStatus(false), 2000);
         toast.success("Reporte copiado al portapapeles en Markdown.");
+        track("Reporte copiado");
       },
       () => toast.error("No se pudo copiar. Revisa los permisos del portapapeles."),
     );
@@ -532,6 +539,7 @@ ${report.plan.map((p) => `- ${p}`).join("\n")}
 
       <Footer />
 
+      <Analytics />
       <Toaster
         theme="dark"
         position="bottom-right"

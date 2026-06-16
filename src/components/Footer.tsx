@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Swords } from "lucide-react";
 import { PATCH_STATE } from "@/data/dota";
 
@@ -16,6 +17,7 @@ export function Footer() {
         </div>
 
         <nav className="footerLinks" aria-label="Enlaces">
+          <Link href="/privacidad">Privacidad</Link>
           <a href="https://www.opendota.com" target="_blank" rel="noopener noreferrer">
             OpenDota
           </a>

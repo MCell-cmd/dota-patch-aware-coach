@@ -9,7 +9,7 @@ import {
 } from "@/lib/opendota";
 import { buildDeterministicReport, buildFacts } from "@/lib/report";
 import { enrichReportWithAI } from "@/lib/ai";
-import { cacheGet, cacheSet, rateLimit } from "@/lib/rateLimit";
+import { cacheGet, cacheSet, clientIp, rateLimit } from "@/lib/rateLimit";
 
 type ReportRequest = {
   matchId?: string;
@@ -34,11 +34,6 @@ function json(data: unknown, init?: ResponseInit) {
     ...init,
     headers,
   });
-}
-
-function clientIp(request: Request): string {
-  const fwd = request.headers.get("x-forwarded-for") ?? "";
-  return fwd.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "anon";
 }
 
 export async function POST(request: Request) {
