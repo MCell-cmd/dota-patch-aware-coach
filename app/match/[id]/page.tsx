@@ -14,23 +14,42 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
   const summary = await loadMatchSummary(id);
 
   if (!summary) {
+    const fallbackTitle = `Match ${id} · Dota Patch-Aware Coach`;
+    const fallbackDescription = "OpenDota no tiene datos para este match ID.";
     return {
-      title: `Match ${id} · Dota Patch-Aware Coach`,
-      description: "OpenDota no tiene datos para este match ID.",
+      title: fallbackTitle,
+      description: fallbackDescription,
       alternates: { canonical: `${SITE_URL}/match/${id}` },
       robots: { index: false, follow: true },
+      openGraph: {
+        title: fallbackTitle,
+        description: fallbackDescription,
+        url: `${SITE_URL}/match/${id}`,
+      },
+      twitter: { title: fallbackTitle, description: fallbackDescription },
     };
   }
 
   const { match, perspective: p } = summary;
   const result = p.won ? "Victoria" : "Derrota";
-  const title = `${p.heroName} · ${p.kills}/${p.deaths}/${p.assists} · ${result} en ${match.durationLabel}`;
+  const shareTitle = `${p.heroName} · ${p.kills}/${p.deaths}/${p.assists} · ${result} en ${match.durationLabel}`;
   const description = `Match ${match.matchId} de Dota 2: ${p.heroName} cerró ${p.kills}/${p.deaths}/${p.assists} con ${p.gpm} GPM y ${p.xpm} XPM en una ${result.toLowerCase()} de ${match.durationLabel}.`;
+  const fullTitle = `${shareTitle} · Dota Coach`;
+  const url = `${SITE_URL}/match/${match.matchId}`;
 
   return {
-    title: `${title} · Dota Coach`,
+    title: fullTitle,
     description,
-    alternates: { canonical: `${SITE_URL}/match/${match.matchId}` },
+    alternates: { canonical: url },
+    openGraph: {
+      title: shareTitle,
+      description,
+      url,
+    },
+    twitter: {
+      title: shareTitle,
+      description,
+    },
   };
 }
 

@@ -2,9 +2,25 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
+const TITLE = "Privacidad · Dota Patch-Aware Coach";
+const DESCRIPTION = "Qué datos usa y guarda Dota Patch-Aware Coach.";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+  "https://dota-patch-aware-coach.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Privacidad · Dota Patch-Aware Coach",
-  description: "Qué datos usa y guarda Dota Patch-Aware Coach.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: `${SITE_URL}/privacidad` },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: `${SITE_URL}/privacidad`,
+  },
+  twitter: {
+    title: TITLE,
+    description: DESCRIPTION,
+  },
 };
 
 export default function PrivacyPage() {

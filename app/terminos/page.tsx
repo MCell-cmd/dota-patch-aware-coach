@@ -2,9 +2,25 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
+const TITLE = "Términos · Dota Patch-Aware Coach";
+const DESCRIPTION = "Condiciones de uso de Dota Patch-Aware Coach.";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+  "https://dota-patch-aware-coach.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Términos · Dota Patch-Aware Coach",
-  description: "Condiciones de uso de Dota Patch-Aware Coach.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: `${SITE_URL}/terminos` },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: `${SITE_URL}/terminos`,
+  },
+  twitter: {
+    title: TITLE,
+    description: DESCRIPTION,
+  },
 };
 
 export default function TermsPage() {
