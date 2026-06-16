@@ -234,8 +234,8 @@ export function CoachApp({ initialMode = "draft" }: { initialMode?: CoachMode })
             <div className="contentGrid">
               <section className="panel" aria-label="Entrada de draft">
                 <div className="panelHeader">
-                  <h3 className="panelTitle">Parámetros tácticos</h3>
-                  <p className="panelNote">Entrada manual sin overlay. El control sigue estando 100% de tu lado.</p>
+                  <h3 className="panelTitle">Asistente de Draft (100% Legal)</h3>
+                  <p className="panelNote">Sin overlays ni riesgo de ban (VAC). Cruza el meta actual con <strong>tu pool de héroes</strong> para recomendarte el mejor pick posible.</p>
                 </div>
                 <div className="panelBody" data-tour="draft-inputs">
                   <div className="tabNav" style={{ display: 'flex', gap: '8px', marginBottom: '16px', borderBottom: '1px solid var(--border-color)', paddingBottom: '8px' }}>

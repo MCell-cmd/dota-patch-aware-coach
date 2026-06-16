@@ -223,10 +223,10 @@ export function DraftResult({
         ) : (
           <div className="emptyState">
             <AlertTriangle size={36} className="emptyStateIcon" />
-            <h4 className="emptyStateTitle">Marca tu pool de héroes</h4>
+            <h4 className="emptyStateTitle">Falta tu Pool de Héroes</h4>
             <p className="emptyStateText">
-              Selecciona en <strong>&quot;Mi Pool de Héroes&quot;</strong> al menos un héroe que juegues en
-              este rol. El motor solo recomienda picks que tú dominas.
+              Selecciona en <strong>&quot;Mi Pool de Héroes&quot;</strong> los héroes que dominas. 
+              El motor no te recomendará un counter estadístico perfecto si no sabes usarlo; en su lugar, buscará la mejor opción táctica dentro de <strong>tu propio repertorio</strong>.
             </p>
             {onResetPool && (
               <button className="primaryAction emptyStateAction" onClick={onResetPool} type="button">
