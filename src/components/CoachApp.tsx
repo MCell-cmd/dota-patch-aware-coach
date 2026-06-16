@@ -252,6 +252,7 @@ export function CoachApp({ initialMode = "draft" }: { initialMode?: CoachMode })
                   />
 
                   <HeroPicker
+                    role={draft.role}
                     title="Mi Pool de Héroes"
                     selected={draft.heroPool}
                     onToggle={(id) => toggleValue(id, draft.heroPool, draft.setHeroPool)}

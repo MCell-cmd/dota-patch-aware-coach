@@ -82,4 +82,16 @@ describe("analyzeDraft", () => {
     const a = analyzeDraft({ ...base, allies: [] });
     expect(a.teamNeeds.length).toBeGreaterThan(0);
   });
+
+  it("no recomienda heroes de otro rol aunque esten en el pool", () => {
+    const a = analyzeDraft({
+      ...base,
+      role: "support5",
+      heroPool: ["viper", "zeus", "crystal-maiden", "oracle"],
+    });
+
+    expect(a.best).not.toBeNull();
+    expect(a.best!.hero.roles).toContain("support5");
+    expect(["crystal-maiden", "oracle"]).toContain(a.best!.hero.id);
+  });
 });

@@ -161,17 +161,20 @@ export function SelectField<T extends string>({
 
 export function HeroPicker({
   onToggle,
+  role,
   selected,
   title,
   help,
 }: {
   onToggle: (id: string) => void;
+  role?: Role;
   selected: string[];
   title: string;
   help?: string;
 }) {
   const [query, setQuery] = useState("");
-  const visibleHeroes = useMemo(() => filterHeroes(query), [query]);
+  const roleHeroes = useMemo(() => filterHeroes("", role), [role]);
+  const visibleHeroes = useMemo(() => filterHeroes(query, role), [query, role]);
   const titleId = useId();
   const countId = useId();
 
@@ -190,7 +193,7 @@ export function HeroPicker({
           value={query}
         />
         <span className="pickerCount" aria-hidden="true">
-          {selected.length}/{ALL_HEROES.length}
+          {selected.length}/{roleHeroes.length}
         </span>
       </div>
       <span id={countId} className="srOnly">
@@ -308,10 +311,13 @@ const ALL_HEROES_SORTED: DisplayHero[] = [
   ...ALL_HEROES.filter((h) => !h.curated),
 ];
 
-function filterHeroes(query: string) {
+function filterHeroes(query: string, role?: Role) {
   const normalized = query.trim().toLowerCase();
-  if (!normalized) return ALL_HEROES_SORTED;
-  return ALL_HEROES.filter((hero) => {
+  const heroes = role
+    ? ALL_HEROES_SORTED.filter((hero) => hero.curated && hero.roles.includes(role))
+    : ALL_HEROES_SORTED;
+  if (!normalized) return heroes;
+  return heroes.filter((hero) => {
     const haystack = `${hero.name} ${hero.roles.map((role) => ROLE_LABELS[role]).join(" ")}`.toLowerCase();
     return haystack.includes(normalized);
   });

@@ -14,14 +14,26 @@ test("la home carga con el draft y una recomendacion", async ({ page }) => {
   await expect(page.locator(".brandTitle")).toBeVisible();
   await expect(page.locator(".resultName")).toBeVisible();
   const heroCount = await page.locator(".heroGrid .heroButton").count();
-  expect(heroCount).toBeGreaterThan(100);
+  expect(heroCount).toBeGreaterThan(5);
+  expect(heroCount).toBeLessThan(30);
 });
 
-test("los heroes no curados aparecen marcados como tales", async ({ page }) => {
+test("el pool propio se filtra por rol seleccionado", async ({ page }) => {
   await gotoApp(page);
-  const abaddon = page.locator(".heroGrid .heroButton", { hasText: "Abaddon" });
-  await expect(abaddon).toBeVisible();
-  await expect(abaddon).toHaveClass(/nonCurated/);
+  const pool = page.locator(".fieldGroup").filter({ hasText: "Mi Pool de Héroes" });
+
+  await expect(pool.getByRole("button", { name: /Viper/ })).toBeVisible();
+  await expect(pool.getByRole("button", { name: /Juggernaut/ })).toHaveCount(0);
+
+  await page.getByRole("radio", { name: "Carry" }).click();
+  await expect(pool.getByRole("button", { name: /Juggernaut/ })).toBeVisible();
+  await expect(pool.getByRole("button", { name: /Drow Ranger/ })).toBeVisible();
+  await expect(pool.getByRole("button", { name: /Zeus/ })).toHaveCount(0);
+
+  await page.getByRole("radio", { name: "Support 5" }).click();
+  await expect(pool.getByRole("button", { name: /Crystal Maiden/ })).toBeVisible();
+  await expect(pool.getByRole("button", { name: /Oracle/ })).toBeVisible();
+  await expect(pool.getByRole("button", { name: /Viper/ })).toHaveCount(0);
 });
 
 test("aliados y enemigos tambien muestran el roster completo", async ({ page }) => {
@@ -44,7 +56,7 @@ test("el desglose muestra el radar de scoring", async ({ page }) => {
 test("cambiar el pool actualiza la recomendacion sin romper", async ({ page }) => {
   await gotoApp(page);
   await expect(page.locator(".resultName")).toBeVisible();
-  await page.locator(".heroButton", { hasText: "Juggernaut" }).click();
+  await page.locator(".heroButton", { hasText: "Shadow Fiend" }).click();
   await page.waitForLoadState("networkidle");
   await expect(page.locator(".resultName")).toBeVisible();
   await expect(page.locator(".radialScoreNum")).toBeVisible();

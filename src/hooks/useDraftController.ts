@@ -1,12 +1,20 @@
 import { useEffect, useState } from "react";
-import type { Bracket, Role, Style } from "@/data/dota";
+import { HEROES, type Bracket, type Role, type Style } from "@/data/dota";
 import type { DraftAnalysis } from "@/lib/draft";
+
+const DEFAULT_POOL_LIMIT = 6;
+
+function defaultHeroPoolForRole(role: Role) {
+  return HEROES.filter((hero) => hero.roles.includes(role))
+    .slice(0, DEFAULT_POOL_LIMIT)
+    .map((hero) => hero.id);
+}
 
 export function useDraftController() {
   const [role, setRole] = useState<Role>("mid");
   const [bracket, setBracket] = useState<Bracket>("archon");
   const [style, setStyle] = useState<Style>("comfort");
-  const [heroPool, setHeroPool] = useState<string[]>(["viper", "lina", "zeus", "invoker"]);
+  const [heroPool, setHeroPool] = useState<string[]>(() => defaultHeroPoolForRole("mid"));
   const [allies, setAllies] = useState<string[]>(["axe", "crystal-maiden", "sniper"]);
   const [enemies, setEnemies] = useState<string[]>(["phantom-assassin", "lion", "tidehunter"]);
   const [analysis, setAnalysis] = useState<DraftAnalysis | null>(null);
@@ -41,9 +49,15 @@ export function useDraftController() {
     return () => clearTimeout(debounceTimer);
   }, [role, bracket, style, heroPool, allies, enemies]);
 
+  const setDraftRole = (nextRole: Role) => {
+    setRole(nextRole);
+    setHeroPool(defaultHeroPoolForRole(nextRole));
+    setShowDraftDetails(false);
+  };
+
   return {
     role,
-    setRole,
+    setRole: setDraftRole,
     bracket,
     setBracket,
     style,
