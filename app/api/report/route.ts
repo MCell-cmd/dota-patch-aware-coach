@@ -9,6 +9,7 @@ import {
 } from "@/lib/opendota";
 import { buildDeterministicReport, buildFacts } from "@/lib/report";
 import { enrichReportWithAI } from "@/lib/ai";
+import { cacheGet, cacheSet, rateLimit } from "@/lib/rateLimit";
 
 type ReportRequest = {
   matchId?: string;
@@ -19,7 +20,27 @@ type ReportRequest = {
   parse?: boolean;
 };
 
+// Protege la key de Anthropic: cada reporte con IA es una llamada cara. Sin
+// límite, el endpoint público puede vaciar la cuenta.
+const RATE_LIMIT = 10; // peticiones
+const RATE_WINDOW_MS = 60_000; // por minuto y por IP
+const CACHE_TTL_MS = 10 * 60_000; // el reporte de un match es estable 10 min
+
+function clientIp(request: Request): string {
+  const fwd = request.headers.get("x-forwarded-for") ?? "";
+  return fwd.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "anon";
+}
+
 export async function POST(request: Request) {
+  const ip = clientIp(request);
+  const rl = rateLimit(`report:${ip}`, RATE_LIMIT, RATE_WINDOW_MS);
+  if (!rl.ok) {
+    return NextResponse.json(
+      { error: "Demasiadas solicitudes. Intenta de nuevo en un minuto." },
+      { status: 429, headers: { "Retry-After": String(Math.ceil(rl.retryAfterMs / 1000)) } },
+    );
+  }
+
   let body: ReportRequest;
   try {
     body = (await request.json()) as ReportRequest;
@@ -37,6 +58,24 @@ export async function POST(request: Request) {
     body.accountId != null && `${body.accountId}`.trim() !== ""
       ? Number(body.accountId)
       : null;
+  if (accountId != null && !Number.isFinite(accountId)) {
+    return NextResponse.json({ error: "Account ID invalido: debe ser numerico." }, { status: 400 });
+  }
+
+  // El reporte es determinista para las mismas entradas: cacheamos la respuesta
+  // completa y evitamos re-llamar a OpenDota y a Claude. No cacheamos cuando se
+  // pide `parse` (queremos datos frescos tras solicitar el parseo).
+  const cacheKey = `report:${JSON.stringify({
+    matchId,
+    question,
+    role: body.role ?? null,
+    accountId,
+    heroName: body.heroName ?? null,
+  })}`;
+  if (!body.parse) {
+    const cached = cacheGet<Record<string, unknown>>(cacheKey);
+    if (cached) return NextResponse.json(cached);
+  }
 
   try {
     // Si se pide parse, lo dispara y relee sin cache (el parseo puede seguir
@@ -49,13 +88,22 @@ export async function POST(request: Request) {
       fetchHeroConstants(),
     ]);
     const normalized = normalizeMatch(match, heroes);
-    const me = pickPerspective(normalized, accountId, body.heroName ?? null);
+    const me =
+      accountId != null
+        ? normalized.players.find((player) => player.accountId === accountId)
+        : pickPerspective(normalized, null, body.heroName ?? null);
+    if (!me) {
+      return NextResponse.json(
+        { error: "Ese Account ID no aparece en la partida. Verifica Steam32 Account ID o usa otro match." },
+        { status: 404 },
+      );
+    }
 
     const facts = buildFacts(normalized, me, { role: body.role, question });
     const deterministic = buildDeterministicReport(facts, question);
     const { report, source } = await enrichReportWithAI(facts, deterministic);
 
-    return NextResponse.json({
+    const payload = {
       report,
       source,
       perspective: {
@@ -64,7 +112,9 @@ export async function POST(request: Request) {
         won: me.won,
       },
       parsed: normalized.parsed,
-    });
+    };
+    if (!body.parse) cacheSet(cacheKey, payload, CACHE_TTL_MS);
+    return NextResponse.json(payload);
   } catch (error) {
     if (error instanceof OpenDotaError) {
       return NextResponse.json({ error: error.message }, { status: error.status });

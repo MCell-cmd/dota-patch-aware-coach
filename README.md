@@ -54,7 +54,7 @@ npm run test:watch  # tests en modo watch
 | Variable | Obligatoria | Uso |
 | --- | --- | --- |
 | `ANTHROPIC_API_KEY` | No | Activa la redacción del reporte con Claude. |
-| `CLAUDE_MODEL` | No | Modelo de Claude (por defecto `claude-opus-4-8`). |
+| `CLAUDE_MODEL` | No | Modelo de Claude (por defecto `claude-sonnet-4-6`; usa `claude-opus-4-8` para reportes premium). |
 | `OPENDOTA_API_KEY` | No | Sube el rate limit de OpenDota. |
 
 ## Estructura

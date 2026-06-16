@@ -92,6 +92,23 @@ describe("buildFacts + buildDeterministicReport", () => {
     expect(facts.flags).not.toContain("farm-lento-min10");
   });
 
+  it("no regaña a un support por net worth, daño a torres ni last hits bajos", () => {
+    const me = player({ netWorth: 6000, towerDamage: 200, lastHits: 40, gpm: 500 });
+    const facts = buildFacts(match(me, 20000), me, { question: "q", role: "Support" });
+    expect(facts.role).toBe("Support");
+    expect(facts.flags).not.toContain("net-worth-bajo-vs-carry");
+    expect(facts.flags).not.toContain("dano-torres-bajo");
+    expect(facts.flags).not.toContain("last-hits-bajos");
+  });
+
+  it("sí marca esos errores cuando el jugador es un core", () => {
+    const me = player({ netWorth: 8000, towerDamage: 500, lastHits: 40, gpm: 500 });
+    const facts = buildFacts(match(me, 20000), me, { question: "q", role: "Carry" });
+    expect(facts.flags).toContain("net-worth-bajo-vs-carry");
+    expect(facts.flags).toContain("dano-torres-bajo");
+    expect(facts.flags).toContain("last-hits-bajos");
+  });
+
   it("conserva la pregunta del jugador en el reporte", () => {
     const me = player({});
     const facts = buildFacts(match(me, 14000), me, { question: "¿perdí la línea?" });

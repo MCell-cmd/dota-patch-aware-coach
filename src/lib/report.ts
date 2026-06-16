@@ -57,17 +57,26 @@ export function buildFacts(
   const teamByNetWorth = [...myTeam].sort((a, b) => b.netWorth - a.netWorth);
   const myRank = teamByNetWorth.findIndex((p) => p.slot === me.slot) + 1;
 
+  // Detección de rol económico: un support es el bottom-2 en net worth de un
+  // equipo completo de 5 (o viene marcado explícitamente). Sin esto, un support
+  // siempre dispararía "net worth bajo vs carry" y "poco daño a torres", que no
+  // son errores en su rol y arruinan la credibilidad del reporte.
+  const explicitSupport = /support|soporte/i.test(input.role ?? "");
+  const isSupport = explicitSupport || (myTeam.length >= 5 && myRank >= 4);
+  const isCore = !isSupport;
+
   const role =
     input.role ||
-    (me.laneRole != null ? LANE_ROLE_LABELS[me.laneRole] : undefined) ||
+    (isSupport ? "Support" : me.laneRole != null ? LANE_ROLE_LABELS[me.laneRole] : undefined) ||
     "Core";
 
-  const isCore = role !== "Support";
   const flags: string[] = [];
   if (me.deaths >= 9) flags.push("muertes-altas");
-  if (me.netWorth < enemyCarry.netWorth * 0.8) flags.push("net-worth-bajo-vs-carry");
-  if (me.towerDamage < 2000) flags.push("dano-torres-bajo");
-  if (me.lastHits < me.gpm * 0.3 && isCore) flags.push("last-hits-bajos");
+  // Las comparaciones de economía y daño a estructuras solo aplican a cores:
+  // un support no compite en net worth con el carry rival ni empuja torres.
+  if (isCore && me.netWorth < enemyCarry.netWorth * 0.8) flags.push("net-worth-bajo-vs-carry");
+  if (isCore && me.towerDamage < 2000) flags.push("dano-torres-bajo");
+  if (isCore && me.lastHits < me.gpm * 0.3) flags.push("last-hits-bajos");
   if (me.kda < 2) flags.push("kda-bajo");
   // Solo evaluable con datos parseados: CS al minuto 10 bajo para un core.
   if (me.lastHitsAt10 != null && isCore && me.lastHitsAt10 < 40) {

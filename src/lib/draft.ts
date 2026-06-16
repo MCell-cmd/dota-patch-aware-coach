@@ -82,31 +82,44 @@ function resolveDraft(input: DraftInput): DraftContext {
 }
 
 export function analyzeDraft(input: DraftInput): DraftAnalysis {
-  const ctx = resolveDraft(input);
-  const pool = input.heroPool.length > 0 ? input.heroPool : HEROES.map((hero) => hero.id);
-  const candidates = pool
-    .map((id) => HERO_BY_ID.get(id))
-    .filter((hero): hero is Hero => Boolean(hero))
-    .filter((hero) => hero.roles.includes(input.role));
+  try {
+    const ctx = resolveDraft(input);
+    const pool = input.heroPool.length > 0 ? input.heroPool : HEROES.map((hero) => hero.id);
+    const candidates = pool
+      .map((id) => HERO_BY_ID.get(id))
+      .filter((hero): hero is Hero => Boolean(hero))
+      .filter((hero) => hero.roles.includes(input.role));
 
-  const scored = candidates
-    .map((hero) => scoreHero(hero, input, ctx))
-    .sort((a, b) => b.total - a.total);
+    const scored = candidates
+      .map((hero) => scoreHero(hero, input, ctx))
+      .sort((a, b) => b.total - a.total);
 
-  const avoid = scored
-    .filter((score) => score.total < SCORING.avoid.totalBelow || score.risks.length >= SCORING.avoid.riskCountAtLeast)
-    .sort((a, b) => a.total - b.total)
-    .slice(0, 3);
+    const avoid = scored
+      .filter((score) => score.total < 42 || score.risks.length >= 3)
+      .sort((a, b) => a.total - b.total)
+      .slice(0, 3);
 
-  return {
-    best: scored[0] ?? null,
-    alternatives: scored.slice(1, 3),
-    avoid,
-    teamNeeds: findTeamNeeds(ctx),
-    enemyThreats: findEnemyThreats(ctx),
-    mapPlan: buildMapPlan(ctx, scored[0]?.hero),
-    freshnessWarning: "Base mock 7.41d: util para validar UX/scoring, no para cobrar sin patch pipeline.",
-  };
+    return {
+      best: scored[0] ?? null,
+      alternatives: scored.slice(1, 3),
+      avoid,
+      teamNeeds: findTeamNeeds(ctx),
+      enemyThreats: findEnemyThreats(ctx),
+      mapPlan: buildMapPlan(ctx, scored[0]?.hero),
+      freshnessWarning: "Base mock 7.41d: util para validar UX/scoring, no para cobrar sin patch pipeline.",
+    };
+  } catch (error) {
+    console.error("Error en analyzeDraft:", error);
+    return {
+      best: null,
+      alternatives: [],
+      avoid: [],
+      teamNeeds: [],
+      enemyThreats: [],
+      mapPlan: ["Error al analizar el draft. Verifica los inputs."],
+      freshnessWarning: "Error en el cálculo del draft.",
+    };
+  }
 }
 
 function scoreHero(hero: Hero, input: DraftInput, ctx: DraftContext): PickScore {
