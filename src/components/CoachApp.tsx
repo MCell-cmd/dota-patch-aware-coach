@@ -151,7 +151,7 @@ export function CoachApp() {
             </div>
             <div className="brandText">
               <h1 className="brandTitle">Dota Patch-Aware Coach</h1>
-              <p className="brandMeta">Dashboard táctico & análisis inteligente</p>
+              <p className="brandMeta">Tu coach personal de Dota 2 · draft, parche y replay</p>
             </div>
           </div>
           <div className="statusStrip" aria-label="Estado de datos">
