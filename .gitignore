@@ -60,3 +60,4 @@ exports/
 /test-results/
 /playwright-report/
 /playwright/.cache/
+.vercel
