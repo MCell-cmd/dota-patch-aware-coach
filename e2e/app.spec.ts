@@ -31,6 +31,18 @@ test("cambiar el pool actualiza la recomendación sin romper", async ({ page }) 
   await expect(page.locator(".radialScoreNum")).toBeVisible();
 });
 
+test("vaciar el pool pide marcar héroes en vez de recomendar al azar", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.locator(".resultName")).toBeVisible();
+  const selected = page.locator('.heroButton[aria-pressed="true"]');
+  while ((await selected.count()) > 0) {
+    await selected.first().click();
+  }
+  await page.waitForLoadState("networkidle");
+  await expect(page.locator(".resultName")).toHaveCount(0);
+  await expect(page.getByText(/Marca tu pool de héroes/i)).toBeVisible({ timeout: 10_000 });
+});
+
 test("navegación entre las 4 pestañas", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("button", { name: /Patch Coach/ }).click();

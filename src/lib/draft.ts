@@ -1,4 +1,4 @@
-import { Bracket, Hero, HeroTag, HEROES, HERO_BY_ID, Role, Style } from "@/data/dota";
+import { Bracket, Hero, HeroTag, HERO_BY_ID, Role, Style } from "@/data/dota";
 import { SCORING } from "@/lib/scoringConfig";
 
 export type DraftInput = {
@@ -84,8 +84,9 @@ function resolveDraft(input: DraftInput): DraftContext {
 export function analyzeDraft(input: DraftInput): DraftAnalysis {
   try {
     const ctx = resolveDraft(input);
-    const pool = input.heroPool.length > 0 ? input.heroPool : HEROES.map((hero) => hero.id);
-    const candidates = pool
+    // Sin pool no recomendamos: sugerir héroes que el jugador quizá no juega resta
+    // confianza. La UI pide marcar el pool. (Antes caía a todos los héroes.)
+    const candidates = input.heroPool
       .map((id) => HERO_BY_ID.get(id))
       .filter((hero): hero is Hero => Boolean(hero))
       .filter((hero) => hero.roles.includes(input.role));

@@ -165,7 +165,11 @@ export function DraftResult({
         ) : (
           <div className="emptyState">
             <AlertTriangle size={36} className="emptyStateIcon" />
-            <p className="emptyStateText">Tu pool de héroes está vacío para el rol seleccionado o no hay coincidencias configuradas.</p>
+            <h4 className="emptyStateTitle">Marca tu pool de héroes</h4>
+            <p className="emptyStateText">
+              Selecciona en <strong>&quot;Mi Pool de Héroes&quot;</strong> al menos un héroe que juegues en
+              este rol. El motor solo recomienda picks que tú dominas.
+            </p>
           </div>
         )}
       </div>
