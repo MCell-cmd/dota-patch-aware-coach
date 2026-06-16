@@ -40,7 +40,7 @@ export type Hero = {
 export const PATCH_STATE = {
   version: "7.41d",
   updatedAt: "2026-06-15",
-  freshness: "Base inicial mock; requiere ingestion de patch notes antes de produccion.",
+  freshness: "Base inicial mock; requiere ingestión de patch notes antes de producción.",
 };
 
 export const ROLE_LABELS: Record<Role, string> = {
@@ -85,7 +85,7 @@ export const HEROES: Hero[] = [
     synergies: ["crystal-maiden", "skywrath-mage", "witch-doctor"],
     startingItems: ["Tango", "Quelling Blade", "Gauntlets", "2 Branches"],
     firstCore: ["Vanguard", "Blink Dagger", "Blade Mail"],
-    lanePlan: "Corta la wave si la linea es mala; busca Blink + call con primer power spike.",
+    lanePlan: "Corta la wave si la línea es mala; busca Blink + call con primer power spike.",
   },
   {
     id: "crystal-maiden",
@@ -102,7 +102,7 @@ export const HEROES: Hero[] = [
     synergies: ["axe", "juggernaut", "mars"],
     startingItems: ["Tango", "Blood Grenade", "Observer Ward", "Sentry", "2 Branches"],
     firstCore: ["Tranquil Boots", "Glimmer Cape", "Force Staff"],
-    lanePlan: "Gana trades cortos con slow/root y asegura pulls sin regalar vision.",
+    lanePlan: "Gana trades cortos con slow/root y asegura pulls sin regalar visión.",
   },
   {
     id: "sniper",
@@ -119,7 +119,7 @@ export const HEROES: Hero[] = [
     synergies: ["crystal-maiden", "tidehunter", "mars"],
     startingItems: ["Tango", "Wraith Band components", "2 Branches", "Faerie Fire"],
     firstCore: ["Dragon Lance", "Maelstrom", "Black King Bar"],
-    lanePlan: "Mantente en rango maximo, presiona torre con catapulta y evita jugar sin vision.",
+    lanePlan: "Mantente en rango máximo, presiona torre con catapulta y evita jugar sin visión.",
   },
   {
     id: "phantom-assassin",
@@ -136,7 +136,7 @@ export const HEROES: Hero[] = [
     synergies: ["oracle", "crystal-maiden", "witch-doctor"],
     startingItems: ["Tango", "Quelling Blade", "Slippers", "2 Branches"],
     firstCore: ["Battle Fury", "Desolator", "Black King Bar"],
-    lanePlan: "Prioriza sobrevivir y farmear; pelea con Desolator/BKB, no antes si la linea fue mala.",
+    lanePlan: "Prioriza sobrevivir y farmear; pelea con Desolator/BKB, no antes si la línea fue mala.",
   },
   {
     id: "lion",
@@ -170,7 +170,7 @@ export const HEROES: Hero[] = [
     synergies: ["sniper", "drow-ranger", "queen-of-pain"],
     startingItems: ["Tango", "Quelling Blade", "Ring of Protection", "Branches"],
     firstCore: ["Arcane Boots", "Blink Dagger", "Pipe of Insight"],
-    lanePlan: "Absorbe presion y juega Ravage alrededor de objetivos, no por kills sueltas.",
+    lanePlan: "Absorbe presión y juega Ravage alrededor de objetivos, no por kills sueltas.",
   },
   {
     id: "viper",
@@ -187,7 +187,7 @@ export const HEROES: Hero[] = [
     synergies: ["lion", "crystal-maiden", "mars"],
     startingItems: ["Tango", "Circlet", "Slippers", "2 Branches", "Faerie Fire"],
     firstCore: ["Power Treads", "Dragon Lance", "Black King Bar"],
-    lanePlan: "Gana la linea y transforma ventaja en torre; si no presionas temprano pierdes valor.",
+    lanePlan: "Gana la línea y transforma ventaja en torre; si no presionas temprano pierdes valor.",
   },
   {
     id: "lina",
@@ -221,7 +221,7 @@ export const HEROES: Hero[] = [
     synergies: ["axe", "faceless-void", "tidehunter"],
     startingItems: ["Tango", "Null components", "2 Branches", "Faerie Fire"],
     firstCore: ["Bottle", "Aether Lens", "Kaya"],
-    lanePlan: "Controla runas con shove; no muestres posicion antes de que inicie tu frontliner.",
+    lanePlan: "Controla runas con shove; no muestres posición antes de que inicie tu frontliner.",
   },
   {
     id: "invoker",
@@ -289,7 +289,7 @@ export const HEROES: Hero[] = [
     synergies: ["lion", "crystal-maiden", "lina"],
     startingItems: ["Tango", "Wind Lace", "Blood Grenade", "Observer Ward"],
     firstCore: ["Tranquil Boots", "Aether Lens", "Blink Dagger"],
-    lanePlan: "Si no conectas hooks, juega vision y runas; no abandones la lane sin objetivo claro.",
+    lanePlan: "Si no conectas hooks, juega visión y runas; no abandones la lane sin objetivo claro.",
   },
   {
     id: "drow-ranger",
@@ -323,7 +323,7 @@ export const HEROES: Hero[] = [
     synergies: ["juggernaut", "axe", "mars"],
     startingItems: ["Tango", "Blood Grenade", "Observer Ward", "Sentry", "2 Branches"],
     firstCore: ["Arcane Boots", "Glimmer Cape", "Aghanim Shard"],
-    lanePlan: "Busca trades de Maledict con disable aliado; protege tu posicion antes de Death Ward.",
+    lanePlan: "Busca trades de Maledict con disable aliado; protege tu posición antes de Death Ward.",
   },
   {
     id: "earthshaker",
@@ -374,7 +374,7 @@ export const HEROES: Hero[] = [
     synergies: ["oracle", "crystal-maiden", "lion"],
     startingItems: ["Tango", "Quelling Blade", "Slippers", "2 Branches"],
     firstCore: ["Power Treads", "Diffusal Blade", "Aghanim Scepter"],
-    lanePlan: "No fuerces linea mala; juega por vision, pickoffs y peleas largas.",
+    lanePlan: "No fuerces línea mala; juega por visión, pickoffs y peleas largas.",
   },
   {
     id: "faceless-void",
@@ -391,7 +391,7 @@ export const HEROES: Hero[] = [
     synergies: ["invoker", "zeus", "earthshaker"],
     startingItems: ["Tango", "Quelling Blade", "Slippers", "2 Branches"],
     firstCore: ["Power Treads", "Maelstrom", "Black King Bar"],
-    lanePlan: "Juega por Chronosphere con dano aliado; si no hay follow-up, farmea hasta BKB.",
+    lanePlan: "Juega por Chronosphere con daño aliado; si no hay follow-up, farmea hasta BKB.",
   },
   {
     id: "oracle",
@@ -408,7 +408,7 @@ export const HEROES: Hero[] = [
     synergies: ["phantom-assassin", "slark", "juggernaut"],
     startingItems: ["Tango", "Observer Ward", "Sentry", "Blood Grenade", "Branches"],
     firstCore: ["Arcane Boots", "Glimmer Cape", "Aether Lens"],
-    lanePlan: "Juega detras del core; tu valor es negar el burst enemigo, no iniciar.",
+    lanePlan: "Juega detrás del core; tu valor es negar el burst enemigo, no iniciar.",
   },
   {
     id: "bane",
@@ -459,7 +459,7 @@ export const HEROES: Hero[] = [
     synergies: ["tidehunter", "mars", "axe"],
     startingItems: ["Tango", "Null components", "2 Branches", "Faerie Fire"],
     firstCore: ["Bottle", "Kaya", "Black King Bar"],
-    lanePlan: "Castiga runas y supports lentos; evita blink ofensivo si no sabes donde estan disables.",
+    lanePlan: "Castiga runas y supports lentos; evita blink ofensivo si no sabes donde están disables.",
   },
   {
     id: "dragon-knight",
@@ -556,8 +556,8 @@ export const MOCK_REPLAY_REPORTS: Record<string, MockReplayReport> = {
     hero: "Viper",
     role: "Midlaner",
     bracket: "Archon",
-    question: "Que decision me hizo perder mas impacto?",
-    verdict: "Ganaste la línea con holgura pero jugaste de forma pasiva en tu jungla en lugar de presionar las torres y anular el espacio de farm de la Phantom Assassin enemiga.",
+    question: "¿Qué decisión me hizo perder más impacto?",
+    verdict: "Ganaste la línea con holgura pero jugaste de forma pasiva en tu jungla en lugar de presiónar las torres y anular el espacio de farm de la Phantom Assassin enemiga.",
     phases: {
       lane: {
         good: "Denegaste 14 creeps a Lina y le sacaste una ventaja de 1.2k de net worth al minuto 8.",
@@ -611,3 +611,10 @@ export const MOCK_REPLAY_REPORTS: Record<string, MockReplayReport> = {
     }
   }
 };
+
+// Devuelve un reporte de demo válido sin depender de una clave concreta: si el
+// match ID por defecto no tiene mock (p. ej. cambió a un match real de OpenDota),
+// cae al primero disponible en lugar de devolver undefined y romper la UI.
+export function getDefaultMockReport(): MockReplayReport {
+  return Object.values(MOCK_REPLAY_REPORTS)[0];
+}

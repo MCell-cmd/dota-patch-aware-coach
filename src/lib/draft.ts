@@ -45,9 +45,9 @@ export type DraftAnalysis = {
 
 const REQUIRED_TAGS: Array<{ tag: HeroTag; label: string }> = [
   { tag: "stun", label: "stun fiable" },
-  { tag: "initiation", label: "iniciacion" },
+  { tag: "initiation", label: "iniciación" },
   { tag: "waveClear", label: "limpieza de waves" },
-  { tag: "towerDamage", label: "dano a torres" },
+  { tag: "towerDamage", label: "daño a torres" },
   { tag: "teamfight", label: "teamfight" },
 ];
 
@@ -106,7 +106,7 @@ export function analyzeDraft(input: DraftInput): DraftAnalysis {
       teamNeeds: findTeamNeeds(ctx),
       enemyThreats: findEnemyThreats(ctx),
       mapPlan: buildMapPlan(ctx, scored[0]?.hero),
-      freshnessWarning: "Base mock 7.41d: util para validar UX/scoring, no para cobrar sin patch pipeline.",
+      freshnessWarning: "Base local 7.41d: útil para validar UX y scoring. Antes de cobrar, conecta el pipeline de parches oficiales.",
     };
   } catch (error) {
     console.error("Error en analyzeDraft:", error);
@@ -193,14 +193,14 @@ function buildReasons(
 ) {
   const reasons: string[] = [];
 
-  if (counterHits > 0) reasons.push(`Castiga ${counterHits} condicion(es) enemiga(s) del draft.`);
+  if (counterHits > 0) reasons.push(`Castiga ${counterHits} condición(es) enemiga(s) del draft.`);
   if (synergyHits > 0) reasons.push(`Tiene sinergia directa con ${synergyHits} aliado(s).`);
-  if (missingTagCoverage > 0) reasons.push("Cubre carencias actuales de tu composicion.");
+  if (missingTagCoverage > 0) reasons.push("Cubre carencias actuales de tu composición.");
   if (hero.patchValue > 0) reasons.push("Tiene valor positivo en la base de parche actual.");
   if (style === "comfort") reasons.push("Respeta comfort pool antes que counter perfecto.");
   if (hero.tags.includes("towerDamage")) reasons.push("Puede convertir ventaja en torres.");
   if (hero.tags.includes("initiation")) reasons.push("Da forma clara de iniciar peleas.");
-  if (reasons.length === 0) reasons.push(`Es una opcion estable para rol ${hero.roles.join("/")}.`);
+  if (reasons.length === 0) reasons.push(`Es una opción estable para rol ${hero.roles.join("/")}.`);
 
   return reasons.slice(0, 4);
 }
@@ -210,7 +210,7 @@ function buildRisks(hero: Hero, weakHits: number, bracket: Bracket, enemies: Her
 
   if (weakHits > 0) risks.push(`Tiene ${weakHits} matchup(s) peligroso(s) ya visibles.`);
   if (hero.difficulty >= 4 && ["herald", "guardian", "crusader", "archon"].includes(bracket)) {
-    risks.push("Riesgo de ejecucion alto para este bracket.");
+    risks.push("Riesgo de ejecución alto para este bracket.");
   }
   if (hero.tempo === "late" && enemies.some((enemy) => enemy.tempo === "early")) {
     risks.push("Puede sufrir si el enemigo fuerza torres temprano.");
@@ -231,8 +231,8 @@ function findEnemyThreats(ctx: DraftContext) {
   const threats: string[] = [];
 
   if (enemies.some((hero) => hero.tags.includes("scaling"))) threats.push("El enemigo tiene late game.");
-  if (enemies.some((hero) => hero.tags.includes("initiation"))) threats.push("Cuidado con iniciacion enemiga.");
-  if (enemies.some((hero) => hero.tags.includes("burst"))) threats.push("Necesitas saves, BKB o posicion.");
+  if (enemies.some((hero) => hero.tags.includes("initiation"))) threats.push("Cuidado con iniciación enemiga.");
+  if (enemies.some((hero) => hero.tags.includes("burst"))) threats.push("Necesitas saves, BKB o posición.");
   if (enemies.some((hero) => hero.tags.includes("towerDamage"))) threats.push("Defiende catapultas y T1.");
 
   return [...new Set(threats)];
@@ -246,22 +246,22 @@ function buildMapPlan(ctx: DraftContext, best?: Hero) {
   if (best?.tags.includes("roshan")) plan.push("Convertir primer item core en amenaza de Roshan.");
   if (best?.tags.includes("initiation")) plan.push("Comprar humo con supports y pelear con cooldowns listos.");
   if (enemies.some((enemy) => enemy.tempo === "late")) plan.push("Evitar farm trade largo contra cores de late.");
-  if (plan.length === 0) plan.push("Priorizar runas, vision y defensa de torres antes de pelear sin objetivo.");
+  if (plan.length === 0) plan.push("Priorizar runas, visión y defensa de torres antes de pelear sin objetivo.");
 
   return plan.slice(0, 4);
 }
 
 function buildMidPlan(hero: Hero) {
-  if (hero.tempo === "early") return "Usa ventaja de linea para rotar o tomar torre antes del minuto 10.";
-  if (hero.tempo === "late") return "Protege tu segundo timing; evita peleas sin item core o vision.";
+  if (hero.tempo === "early") return "Usa ventaja de línea para rotar o tomar torre antes del minuto 10.";
+  if (hero.tempo === "late") return "Protege tu segundo timing; evita peleas sin item core o visión.";
   return "Juega alrededor del primer core item y fuerza pelea con objetivo cercano.";
 }
 
 function buildObjectivePlan(hero: Hero, input: DraftInput) {
   if (hero.tags.includes("roshan")) return "Si ganas pelea cerca de minuto 15-20, convierte en Roshan.";
   if (hero.tags.includes("towerDamage")) return "Cada kill debe transformarse en torre o wave profunda.";
-  if (input.role.includes("support")) return "Asegura vision antes de runas y protege el objetivo que toque.";
-  return "No persigas kills largas: empuja wave y toma vision despues de cada ventaja.";
+  if (input.role.includes("support")) return "Asegura visión antes de runas y protege el objetivo que toque.";
+  return "No persigas kills largas: empuja wave y toma visión después de cada ventaja.";
 }
 
 function confidenceFromScore(total: number, riskCount: number): PickScore["confidence"] {

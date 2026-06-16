@@ -7,10 +7,17 @@ import {
   Clock,
   Copy,
   Cpu,
+  Gauge,
   RefreshCw,
   ThumbsUp,
 } from "lucide-react";
 import { MockReplayReport } from "@/data/dota";
+
+export type ReportPerspective = {
+  heroName: string;
+  accountId: number | null;
+  won: boolean;
+} | null;
 
 const LOADING_STEPS = [
   "Conectando con la API pública de OpenDota...",
@@ -31,6 +38,8 @@ export function ReplayPanel({
   analysisStep,
   analysisError,
   reportSource,
+  reportParsed,
+  reportPerspective,
   replayReport,
   startAnalysis,
   copyReport,
@@ -46,6 +55,8 @@ export function ReplayPanel({
   analysisStep: number;
   analysisError: string | null;
   reportSource: string | null;
+  reportParsed: boolean | null;
+  reportPerspective: ReportPerspective;
   replayReport: MockReplayReport | null;
   startAnalysis: () => void;
   copyReport: () => void;
@@ -90,7 +101,7 @@ export function ReplayPanel({
                 onChange={(event) => setQuestion(event.target.value)}
                 rows={4}
                 value={question}
-                placeholder="Ej. ¿Qué decisión me costó la partida? ¿Cómo estuvo mi timing de items?"
+                placeholder="Ej. ¿Qué decisión me costó la partida? ¿Cómo estuvo mi timing de ítems?"
                 disabled={isAnalyzing}
               />
             </div>
@@ -160,6 +171,15 @@ export function ReplayPanel({
                     <Cpu size={14} className={reportSource === "ai" ? "iconPurple" : "iconAmber"} />
                     {reportSource === "ai" ? "Redacción con IA (Claude)" : "Reporte determinista (sin API key de IA)"}
                   </span>
+                  <span className="statusPill">
+                    <Gauge size={14} className={reportParsed ? "iconGreen" : "iconAmber"} />
+                    {reportParsed ? "Match parseado" : "Timeline limitado"}
+                  </span>
+                  {reportPerspective && (
+                    <span className="statusPill">
+                      Perspectiva: <strong>{reportPerspective.heroName}</strong>
+                    </span>
+                  )}
                 </div>
                 <div className="reportMetadata">
                   <div className="metaRow">

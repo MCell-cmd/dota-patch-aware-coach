@@ -1,26 +1,35 @@
 import { NextRequest, NextResponse } from "next/server";
-import { analyzeDraft } from "@/lib/draft";
-import { DraftInput } from "@/lib/draft";
+import { analyzeDraft, type DraftInput } from "@/lib/draft";
+
+function json(data: unknown, init?: ResponseInit) {
+  const headers = new Headers(init?.headers);
+  headers.set("Content-Type", "application/json; charset=utf-8");
+
+  return NextResponse.json(data, {
+    ...init,
+    headers,
+  });
+}
 
 export async function POST(request: NextRequest) {
   try {
     const body: DraftInput = await request.json();
-    
-    // Validación básica de inputs
+
+    // Validacion basica de inputs.
     if (!body || !body.role || !body.bracket || !body.style) {
-      return NextResponse.json(
+      return json(
         { error: "Faltan parámetros requeridos en el cuerpo de la petición." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     const analysis = analyzeDraft(body);
-    return NextResponse.json(analysis);
+    return json(analysis);
   } catch (error) {
     console.error("Error en la API de análisis de draft:", error);
-    return NextResponse.json(
+    return json(
       { error: "Error interno del servidor al procesar el análisis del draft." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -1,26 +1,63 @@
 "use client";
 
 import { AlertTriangle, ChevronRight, TrendingUp, Cpu, Zap } from "lucide-react";
-import { analyzeDraft } from "@/lib/draft";
+import { DraftAnalysis } from "@/lib/draft";
 import { ListBlock, Metric, Phase, ScoreBar } from "@/components/fields";
 
 export function DraftResult({
   analysis,
+  isAnalyzingDraft,
+  draftError,
   showDetails,
   toggleDetails,
 }: {
-  analysis: ReturnType<typeof analyzeDraft>;
+  analysis: DraftAnalysis | null;
+  isAnalyzingDraft: boolean;
+  draftError: string | null;
   showDetails: boolean;
   toggleDetails: () => void;
 }) {
-  const best = analysis.best;
+  if (isAnalyzingDraft) {
+    return (
+      <section className="panel" aria-label="Analizando draft">
+        <div className="panelHeader">
+          <h3 className="panelTitle">Análisis del Draft</h3>
+        </div>
+        <div className="panelBody">
+          <div className="loadingState" style={{ minHeight: "260px" }}>
+            <Cpu size={36} className="spinIcon textRed" />
+            <span className="loadingTitle">Calculando scoring en el servidor...</span>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (draftError) {
+    return (
+      <section className="panel" aria-label="Error de análisis">
+        <div className="panelHeader">
+          <h3 className="panelTitle">Análisis del Draft</h3>
+        </div>
+        <div className="panelBody">
+          <div className="emptyState" style={{ minHeight: "260px" }}>
+            <AlertTriangle size={36} className="emptyStateIcon" />
+            <h4 className="emptyStateTitle" style={{ color: "var(--red)" }}>Fallo de conexión</h4>
+            <p className="emptyStateText">{draftError}</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  const best = analysis?.best;
 
   return (
-    <section className="panel" aria-label="Resultado del analisis">
+    <section className="panel" aria-label="Resultado del análisis">
       <div className="panelHeader resultHeader">
         <div>
           <h3 className="panelTitle">Análisis del Draft</h3>
-          <p className="panelNote">{analysis.freshnessWarning}</p>
+          <p className="panelNote">{analysis?.freshnessWarning}</p>
         </div>
         {best && (
           <button className="detailsToggleBtn" onClick={toggleDetails}>

@@ -93,7 +93,7 @@ export function PatchCoachPanel({
                 <span className="notesTitle">Recomendación del Parche</span>
                 <p className="tacticalDesc">
                   {activeHero.patchValue > 0
-                    ? `Los buffs recibidos posicionan a ${activeHero.name} como un pick sólido en este parche. Maximiza su lane presence con items como ${activeHero.startingItems.slice(0, 2).join(" y ")} y presiona timings rápidos.`
+                    ? `Los buffs recibidos posiciónan a ${activeHero.name} como un pick sólido en este parche. Maximiza su lane presence con ítems como ${activeHero.startingItems.slice(0, 2).join(" y ")} y presióna timings rápidos.`
                     : activeHero.patchValue < 0
                     ? `Ten cuidado. Los nerfs directos debilitaron su capacidad de juego en fase de líneas. Considera alternar a otros héroes si ves counters agresivos visibles en el draft.`
                     : `${activeHero.name} se mantiene balanceado y estable. Conserva su build estándar: ${activeHero.firstCore.join(" ➔ ")}.`}

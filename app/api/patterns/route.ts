@@ -22,17 +22,27 @@ type PatternsRequest = {
 
 const MAX_MATCHES = 10;
 
+function json(data: unknown, init?: ResponseInit) {
+  const headers = new Headers(init?.headers);
+  headers.set("Content-Type", "application/json; charset=utf-8");
+
+  return NextResponse.json(data, {
+    ...init,
+    headers,
+  });
+}
+
 export async function POST(request: Request) {
   let body: PatternsRequest;
   try {
     body = (await request.json()) as PatternsRequest;
   } catch {
-    return NextResponse.json({ error: "Cuerpo JSON inválido." }, { status: 400 });
+    return json({ error: "Cuerpo JSON inválido." }, { status: 400 });
   }
 
   const matches = (body.matches ?? []).filter((m) => m?.matchId).slice(0, MAX_MATCHES);
   if (matches.length < 2) {
-    return NextResponse.json(
+    return json(
       { error: "Envía al menos 2 partidas (matchId) para detectar patrones." },
       { status: 400 },
     );
@@ -60,19 +70,19 @@ export async function POST(request: Request) {
     }
 
     if (factsList.length < 2) {
-      return NextResponse.json(
+      return json(
         { error: "No se pudieron analizar al menos 2 partidas.", failed },
         { status: 422 },
       );
     }
 
     const patterns = findRepeatedPatterns(factsList);
-    return NextResponse.json({ ...patterns, failed });
+    return json({ ...patterns, failed });
   } catch (error) {
     if (error instanceof OpenDotaError) {
-      return NextResponse.json({ error: error.message }, { status: error.status });
+      return json({ error: error.message }, { status: error.status });
     }
-    return NextResponse.json(
+    return json(
       { error: "Error inesperado detectando patrones." },
       { status: 500 },
     );

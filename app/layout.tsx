@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Dota Patch-Aware Coach",
-  description: "Asistente de draft, parches y analisis post-partida para Dota 2.",
+  description: "Asistente de draft, parches y análisis post-partida para Dota 2.",
 };
 
 export default function RootLayout({

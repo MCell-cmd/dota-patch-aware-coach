@@ -6,9 +6,10 @@ import {
   BRACKET_LABELS,
   HEROES,
   MockReplayReport,
-  MOCK_REPLAY_REPORTS,
+  getDefaultMockReport,
 } from "@/data/dota";
 import { SelectField } from "@/components/fields";
+import { APP_CONFIG } from "@/config/constants";
 
 export function CoachWorkspacePanel({
   students,
@@ -331,12 +332,10 @@ export function CoachWorkspacePanel({
                     ? `El alumno ${activeStudent.name} no registra partidas en el sistema. Solicita su Match ID o haz clic en "Asistente Draft" para iniciar.`
                     : "Selecciona un alumno del panel izquierdo para ver su workspace."}
                 </p>
-                {activeStudent && activeStudent.id !== "student-1" && (
+                {activeStudent && activeStudent.id !== APP_CONFIG.DEFAULT_STUDENT_ID && (
                   <button
                     className="primaryAction runActionBtn"
-                    onClick={() => {
-                      setCoachReport(JSON.parse(JSON.stringify(MOCK_REPLAY_REPORTS["8850507008"])));
-                    }}
+                    onClick={() => setCoachReport(structuredClone(getDefaultMockReport()))}
                     type="button"
                   >
                     <Plus size={16} />
