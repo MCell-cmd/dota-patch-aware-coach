@@ -1,7 +1,8 @@
 "use client";
 
+import { useId } from "react";
 import { AlertTriangle, BookOpen } from "lucide-react";
-import { HEROES, PATCH_STATE, ROLE_LABELS } from "@/data/dota";
+import { HEROES, PATCH_STATE, ROLE_LABELS, heroImageUrl } from "@/data/dota";
 import {
   getActivePatch,
   getGlobalPatchChanges,
@@ -25,16 +26,17 @@ export function PatchCoachPanel({
   const activeChanges = activeHero ? getPatchChangesForHero(activeHero.id) : [];
   const globalChanges = getGlobalPatchChanges();
   const confidence = activeHero ? getPatchConfidenceForHero(activeHero.id) : "baja";
+  const poolTitleId = useId();
 
   return (
     <div className="placeholderGrid patchPanelGrid">
       <section className="panel">
         <div className="panelHeader">
-          <h3 className="panelTitle">Mi Pool en este Parche</h3>
+          <h3 className="panelTitle" id={poolTitleId}>Mi Pool en este Parche</h3>
           <p className="panelNote">Selecciona un héroe para auditar los cambios aplicados en la versión {PATCH_STATE.version}.</p>
         </div>
         <div className="panelBody">
-          <div className="patchHeroList">
+          <div className="patchHeroList" role="group" aria-labelledby={poolTitleId}>
             {heroes.length > 0 ? (
               heroes.map((hero) => {
                 const isActive = hero.id === selectedHeroId;
@@ -43,14 +45,28 @@ export function PatchCoachPanel({
                 return (
                   <button
                     key={hero.id}
+                    type="button"
                     className={`patchHeroRow ${isActive ? "active" : ""}`}
                     onClick={() => onSelectHero(hero.id)}
+                    aria-pressed={isActive}
                   >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      className="patchHeroPortrait"
+                      src={heroImageUrl(hero.id)}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      aria-hidden="true"
+                    />
                     <div className="patchHeroMeta">
                       <span className="patchHeroName">{hero.name}</span>
                       <span className="patchHeroRoles">{hero.roles.map((r) => ROLE_LABELS[r]).join(", ")}</span>
                     </div>
-                    <span className={`patchHeroStatus ${statusClass}`}>{statusText}</span>
+                    <span className={`patchHeroStatus ${statusClass}`}>
+                      <span className="srOnly">Estado: </span>
+                      {statusText}
+                    </span>
                   </button>
                 );
               })
@@ -66,7 +82,12 @@ export function PatchCoachPanel({
 
       <section className="panel">
         <div className="panelHeader">
-          <h3 className="panelTitle">Detalles del Parche: {activeHero ? activeHero.name : "Selecciona Héroe"}</h3>
+          <h3 className="panelTitle" aria-live="polite">
+            Detalles del Parche:{" "}
+            <span className="patchHeroTitleAccent">
+              {activeHero ? activeHero.name : "Selecciona Héroe"}
+            </span>
+          </h3>
           <p className="panelNote">
             Fuente activa: {activePatch.source.label}. Estado: revisión manual, confianza por héroe {confidence}.
           </p>
@@ -78,7 +99,11 @@ export function PatchCoachPanel({
                 <div className="metaBox">
                   <span className="metaLabel">Patch Value</span>
                   <span className={`metaValue ${activeHero.patchValue > 0 ? "greenText" : activeHero.patchValue < 0 ? "redText" : ""}`}>
-                    {activeHero.patchValue > 0 ? `+${activeHero.patchValue}` : activeHero.patchValue < 0 ? `${activeHero.patchValue}` : "0"} local
+                    {activeHero.patchValue > 0
+                      ? `+${activeHero.patchValue} local`
+                      : activeHero.patchValue < 0
+                        ? `${activeHero.patchValue} local`
+                        : "Sin ajuste local"}
                   </span>
                 </div>
                 <div className="metaBox">

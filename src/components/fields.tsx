@@ -113,7 +113,7 @@ export function SegmentedField<T extends string>({
           <button
             role="radio"
             aria-checked={value === item}
-            aria-pressed={value === item}
+            tabIndex={value === item ? 0 : -1}
             className="segButton"
             key={item}
             onClick={() => onChange(item)}

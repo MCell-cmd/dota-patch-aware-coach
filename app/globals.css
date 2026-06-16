@@ -497,7 +497,8 @@ button:focus-visible {
   background: rgba(255, 255, 255, 0.02);
 }
 
-.segButton[aria-pressed="true"] {
+.segButton[aria-pressed="true"],
+.segButton[aria-checked="true"] {
   background: rgba(229, 62, 62, 0.18);
   color: #ffffff;
   border-color: rgba(229, 62, 62, 0.5);
@@ -1176,20 +1177,28 @@ button:focus-visible {
 .patchHeroList {
   display: grid;
   gap: 6px;
-  max-height: clamp(220px, 40vh, 420px);
-  overflow-y: auto;
 }
 
 .patchHeroRow {
   background: rgba(255, 255, 255, 0.01);
   border: 1px solid var(--line);
+  border-left: 3px solid transparent;
   border-radius: 8px;
-  padding: 10px 14px;
-  display: flex;
-  justify-content: space-between;
+  padding: 8px 12px;
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) auto;
   align-items: center;
+  gap: 10px;
   text-align: left;
   width: 100%;
+}
+
+.patchHeroPortrait {
+  width: 36px;
+  height: 20px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--line);
 }
 
 .patchHeroRow:hover {
@@ -1197,10 +1206,17 @@ button:focus-visible {
   border-color: var(--line-light);
 }
 
-.patchHeroRow.active {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+.patchHeroRow.active,
+.patchHeroRow[aria-pressed="true"] {
+  background: rgba(229, 62, 62, 0.1);
+  border-color: rgba(229, 62, 62, 0.35);
+  border-left: 3px solid var(--accent);
+}
+
+.patchHeroTitleAccent {
+  color: var(--gold);
+  font-size: 18px;
+  letter-spacing: 0.3px;
 }
 
 .segmentedControl {
