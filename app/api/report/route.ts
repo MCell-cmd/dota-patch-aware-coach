@@ -20,8 +20,8 @@ type ReportRequest = {
   parse?: boolean;
 };
 
-// Protege la key de Anthropic: cada reporte con IA es una llamada cara. Sin
-// limite, el endpoint publico puede vaciar la cuenta.
+// Protege la cuota de OpenRouter: cada reporte con IA es una llamada de pago.
+// Sin limite, el endpoint publico puede vaciar la cuenta.
 const RATE_LIMIT = 10; // peticiones
 const RATE_WINDOW_MS = 60_000; // por minuto y por IP
 const CACHE_TTL_MS = 10 * 60_000; // el reporte de un match es estable 10 min

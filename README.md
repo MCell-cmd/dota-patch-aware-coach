@@ -47,8 +47,8 @@ npm run test:e2e    # Playwright E2E tests
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
-| `ANTHROPIC_API_KEY` | No | Enables AI-written report prose. |
-| `CLAUDE_MODEL` | No | Anthropic model name for report prose. |
+| `OPENROUTER_API_KEY` | No | Enables AI-written report prose via OpenRouter. |
+| `OPENROUTER_MODEL` | No | OpenRouter model slug. Default: `deepseek/deepseek-v4-flash`. |
 | `OPENDOTA_API_KEY` | No | Raises OpenDota rate limits. |
 | `NEXT_PUBLIC_SITE_URL` | No | Public site URL for metadata. |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | No | Cookie-free analytics domain. |
