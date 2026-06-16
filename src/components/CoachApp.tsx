@@ -24,6 +24,7 @@ import {
   MockReplayReport,
 } from "@/data/dota";
 import { analyzeDraft } from "@/lib/draft";
+import { useLocalStorage } from "@/lib/useLocalStorage";
 import {
   DraftColumn,
   HeroPicker,
@@ -38,6 +39,8 @@ import { ReplayPanel } from "@/components/ReplayPanel";
 import { CoachWorkspacePanel } from "@/components/CoachWorkspacePanel";
 
 type Mode = "draft" | "patch" | "replay" | "coach";
+
+type Student = { id: string; name: string; MMR: string; favoriteHero: string; lastReport: string };
 
 const MODE_COPY: Record<Mode, { title: string; subtitle: string }> = {
   draft: {
@@ -68,12 +71,13 @@ const STYLES = Object.keys(STYLE_LABELS) as Style[];
 
 export function CoachApp() {
   const [mode, setMode] = useState<Mode>("draft");
-  const [role, setRole] = useState<Role>("mid");
-  const [bracket, setBracket] = useState<Bracket>("archon");
-  const [style, setStyle] = useState<Style>("comfort");
-  const [heroPool, setHeroPool] = useState<string[]>(["viper", "lina", "zeus", "invoker"]);
-  const [allies, setAllies] = useState<string[]>(["axe", "crystal-maiden", "sniper"]);
-  const [enemies, setEnemies] = useState<string[]>(["phantom-assassin", "lion", "tidehunter"]);
+  // Estado del draft persistido: sobrevive a un F5 en plena fase de selección.
+  const [role, setRole] = useLocalStorage<Role>("draft.role", "mid");
+  const [bracket, setBracket] = useLocalStorage<Bracket>("draft.bracket", "archon");
+  const [style, setStyle] = useLocalStorage<Style>("draft.style", "comfort");
+  const [heroPool, setHeroPool] = useLocalStorage<string[]>("draft.heroPool", ["viper", "lina", "zeus", "invoker"]);
+  const [allies, setAllies] = useLocalStorage<string[]>("draft.allies", ["axe", "crystal-maiden", "sniper"]);
+  const [enemies, setEnemies] = useLocalStorage<string[]>("draft.enemies", ["phantom-assassin", "lion", "tidehunter"]);
 
   // Replay States
   const [matchId, setMatchId] = useState("8850507008");
@@ -92,17 +96,17 @@ export function CoachApp() {
   // Draft States
   const [showDraftDetails, setShowDraftDetails] = useState(false);
 
-  // B2B Coach Workspace States
-  const [students, setStudents] = useState([
+  // B2B Coach Workspace States (persistidos: alumnos, marca, alumno activo)
+  const [students, setStudents] = useLocalStorage<Student[]>("coach.students", [
     { id: "student-1", name: "Maikel 'Lobo' S.", MMR: "Archon", favoriteHero: "Viper", lastReport: "8850507008" },
     { id: "student-2", name: "Carlos 'Gank' M.", MMR: "Legend", favoriteHero: "Axe", lastReport: "Ninguno" },
     { id: "student-3", name: "Santi 'Support' F.", MMR: "Guardian", favoriteHero: "Crystal Maiden", lastReport: "Ninguno" },
   ]);
-  const [activeStudentId, setActiveStudentId] = useState<string>("student-1");
-  const [academyName, setAcademyName] = useState("Lobo Dota Academy");
-  const [brandingColor, setBrandingColor] = useState<string>("#e53e3e");
+  const [activeStudentId, setActiveStudentId] = useLocalStorage<string>("coach.activeStudentId", "student-1");
+  const [academyName, setAcademyName] = useLocalStorage<string>("coach.academyName", "Lobo Dota Academy");
+  const [brandingColor, setBrandingColor] = useLocalStorage<string>("coach.brandingColor", "#e53e3e");
   const [coachReport, setCoachReport] = useState<MockReplayReport | null>(() =>
-    loadStudentReport("student-1"),
+    loadStudentReport(activeStudentId),
   );
 
   // Add student Form

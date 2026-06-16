@@ -1,4 +1,5 @@
 import { Bracket, Hero, HeroTag, HEROES, HERO_BY_ID, Role, Style } from "@/data/dota";
+import { SCORING } from "@/lib/scoringConfig";
 
 export type DraftInput = {
   role: Role;
@@ -50,25 +51,38 @@ const REQUIRED_TAGS: Array<{ tag: HeroTag; label: string }> = [
   { tag: "teamfight", label: "teamfight" },
 ];
 
-const BRACKET_RISK_MULTIPLIER: Record<Bracket, number> = {
-  herald: 1.45,
-  guardian: 1.35,
-  crusader: 1.25,
-  archon: 1.1,
-  legend: 1,
-  ancient: 0.85,
-  divine: 0.75,
+const STYLE_BONUS: Record<Style, (hero: Hero) => number> = {
+  comfort: () => SCORING.styleBonusFull,
+  counter: (hero) => (hero.counters.length >= 3 ? SCORING.styleBonusFull : SCORING.styleBonusPartial),
+  safe: (hero) => (hero.difficulty <= 2 && hero.laneStrength >= 3 ? SCORING.styleBonusFull : 0),
+  aggressive: (hero) =>
+    hero.tempo !== "late" && hero.tags.includes("lanePressure") ? SCORING.styleBonusFull : 0,
+  late: (hero) => (hero.tempo === "late" || hero.tags.includes("scaling") ? SCORING.styleBonusFull : 0),
 };
 
-const STYLE_BONUS: Record<Style, (hero: Hero) => number> = {
-  comfort: () => 4,
-  counter: (hero) => (hero.counters.length >= 3 ? 4 : 1),
-  safe: (hero) => (hero.difficulty <= 2 && hero.laneStrength >= 3 ? 4 : 0),
-  aggressive: (hero) => (hero.tempo !== "late" && hero.tags.includes("lanePressure") ? 4 : 0),
-  late: (hero) => (hero.tempo === "late" || hero.tags.includes("scaling") ? 4 : 0),
+/** Contexto del draft resuelto una sola vez (evita re-resolver por candidato). */
+type DraftContext = {
+  allies: Hero[];
+  enemies: Hero[];
+  alliedTags: Set<HeroTag>;
+  enemyIds: Set<string>;
+  allyIds: Set<string>;
 };
+
+function resolveDraft(input: DraftInput): DraftContext {
+  const allies = input.allies.map((id) => HERO_BY_ID.get(id)).filter((h): h is Hero => Boolean(h));
+  const enemies = input.enemies.map((id) => HERO_BY_ID.get(id)).filter((h): h is Hero => Boolean(h));
+  return {
+    allies,
+    enemies,
+    alliedTags: new Set(allies.flatMap((ally) => ally.tags)),
+    enemyIds: new Set(enemies.map((enemy) => enemy.id)),
+    allyIds: new Set(allies.map((ally) => ally.id)),
+  };
+}
 
 export function analyzeDraft(input: DraftInput): DraftAnalysis {
+  const ctx = resolveDraft(input);
   const pool = input.heroPool.length > 0 ? input.heroPool : HEROES.map((hero) => hero.id);
   const candidates = pool
     .map((id) => HERO_BY_ID.get(id))
@@ -76,11 +90,11 @@ export function analyzeDraft(input: DraftInput): DraftAnalysis {
     .filter((hero) => hero.roles.includes(input.role));
 
   const scored = candidates
-    .map((hero) => scoreHero(hero, input))
+    .map((hero) => scoreHero(hero, input, ctx))
     .sort((a, b) => b.total - a.total);
 
   const avoid = scored
-    .filter((score) => score.total < 42 || score.risks.length >= 3)
+    .filter((score) => score.total < SCORING.avoid.totalBelow || score.risks.length >= SCORING.avoid.riskCountAtLeast)
     .sort((a, b) => a.total - b.total)
     .slice(0, 3);
 
@@ -88,21 +102,18 @@ export function analyzeDraft(input: DraftInput): DraftAnalysis {
     best: scored[0] ?? null,
     alternatives: scored.slice(1, 3),
     avoid,
-    teamNeeds: findTeamNeeds(input),
-    enemyThreats: findEnemyThreats(input),
-    mapPlan: buildMapPlan(input, scored[0]?.hero),
+    teamNeeds: findTeamNeeds(ctx),
+    enemyThreats: findEnemyThreats(ctx),
+    mapPlan: buildMapPlan(ctx, scored[0]?.hero),
     freshnessWarning: "Base mock 7.41d: util para validar UX/scoring, no para cobrar sin patch pipeline.",
   };
 }
 
-function scoreHero(hero: Hero, input: DraftInput): PickScore {
-  const allies = input.allies.map((id) => HERO_BY_ID.get(id)).filter((h): h is Hero => Boolean(h));
-  const enemies = input.enemies.map((id) => HERO_BY_ID.get(id)).filter((h): h is Hero => Boolean(h));
-  const alliedTags = new Set(allies.flatMap((ally) => ally.tags));
-  const enemyIds = new Set(enemies.map((enemy) => enemy.id));
-  const allyIds = new Set(allies.map((ally) => ally.id));
+function scoreHero(hero: Hero, input: DraftInput, ctx: DraftContext): PickScore {
+  const { alliedTags, enemyIds, allyIds, enemies } = ctx;
+  const { lane, synergy, counter } = SCORING;
 
-  const comfort = 25 + STYLE_BONUS[input.style](hero);
+  const comfort = SCORING.comfortBase + STYLE_BONUS[input.style](hero);
   const counterHits = hero.counters.filter((id) => enemyIds.has(id)).length;
   const weakHits = hero.weakAgainst.filter((id) => enemyIds.has(id)).length;
   const synergyHits = hero.synergies.filter((id) => allyIds.has(id)).length;
@@ -110,11 +121,25 @@ function scoreHero(hero: Hero, input: DraftInput): PickScore {
     (need) => !alliedTags.has(need.tag) && hero.tags.includes(need.tag),
   ).length;
 
-  const laneMatchup = clamp(8 + hero.laneStrength * 3 + counterHits * 3 - weakHits * 5, 0, 24);
-  const teamSynergy = clamp(8 + synergyHits * 4 + missingTagCoverage * 3, 0, 22);
-  const counterValue = clamp(counterHits * 6 - weakHits * 4, -8, 18);
-  const patchValue = hero.patchValue * 4;
-  const executionRisk = Math.round((hero.difficulty - 1) * 3 * BRACKET_RISK_MULTIPLIER[input.bracket]);
+  const laneMatchup = clamp(
+    lane.base + hero.laneStrength * lane.perLaneStrength + counterHits * lane.perCounter - weakHits * lane.perWeak,
+    lane.min,
+    lane.max,
+  );
+  const teamSynergy = clamp(
+    synergy.base + synergyHits * synergy.perSynergy + missingTagCoverage * synergy.perMissingTag,
+    synergy.min,
+    synergy.max,
+  );
+  const counterValue = clamp(
+    counterHits * counter.perCounter - weakHits * counter.perWeak,
+    counter.min,
+    counter.max,
+  );
+  const patchValue = hero.patchValue * SCORING.patchMultiplier;
+  const executionRisk = Math.round(
+    (hero.difficulty - 1) * SCORING.executionRiskPerDifficulty * SCORING.bracketRiskMultiplier[input.bracket],
+  );
   const total = Math.round(
     comfort + laneMatchup + teamSynergy + counterValue + patchValue - executionRisk,
   );
@@ -184,15 +209,12 @@ function buildRisks(hero: Hero, weakHits: number, bracket: Bracket, enemies: Her
   return risks;
 }
 
-function findTeamNeeds(input: DraftInput) {
-  const allies = input.allies.map((id) => HERO_BY_ID.get(id)).filter((h): h is Hero => Boolean(h));
-  const tags = new Set(allies.flatMap((ally) => ally.tags));
-
-  return REQUIRED_TAGS.filter((need) => !tags.has(need.tag)).map((need) => `Falta ${need.label}`);
+function findTeamNeeds(ctx: DraftContext) {
+  return REQUIRED_TAGS.filter((need) => !ctx.alliedTags.has(need.tag)).map((need) => `Falta ${need.label}`);
 }
 
-function findEnemyThreats(input: DraftInput) {
-  const enemies = input.enemies.map((id) => HERO_BY_ID.get(id)).filter((h): h is Hero => Boolean(h));
+function findEnemyThreats(ctx: DraftContext) {
+  const enemies = ctx.enemies;
   const threats: string[] = [];
 
   if (enemies.some((hero) => hero.tags.includes("scaling"))) threats.push("El enemigo tiene late game.");
@@ -203,9 +225,9 @@ function findEnemyThreats(input: DraftInput) {
   return [...new Set(threats)];
 }
 
-function buildMapPlan(input: DraftInput, best?: Hero) {
+function buildMapPlan(ctx: DraftContext, best?: Hero) {
   const plan: string[] = [];
-  const enemies = input.enemies.map((id) => HERO_BY_ID.get(id)).filter((h): h is Hero => Boolean(h));
+  const enemies = ctx.enemies;
 
   if (best?.tags.includes("towerDamage")) plan.push("Jugar alrededor de catapultas y primera torre.");
   if (best?.tags.includes("roshan")) plan.push("Convertir primer item core en amenaza de Roshan.");
@@ -230,9 +252,10 @@ function buildObjectivePlan(hero: Hero, input: DraftInput) {
 }
 
 function confidenceFromScore(total: number, riskCount: number): PickScore["confidence"] {
-  if (total >= 74 && riskCount <= 1) return "alta";
-  if (total >= 62) return "media-alta";
-  if (total >= 48) return "media";
+  const c = SCORING.confidence;
+  if (total >= c.alta && riskCount <= c.altaMaxRisks) return "alta";
+  if (total >= c.mediaAlta) return "media-alta";
+  if (total >= c.media) return "media";
   return "baja";
 }
 
