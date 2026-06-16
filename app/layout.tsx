@@ -18,9 +18,28 @@ const body = Inter({
   display: "swap",
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const TITLE = "Dota Patch-Aware Coach";
+const DESCRIPTION =
+  "Asistente de draft, coach de parches y análisis post-partida para Dota 2 con datos reales de OpenDota.";
+
 export const metadata: Metadata = {
-  title: "Dota Patch-Aware Coach",
-  description: "Asistente de draft, parches y análisis post-partida para Dota 2.",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    siteName: TITLE,
+    locale: "es_ES",
+    type: "website",
+    url: SITE_URL,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
 };
 
 export default function RootLayout({
