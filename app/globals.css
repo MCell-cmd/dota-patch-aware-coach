@@ -113,8 +113,7 @@ button:focus-visible {
 /* Header & Navigation */
 .topBar {
   border-bottom: 1px solid var(--line);
-  background: rgba(10, 11, 15, 0.85);
-  backdrop-filter: blur(16px);
+  background: rgba(10, 11, 15, 0.96);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -232,7 +231,7 @@ button:focus-visible {
 
 .sideNav {
   align-self: start;
-  background: var(--surface);
+  background: var(--surface-solid);
   border: 1px solid var(--line);
   border-radius: 8px;
   box-shadow: var(--shadow);
@@ -241,7 +240,6 @@ button:focus-visible {
   padding: 12px;
   position: sticky;
   top: 92px;
-  backdrop-filter: blur(12px);
 }
 
 .navButton {
@@ -314,7 +312,6 @@ button:focus-visible {
   border-radius: 8px;
   box-shadow: var(--shadow);
   min-width: 0;
-  backdrop-filter: blur(12px);
   overflow: hidden;
   transition: border-color 0.25s ease;
 }
@@ -1387,8 +1384,6 @@ button:focus-visible {
   border: 1px solid var(--line-light);
   border-radius: 12px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
 }
 
 .benchmarksNote {
@@ -2435,8 +2430,7 @@ button:focus-visible {
   position: relative;
   z-index: 1;
   border-top: 1px solid var(--line);
-  background: rgba(10, 11, 15, 0.6);
-  backdrop-filter: blur(10px);
+  background: rgba(10, 11, 15, 0.92);
 }
 
 .siteFooterInner {
