@@ -2,6 +2,7 @@
 
 import { Check } from "lucide-react";
 import { HEROES, ROLE_LABELS, heroImageUrl } from "@/data/dota";
+import { HelpTip } from "@/components/HelpTip";
 
 export function ModeButton({
   active,
@@ -28,16 +29,21 @@ export function SegmentedField<T extends string>({
   onChange,
   value,
   values,
+  help,
 }: {
   label: string;
   labels: Record<T, string>;
   onChange: (value: T) => void;
   value: T;
   values: T[];
+  help?: string;
 }) {
   return (
     <div className="fieldGroup">
-      <span className="fieldLabel">{label}</span>
+      <span className="fieldLabel">
+        {label}
+        {help && <HelpTip text={help} label={`Ayuda: ${label}`} />}
+      </span>
       <div className="segmented">
         {values.map((item) => (
           <button
@@ -61,16 +67,21 @@ export function SelectField<T extends string>({
   onChange,
   value,
   values,
+  help,
 }: {
   label: string;
   labels: Record<T, string>;
   onChange: (value: T) => void;
   value: T;
   values: T[];
+  help?: string;
 }) {
   return (
     <label className="fieldGroup">
-      <span className="fieldLabel">{label}</span>
+      <span className="fieldLabel">
+        {label}
+        {help && <HelpTip text={help} label={`Ayuda: ${label}`} />}
+      </span>
       <select className="selectInput" onChange={(event) => onChange(event.target.value as T)} value={value}>
         {values.map((item) => (
           <option key={item} value={item}>
@@ -86,14 +97,19 @@ export function HeroPicker({
   onToggle,
   selected,
   title,
+  help,
 }: {
   onToggle: (id: string) => void;
   selected: string[];
   title: string;
+  help?: string;
 }) {
   return (
     <div className="fieldGroup">
-      <span className="fieldLabel">{title}</span>
+      <span className="fieldLabel">
+        {title}
+        {help && <HelpTip text={help} label={`Ayuda: ${title}`} />}
+      </span>
       <div className="heroGrid">
         {HEROES.map((hero) => {
           const isSelected = selected.includes(hero.id);
@@ -131,14 +147,19 @@ export function DraftColumn({
   onToggle,
   selected,
   title,
+  help,
 }: {
   onToggle: (id: string) => void;
   selected: string[];
   title: string;
+  help?: string;
 }) {
   return (
     <div className="fieldGroup">
-      <span className="fieldLabel">{title}</span>
+      <span className="fieldLabel">
+        {title}
+        {help && <HelpTip text={help} label={`Ayuda: ${title}`} />}
+      </span>
       <div className="draftSlots">
         {HEROES.slice(0, 15).map((hero) => {
           const isSelected = selected.includes(hero.id);
@@ -166,17 +187,22 @@ export function ScoreBar({
   max,
   min = 0,
   color,
+  help,
 }: {
   label: string;
   value: number;
   max: number;
   min?: number;
   color: string;
+  help?: string;
 }) {
   const percentage = Math.max(0, Math.min(100, ((value - min) / (max - min)) * 100));
   return (
     <div className="scoreBarRow">
-      <span className="scoreBarLabel">{label}</span>
+      <span className="scoreBarLabel">
+        {label}
+        {help && <HelpTip text={help} label={`Ayuda: ${label}`} />}
+      </span>
       <div className="scoreBarContainer">
         <div className="scoreBarFill" style={{ width: `${percentage}%`, backgroundColor: color }}></div>
       </div>

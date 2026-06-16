@@ -24,7 +24,7 @@ export function DraftResult({
 }) {
   if (isAnalyzingDraft) {
     return (
-      <section className="panel" aria-label="Analizando draft">
+      <section className="panel" aria-label="Analizando draft" data-tour="draft-result">
         <div className="panelHeader">
           <h3 className="panelTitle">Análisis del Draft</h3>
         </div>
@@ -40,7 +40,7 @@ export function DraftResult({
 
   if (draftError) {
     return (
-      <section className="panel" aria-label="Error de análisis">
+      <section className="panel" aria-label="Error de análisis" data-tour="draft-result">
         <div className="panelHeader">
           <h3 className="panelTitle">Análisis del Draft</h3>
         </div>
@@ -58,7 +58,7 @@ export function DraftResult({
   const best = analysis?.best;
 
   return (
-    <section className="panel" aria-label="Resultado del análisis">
+    <section className="panel" aria-label="Resultado del análisis" data-tour="draft-result">
       <div className="panelHeader resultHeader">
         <div>
           <h3 className="panelTitle">Análisis del Draft</h3>
@@ -101,12 +101,12 @@ export function DraftResult({
                       ]}
                     />
                   </div>
-                  <ScoreBar label="Comfort Pool" value={best.scores.comfort} max={29} color="#805AD5" />
-                  <ScoreBar label="Matchup en Línea" value={best.scores.laneMatchup} max={24} color="#38A169" />
-                  <ScoreBar label="Sinergia de Equipo" value={best.scores.teamSynergy} max={22} color="#3182CE" />
-                  <ScoreBar label="Fuerza del Counter" value={best.scores.counterValue} max={18} min={-8} color="#D69E2E" />
-                  <ScoreBar label="Modificador del Parche" value={best.scores.patchValue} max={8} min={-8} color="#E53E3E" />
-                  <ScoreBar label="Riesgo de Ejecución" value={-best.scores.executionRisk} max={0} min={-15} color="#9B2C2C" />
+                  <ScoreBar label="Comfort Pool" value={best.scores.comfort} max={29} color="#805AD5" help="Qué tan cómodo es el héroe en tu pool y rol. Premia lo que ya dominas." />
+                  <ScoreBar label="Matchup en Línea" value={best.scores.laneMatchup} max={24} color="#38A169" help="Qué tan bien se planta en la fase de línea contra lo visible del rival." />
+                  <ScoreBar label="Sinergia de Equipo" value={best.scores.teamSynergy} max={22} color="#3182CE" help="Cuánto combina con los aliados ya elegidos (combos, setups, protección)." />
+                  <ScoreBar label="Fuerza del Counter" value={best.scores.counterValue} max={18} min={-8} color="#D69E2E" help="Cuánto castiga a los enemigos elegidos. Puede ser negativo si lo countean a él." />
+                  <ScoreBar label="Modificador del Parche" value={best.scores.patchValue} max={8} min={-8} color="#E53E3E" help="Buff o nerf del parche activo. Positivo = favorecido este parche." />
+                  <ScoreBar label="Riesgo de Ejecución" value={-best.scores.executionRisk} max={0} min={-15} color="#9B2C2C" help="Penalización por dificultad: cuanto más difícil de ejecutar para tu rango, más resta." />
                 </div>
               )}
 

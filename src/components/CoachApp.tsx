@@ -35,6 +35,7 @@ import {
   toggleValue,
 } from "@/components/fields";
 import { DraftResult } from "@/components/DraftResult";
+import { OnboardingTour } from "@/components/OnboardingTour";
 import { PatchCoachPanel } from "@/components/PatchCoachPanel";
 import { ReplayPanel, type ReportPerspective } from "@/components/ReplayPanel";
 import { CoachWorkspacePanel } from "@/components/CoachWorkspacePanel";
@@ -335,6 +336,7 @@ ${report.plan.map((p) => `- ${p}`).join("\n")}
             </div>
           </div>
           <div className="statusStrip" aria-label="Estado de datos">
+            <OnboardingTour onStart={() => setMode("draft")} />
             <span className="statusPill">
               <Gauge size={14} className="iconRed" /> Parche <strong>{PATCH_STATE.version}</strong>
             </span>
@@ -385,16 +387,52 @@ ${report.plan.map((p) => `- ${p}`).join("\n")}
                   <h3 className="panelTitle">Parámetros tácticos</h3>
                   <p className="panelNote">Entrada manual sin overlay. El control sigue estando 100% de tu lado.</p>
                 </div>
-                <div className="panelBody">
-                  <SegmentedField label="Mi Rol" values={ROLES} labels={ROLE_LABELS} value={role} onChange={setRole} />
-                  <SelectField label="Rango / Bracket" value={bracket} onChange={setBracket} values={BRACKETS} labels={BRACKET_LABELS} />
-                  <SegmentedField label="Estilo de Juego" values={STYLES} labels={STYLE_LABELS} value={style} onChange={setStyle} />
+                <div className="panelBody" data-tour="draft-inputs">
+                  <SegmentedField
+                    label="Mi Rol"
+                    values={ROLES}
+                    labels={ROLE_LABELS}
+                    value={role}
+                    onChange={setRole}
+                    help="Tu posición en la partida. Cambia qué héroes se sugieren y cómo se puntúa cada uno."
+                  />
+                  <SelectField
+                    label="Rango / Bracket"
+                    value={bracket}
+                    onChange={setBracket}
+                    values={BRACKETS}
+                    labels={BRACKET_LABELS}
+                    help="Tu rango de MMR. Ajusta el meta esperado y la dificultad de ejecución que penaliza el motor."
+                  />
+                  <SegmentedField
+                    label="Estilo de Juego"
+                    values={STYLES}
+                    labels={STYLE_LABELS}
+                    value={style}
+                    onChange={setStyle}
+                    help="Cómo te gusta jugar. Reordena las recomendaciones hacia héroes que encajan con tu estilo."
+                  />
 
-                  <HeroPicker title="Mi Pool de Héroes" selected={heroPool} onToggle={(id) => toggleValue(id, heroPool, setHeroPool)} />
+                  <HeroPicker
+                    title="Mi Pool de Héroes"
+                    selected={heroPool}
+                    onToggle={(id) => toggleValue(id, heroPool, setHeroPool)}
+                    help="Marca los héroes que dominas. El motor solo recomienda picks de este pool."
+                  />
 
                   <div className="draftColumns">
-                    <DraftColumn title="Aliados ya elegidos" selected={allies} onToggle={(id) => toggleValue(id, allies, setAllies)} />
-                    <DraftColumn title="Enemigos ya elegidos" selected={enemies} onToggle={(id) => toggleValue(id, enemies, setEnemies)} />
+                    <DraftColumn
+                      title="Aliados ya elegidos"
+                      selected={allies}
+                      onToggle={(id) => toggleValue(id, allies, setAllies)}
+                      help="Héroes que ya eligió tu equipo. Suman a la sinergia del pick recomendado."
+                    />
+                    <DraftColumn
+                      title="Enemigos ya elegidos"
+                      selected={enemies}
+                      onToggle={(id) => toggleValue(id, enemies, setEnemies)}
+                      help="Héroes del equipo rival. El motor premia picks que los countean."
+                    />
                   </div>
                 </div>
               </section>

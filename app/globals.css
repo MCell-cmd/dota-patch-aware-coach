@@ -2110,3 +2110,139 @@ button:focus-visible {
   letter-spacing: 0.4px;
   text-transform: uppercase;
 }
+
+/* ===================== Ayudas (HelpTip) ===================== */
+.helpTip {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.helpTipBtn {
+  display: inline-grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid var(--line-light);
+  color: var(--muted);
+  line-height: 0;
+}
+
+.helpTipBtn:hover,
+.helpTipBtn:focus-visible {
+  color: var(--gold);
+  border-color: rgba(240, 180, 41, 0.5);
+}
+
+.helpTipBubble {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 230px;
+  padding: 9px 11px;
+  border-radius: 8px;
+  background: rgba(12, 14, 19, 0.98);
+  border: 1px solid var(--glass-line);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.6);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.45;
+  text-transform: none;
+  letter-spacing: 0;
+  white-space: normal;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.helpTipBubble::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(12, 14, 19, 0.98);
+}
+
+/* Botón "¿Cómo funciona?" en el header */
+.howItWorksBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 30px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  color: var(--gold-soft);
+  background: linear-gradient(180deg, rgba(240, 180, 41, 0.12), rgba(240, 180, 41, 0.04));
+  border: 1px solid rgba(240, 180, 41, 0.3);
+}
+
+.howItWorksBtn:hover {
+  border-color: rgba(240, 180, 41, 0.6);
+  color: #ffffff;
+  box-shadow: 0 0 14px rgba(240, 180, 41, 0.18);
+}
+
+/* ===================== Tema oscuro para driver.js ===================== */
+.driver-popover {
+  background-color: #0c0e13;
+  color: var(--ink);
+  border: 1px solid var(--glass-line);
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+}
+
+.driver-popover-title {
+  font-family: var(--font-display);
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.driver-popover-description {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.driver-popover-progress-text {
+  color: var(--gold-soft);
+  font-family: var(--font-display);
+  font-size: 11px;
+}
+
+.driver-popover-footer button {
+  background: #1a1d25;
+  color: var(--ink);
+  border: 1px solid var(--glass-line);
+  border-radius: 7px;
+  text-shadow: none;
+  font-family: var(--font-display);
+  font-size: 12px;
+}
+
+.driver-popover-footer button:hover {
+  background: #232733;
+}
+
+.driver-popover-next-btn {
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong)) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+.driver-popover-arrow-side-left.driver-popover-arrow { border-left-color: #0c0e13; }
+.driver-popover-arrow-side-right.driver-popover-arrow { border-right-color: #0c0e13; }
+.driver-popover-arrow-side-top.driver-popover-arrow { border-top-color: #0c0e13; }
+.driver-popover-arrow-side-bottom.driver-popover-arrow { border-bottom-color: #0c0e13; }
