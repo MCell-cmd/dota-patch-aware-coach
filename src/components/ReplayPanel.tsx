@@ -214,6 +214,32 @@ export function ReplayPanel({
                   <p className="verdictText">&quot;{replayReport.verdict}&quot;</p>
                 </div>
 
+                {replayReport.benchmarks && replayReport.benchmarks.length > 0 && (
+                  <div className="benchmarksSection">
+                    <span className="sectionTitle">Benchmarks vs otros {replayReport.hero}</span>
+                    <p className="benchmarksNote">
+                      Percentil real de OpenDota: a qué % de jugadores de este héroe superaste en cada métrica.
+                    </p>
+                    <div className="benchmarkGrid">
+                      {replayReport.benchmarks.map((b) => {
+                        const pct = Math.round(b.pct * 100);
+                        const color = b.pct >= 0.6 ? "#48bb78" : b.pct >= 0.35 ? "#ed8936" : "#f56565";
+                        return (
+                          <div className="benchmarkRow" key={b.label}>
+                            <span className="benchmarkLabel">{b.label}</span>
+                            <div className="benchmarkBarTrack">
+                              <div className="benchmarkBarFill" style={{ width: `${pct}%`, backgroundColor: color }} />
+                            </div>
+                            <span className="benchmarkValue">
+                              <strong style={{ color }}>P{pct}</strong> · {b.valueLabel}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
                 <div className="fasesSection">
                   <span className="sectionTitle">Análisis del Desempeño por Fase</span>
                   <div className="faseCard">

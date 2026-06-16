@@ -25,6 +25,7 @@ function player(overrides: Partial<NormalizedPlayer>): NormalizedPlayer {
     won: true,
     lastHitsAt10: null,
     goldAt10: null,
+    benchmarks: [],
     ...overrides,
   };
 }

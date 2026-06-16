@@ -27,6 +27,7 @@ function facts(flags: string[]): ReportFacts {
     enemyCarryNetWorth: 0,
     netWorthDelta: 0,
     lastHitsAt10: null,
+    benchmarks: [],
     flags,
   };
 }

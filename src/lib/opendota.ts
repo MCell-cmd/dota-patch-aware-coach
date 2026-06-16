@@ -3,6 +3,8 @@
 // Si existe OPENDOTA_API_KEY se adjunta para subir el rate limit, pero no es
 // obligatoria para el MVP.
 
+import type { BenchmarkBar } from "@/data/dota";
+
 const OPENDOTA_BASE = "https://api.opendota.com/api";
 
 export type OpenDotaPlayer = {
@@ -31,7 +33,43 @@ export type OpenDotaPlayer = {
   lh_t?: number[] | null;
   gold_t?: number[] | null;
   xp_t?: number[] | null;
+  // Percentiles relativos al héroe que calcula OpenDota (pct entre 0 y 1).
+  benchmarks?: Record<string, { raw: number; pct: number }> | null;
 };
+
+// Métricas de benchmark que mostramos, en orden de relevancia, con su etiqueta y
+// formato del valor crudo. Se omite hero_healing porque con raw=0 OpenDota
+// devuelve un percentil engañosamente alto.
+const BENCHMARK_METRICS: ReadonlyArray<{
+  key: string;
+  label: string;
+  format: (raw: number) => string;
+}> = [
+  { key: "gold_per_min", label: "Oro por minuto (GPM)", format: (r) => `${Math.round(r)} GPM` },
+  { key: "xp_per_min", label: "Experiencia por minuto (XPM)", format: (r) => `${Math.round(r)} XPM` },
+  { key: "last_hits_per_min", label: "Last hits por minuto", format: (r) => `${r.toFixed(1)} LH/min` },
+  { key: "hero_damage_per_min", label: "Daño a héroes por minuto", format: (r) => `${Math.round(r).toLocaleString()} /min` },
+  { key: "kills_per_min", label: "Kills por minuto", format: (r) => r.toFixed(2) },
+  { key: "tower_damage", label: "Daño a torres", format: (r) => Math.round(r).toLocaleString() },
+];
+
+function normalizeBenchmarks(
+  raw: OpenDotaPlayer["benchmarks"],
+): BenchmarkBar[] {
+  if (!raw) return [];
+  const bars: BenchmarkBar[] = [];
+  for (const metric of BENCHMARK_METRICS) {
+    const entry = raw[metric.key];
+    if (entry && typeof entry.pct === "number" && typeof entry.raw === "number") {
+      bars.push({
+        label: metric.label,
+        pct: Math.max(0, Math.min(1, entry.pct)),
+        valueLabel: metric.format(entry.raw),
+      });
+    }
+  }
+  return bars;
+}
 
 export type OpenDotaMatch = {
   match_id: number;
@@ -67,6 +105,8 @@ export type NormalizedPlayer = {
   // Derivados de la serie por minuto (null si la partida no está parseada).
   lastHitsAt10: number | null;
   goldAt10: number | null;
+  // Percentiles vs otros jugadores del mismo héroe (vacío si OpenDota no los trae).
+  benchmarks: BenchmarkBar[];
 };
 
 export type NormalizedMatch = {
@@ -206,6 +246,7 @@ export function normalizeMatch(
       won: isRadiant === match.radiant_win,
       lastHitsAt10: Array.isArray(p.lh_t) ? p.lh_t[10] ?? null : null,
       goldAt10: Array.isArray(p.gold_t) ? p.gold_t[10] ?? null : null,
+      benchmarks: normalizeBenchmarks(p.benchmarks),
     };
   });
 

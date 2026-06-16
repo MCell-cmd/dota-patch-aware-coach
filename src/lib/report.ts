@@ -2,7 +2,7 @@
 // Principio (AGENTS.md): la IA explica, no inventa. Todas las cifras salen del
 // match normalizado; las heurísticas marcan banderas y la IA (opcional) redacta.
 
-import type { MockReplayReport } from "@/data/dota";
+import type { BenchmarkBar, MockReplayReport } from "@/data/dota";
 import type { NormalizedMatch, NormalizedPlayer } from "@/lib/opendota";
 
 export type ReportInput = {
@@ -35,6 +35,7 @@ export type ReportFacts = {
   enemyCarryNetWorth: number;
   netWorthDelta: number; // perspectiva - carry enemigo
   lastHitsAt10: number | null; // solo si la partida está parseada
+  benchmarks: BenchmarkBar[]; // percentiles vs otros jugadores del mismo héroe
   flags: string[];
 };
 
@@ -108,6 +109,7 @@ export function buildFacts(
     enemyCarryNetWorth: enemyCarry.netWorth,
     netWorthDelta: me.netWorth - enemyCarry.netWorth,
     lastHitsAt10: me.lastHitsAt10,
+    benchmarks: me.benchmarks ?? [],
     flags,
   };
 }
@@ -170,6 +172,7 @@ export function buildDeterministicReport(
     },
     errors: buildErrors(facts),
     plan: buildPlan(facts),
+    benchmarks: facts.benchmarks,
     nextSteps: {
       objective: facts.flags.includes("muertes-altas")
         ? "Bajar las muertes evitables por debajo de 6."

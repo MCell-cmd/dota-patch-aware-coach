@@ -529,6 +529,11 @@ export const PATCH_NOTES_BY_HERO: Record<string, string[]> = {
   ]
 };
 
+// Barra de percentil de OpenDota: pct va de 0 a 1 (0.27 = mejor que el 27% de
+// los jugadores de ese héroe en esa métrica). valueLabel es el valor crudo ya
+// formateado para mostrar (p. ej. "458 GPM").
+export type BenchmarkBar = { label: string; pct: number; valueLabel: string };
+
 export type MockReplayReport = {
   matchId: string;
   duration: string;
@@ -546,6 +551,9 @@ export type MockReplayReport = {
   errors: Array<{ title: string; evidence: string; impact: string; fix: string; practice: string }>;
   plan: string[];
   nextSteps: { objective: string; metric: string; question: string };
+  // Percentiles reales de OpenDota relativos al héroe. Opcional: solo en
+  // reportes reales (los mocks no lo traen). Dato duro: la IA no lo altera.
+  benchmarks?: BenchmarkBar[];
 };
 
 export const MOCK_REPLAY_REPORTS: Record<string, MockReplayReport> = {
