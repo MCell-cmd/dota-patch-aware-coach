@@ -13,7 +13,6 @@ export default function Image() {
         title="Términos de uso"
         subtitle="Qué puedes hacer con el coach, los límites del producto y el respeto a las reglas de Valve."
         tags={["Educativo", "No afiliado a Valve", "MIT"]}
-        icon="§"
         accent="yellow"
       />
     ),

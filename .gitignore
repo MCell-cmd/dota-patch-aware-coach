@@ -50,6 +50,7 @@ git .rar
 tmp/
 temp/
 reports/generated/
+reports/web-audit/
 exports/
 
 # Codex/local logs

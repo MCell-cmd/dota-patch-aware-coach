@@ -1,8 +1,7 @@
 import type { ReactElement } from "react";
 
-// Tarjeta de Open Graph compartida entre rutas. La generan endpoints servidos
-// por Next.js vía la convención app/<ruta>/opengraph-image.tsx, así que el
-// markup va con estilos inline (Satori no admite CSS externo).
+// Shared Open Graph card for Next.js app/<route>/opengraph-image.tsx routes.
+// Styles stay inline because Satori does not read external CSS.
 
 export const ogSize = { width: 1200, height: 630 } as const;
 export const ogContentType = "image/png" as const;
@@ -35,20 +34,28 @@ type OgCardProps = {
   title: string;
   subtitle: string;
   tags: string[];
-  // Acepta string solo si estás seguro de que el glyph existe en el subset que
-  // Satori embebe (Inter base + emoji limitado). Para cualquier símbolo
-  // decorativo es más seguro pasar un <svg> inline: Satori lo rasteriza sin
-  // depender de la fuente.
-  icon?: string | ReactElement;
+  icon?: ReactElement;
   accent?: AccentName;
 };
+
+function DefaultIcon() {
+  return (
+    <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
+      <path
+        d="M12 2l2.8 6.2L21 11l-6.2 2.8L12 20l-2.8-6.2L3 11l6.2-2.8L12 2Z"
+        fill="white"
+        opacity="0.95"
+      />
+    </svg>
+  );
+}
 
 export function OgCard({
   eyebrow,
   title,
   subtitle,
   tags,
-  icon = "⚔",
+  icon = <DefaultIcon />,
   accent = "red",
 }: OgCardProps): ReactElement {
   const a = ACCENTS[accent];
@@ -77,7 +84,6 @@ export function OgCard({
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            fontSize: 34,
           }}
         >
           {icon}

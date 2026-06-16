@@ -2,8 +2,6 @@ import { ImageResponse } from "next/og";
 import { PATCH_STATE } from "@/data/dota";
 import { OgCard, ogContentType, ogSize } from "@/lib/og";
 
-// Tarjeta de preview (Open Graph / Twitter) generada dinámicamente. Next la
-// expone como /opengraph-image y añade los meta tags automáticamente.
 export const size = ogSize;
 export const contentType = ogContentType;
 export const alt = "Dota Patch-Aware Coach · draft, parche y replay";

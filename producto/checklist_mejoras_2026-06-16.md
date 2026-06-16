@@ -82,6 +82,23 @@ datos inventados por IA.
 - [ ] Probar reporte compartible con 1 comunidad Discord.
 - [ ] Registrar aprendizajes en `evidencia/`.
 
+## Bloque 6 - Auditoria web y uso del espacio
+
+- [x] Investigar proyectos open source para auditar web y generar recomendaciones.
+- [x] Guardar evidencia en `evidencia/2026-06-16-auditoria-web-github.md`.
+- [x] Agregar `npm run audit:web` con Lighthouse, Playwright y axe.
+- [x] Generar reporte local en `reports/web-audit/latest/`.
+- [x] Detectar problema real de layout: paneles demasiado altos y resultado debajo del formulario en mobile.
+- [x] Ajustar CSS para:
+  - [x] evitar que las dos columnas del draft se estiren artificialmente;
+  - [x] compactar pickers largos;
+  - [x] recuperar ancho de navegacion lateral;
+  - [x] mostrar el resultado antes que el formulario en mobile;
+  - [x] compactar status pills en mobile.
+- [ ] Medir `audit:web` contra build de produccion (`npm run build && npm run start`) antes de fijar thresholds de performance.
+- [ ] Probar una variante v2 de draft con hero pool y aliados/enemigos en tabs o drawer.
+- [ ] Convertir auditoria web en artifact no bloqueante de GitHub Actions si se mantiene util.
+
 ## Fuera de alcance hasta validar demanda
 
 - [ ] Pagos automatizados.

@@ -13,7 +13,6 @@ export default function Image() {
         title="Tus datos, en corto"
         subtitle="Datos públicos de OpenDota, login con Steam OpenID y analítica sin cookies. Sin contraseñas guardadas."
         tags={["Sin cookies de tracking", "Steam OpenID", "OpenDota público"]}
-        icon="✦"
         accent="teal"
       />
     ),
