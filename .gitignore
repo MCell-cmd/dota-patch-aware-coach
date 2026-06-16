@@ -46,3 +46,8 @@ exports/
 # Codex/local logs
 .codex-log/
 *.log
+
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
