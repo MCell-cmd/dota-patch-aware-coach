@@ -16,10 +16,20 @@ export function ModeButton({
   icon: React.ReactNode;
   onClick: () => void;
 }) {
+  const label = typeof children === "string" ? children : "";
   return (
-    <button aria-pressed={active} className="navButton" onClick={onClick} type="button">
-      {icon}
-      {children}
+    <button
+      aria-pressed={active}
+      aria-label={label}
+      title={label}
+      className="navButton"
+      onClick={onClick}
+      type="button"
+    >
+      <span className="navButtonIcon" aria-hidden="true">
+        {icon}
+      </span>
+      <span className="navButtonLabel">{children}</span>
     </button>
   );
 }

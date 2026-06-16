@@ -53,9 +53,19 @@ body {
   margin: 0;
   font-family: var(--font-body);
   background: var(--bg-gradient);
-  min-height: 100vh;
+  min-height: 100dvh;
   position: relative;
   overflow-x: hidden;
+}
+
+.appShell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.appShell > .mainGrid {
+  flex: 1 0 auto;
 }
 
 /* Luces Ambientales (aurora): la niebla viva del mapa. Dire (rojo) a la
@@ -230,14 +240,21 @@ button:focus-visible {
 
 /* Main Grid & Side Navigation */
 .mainGrid {
+  --rail-w: 64px;
   display: grid;
   gap: 18px;
-  grid-template-columns: 216px minmax(0, 1fr);
+  grid-template-columns: var(--rail-w) minmax(0, 1fr);
   margin: 0 auto;
   max-width: 1440px;
-  padding: 24px 24px 48px;
+  padding: 20px 20px 32px;
   position: relative;
   z-index: 1;
+  transition: grid-template-columns 0.2s ease;
+}
+
+.mainGrid:has(.sideNav:hover),
+.mainGrid:has(.sideNav:focus-within) {
+  --rail-w: 208px;
 }
 
 .sideNav {
@@ -247,10 +264,11 @@ button:focus-visible {
   border-radius: 12px;
   box-shadow: var(--shadow);
   display: grid;
-  gap: 6px;
-  padding: 10px;
+  gap: 4px;
+  padding: 8px;
   position: sticky;
-  top: 76px;
+  top: 68px;
+  overflow: hidden;
   transition: border-color 0.2s ease;
 }
 
@@ -263,12 +281,37 @@ button:focus-visible {
   display: flex;
   gap: 12px;
   min-height: 44px;
-  padding: 10px 16px;
+  padding: 10px 12px;
   text-align: left;
   font-weight: 600;
   font-size: 14px;
   width: 100%;
   position: relative;
+  white-space: nowrap;
+}
+
+.navButtonIcon {
+  flex: 0 0 24px;
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+}
+
+.navButtonLabel {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  pointer-events: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mainGrid:has(.sideNav:hover) .navButtonLabel,
+.mainGrid:has(.sideNav:focus-within) .navButtonLabel {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
 }
 
 .navButton:hover {
@@ -279,11 +322,11 @@ button:focus-visible {
 .navButton[aria-pressed="true"] {
   background: linear-gradient(90deg, rgba(229, 62, 62, 0.15) 0%, rgba(229, 62, 62, 0.03) 100%);
   border-left: 3px solid var(--accent);
-  padding-left: 13px;
+  padding-left: 9px;
   color: #ffffff;
 }
 
-.navButton[aria-pressed="true"] svg {
+.navButton[aria-pressed="true"] .navButtonIcon svg {
   color: var(--accent);
   filter: drop-shadow(0 0 5px var(--accent));
 }
@@ -2052,8 +2095,19 @@ button:focus-visible {
   .sideNav {
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     position: static;
+    overflow: visible;
   }
-  
+
+  .navButtonLabel {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  .navButton {
+    justify-content: flex-start;
+  }
+
   .trainingGrid,
   .editorGrid {
     grid-template-columns: repeat(2, 1fr) !important;
