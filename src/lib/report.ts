@@ -2,7 +2,7 @@
 // Principio (AGENTS.md): la IA explica, no inventa. Todas las cifras salen del
 // match normalizado; las heurísticas marcan banderas y la IA (opcional) redacta.
 
-import type { BenchmarkBar, MockReplayReport } from "@/data/dota";
+import type { BenchmarkBar, ReplayReport } from "@/data/dota";
 import type { NormalizedMatch, NormalizedPlayer } from "@/lib/opendota";
 
 export type ReportInput = {
@@ -163,7 +163,7 @@ function inferRoleGroup(
 export function buildDeterministicReport(
   facts: ReportFacts,
   question: string,
-): MockReplayReport {
+): ReplayReport {
   const deltaLabel =
     facts.netWorthDelta >= 0
       ? `+${facts.netWorthDelta} de net worth sobre el carry enemigo (${facts.enemyCarryHero})`
@@ -238,8 +238,8 @@ function primaryWeakness(facts: ReportFacts): string {
   return "errores de macro repartidos en la partida";
 }
 
-function buildErrors(facts: ReportFacts): MockReplayReport["errors"] {
-  const errors: MockReplayReport["errors"] = [];
+function buildErrors(facts: ReportFacts): ReplayReport["errors"] {
+  const errors: ReplayReport["errors"] = [];
 
   if (facts.flags.includes("muertes-altas")) {
     errors.push({
@@ -291,7 +291,7 @@ function buildErrors(facts: ReportFacts): MockReplayReport["errors"] {
   return errors.slice(0, 3);
 }
 
-function roleObjectiveError(facts: ReportFacts): MockReplayReport["errors"][number] {
+function roleObjectiveError(facts: ReportFacts): ReplayReport["errors"][number] {
   if (facts.roleGroup === "mid") {
     return {
       title: "Poco impacto de mid en objetivos",
@@ -310,7 +310,7 @@ function roleObjectiveError(facts: ReportFacts): MockReplayReport["errors"][numb
   };
 }
 
-function roleFallbackErrors(facts: ReportFacts): MockReplayReport["errors"] {
+function roleFallbackErrors(facts: ReportFacts): ReplayReport["errors"] {
   if (facts.roleGroup === "carry") {
     return [
       {
@@ -394,7 +394,7 @@ function roleFallbackErrors(facts: ReportFacts): MockReplayReport["errors"] {
   ];
 }
 
-function lateGameFallback(facts: ReportFacts): MockReplayReport["errors"][number] {
+function lateGameFallback(facts: ReportFacts): ReplayReport["errors"][number] {
   return {
     title: "Decisión en late game",
     evidence: `Resultado: ${facts.result} en ${facts.durationLabel}.`,

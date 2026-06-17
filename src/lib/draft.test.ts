@@ -1,5 +1,13 @@
 import { describe, it, expect } from "vitest";
 import { analyzeDraft, type DraftInput } from "@/lib/draft";
+import { HERO_BY_ID } from "@/data/dota";
+
+// Counters/weakAgainst de Viper son datos REALES de OpenDota (cambian en cada
+// sync). Los leemos en runtime para que el test valide el mecanismo de scoring
+// sin asumir matchups fijos que un re-sync invalidaría.
+const viper = HERO_BY_ID.get("viper")!;
+const viperCounters = viper.counters[0]; // enemigo al que Viper le gana
+const viperWeakAgainst = viper.weakAgainst[0]; // enemigo que le gana a Viper
 
 const base: DraftInput = {
   role: "mid",
@@ -17,35 +25,27 @@ describe("analyzeDraft", () => {
     expect(["viper", "zeus"]).toContain(a.best!.hero.id);
   });
 
-  it("aplica el bonus completo de comfort (25 + 4)", () => {
+  it("aplica el multiplicador de comfort (base 25 x2 sin sinergia)", () => {
     const a = analyzeDraft({ ...base, style: "comfort" });
-    expect(a.best!.scores.comfort).toBe(29);
+    // comfortBase 25 * multiplicador comfort 2.0 = 50 (sin aliados => sin +2 sinergia).
+    expect(a.best!.scores.comfort).toBe(50);
   });
 
   it("premia los counters contra enemigos visibles", () => {
-    const withCounter = analyzeDraft({ ...base, enemies: ["phantom-assassin"] });
+    const withCounter = analyzeDraft({ ...base, enemies: [viperCounters] });
     const without = analyzeDraft({ ...base, enemies: [] });
     expect(withCounter.best!.scores.counterValue).toBeGreaterThan(
       without.best!.scores.counterValue,
     );
   });
 
-  it("cambia el mejor pick cuando el matchup visible cambia fuerte", () => {
-    const paDraft = analyzeDraft({
-      ...base,
-      style: "counter",
-      heroPool: ["viper", "lina", "zeus"],
-      enemies: ["phantom-assassin"],
-    });
-    const qopDraft = analyzeDraft({
-      ...base,
-      style: "counter",
-      heroPool: ["viper", "lina", "zeus"],
-      enemies: ["queen-of-pain"],
-    });
+  it("el matchup visible mueve el score del pick (favorable > desfavorable)", () => {
+    const favorable = analyzeDraft({ ...base, style: "counter", enemies: [viperCounters] });
+    const unfavorable = analyzeDraft({ ...base, style: "counter", enemies: [viperWeakAgainst] });
 
-    expect(paDraft.best?.hero.id).toBe("viper");
-    expect(qopDraft.best?.hero.id).not.toBe(paDraft.best?.hero.id);
+    expect(favorable.best?.hero.id).toBe("viper");
+    expect(unfavorable.best?.hero.id).toBe("viper");
+    expect(favorable.best!.total).toBeGreaterThan(unfavorable.best!.total);
   });
 
   it("no recomienda heroes ya elegidos por aliados o enemigos", () => {

@@ -54,15 +54,6 @@ const REQUIRED_TAGS: Array<{ tag: HeroTag; label: string }> = [
   { tag: "teamfight", label: "teamfight" },
 ];
 
-const STYLE_BONUS: Record<Style, (hero: Hero) => number> = {
-  comfort: () => SCORING.styleBonusFull,
-  counter: () => SCORING.styleBonusPartial,
-  safe: (hero) => (hero.difficulty <= 2 && hero.laneStrength >= 3 ? SCORING.styleBonusFull : 0),
-  aggressive: (hero) =>
-    hero.tempo !== "late" && hero.tags.includes("lanePressure") ? SCORING.styleBonusFull : 0,
-  late: (hero) => (hero.tempo === "late" || hero.tags.includes("scaling") ? SCORING.styleBonusFull : 0),
-};
-
 /** Contexto del draft resuelto una sola vez (evita re-resolver por candidato). */
 type DraftContext = {
   allies: Hero[];
@@ -141,7 +132,7 @@ function scoreHero(hero: Hero, input: DraftInput, ctx: DraftContext): PickScore 
   let mComfort = 1.0;
   let mCounter = 1.0;
   let mLane = 1.0;
-  let mSynergy = 1.0;
+  const mSynergy = 1.0;
   let mRisk = 1.0;
   
   if (input.style === "comfort") {
@@ -218,13 +209,6 @@ function scoreHero(hero: Hero, input: DraftInput, ctx: DraftContext): PickScore 
       objective: buildObjectivePlan(hero, input),
     },
   };
-}
-
-function styleBonus(hero: Hero, style: Style, counterHits: number): number {
-  if (style === "counter") {
-    return counterHits > 0 ? SCORING.styleBonusFull : 0;
-  }
-  return STYLE_BONUS[style](hero);
 }
 
 function buildReasons(

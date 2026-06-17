@@ -1,36 +1,25 @@
 import { describe, expect, it } from "vitest";
-import {
-  getActivePatch,
-  getGlobalPatchChanges,
-  getPatchChangesForHero,
-  getPatchConfidenceForHero,
-  getPatchRecommendationLabel,
-} from "@/data/patches";
+import { getActivePatch, getHeroPatchChange, heroChangedThisPatch } from "@/data/patches";
 
-describe("patch data", () => {
-  it("expone el patch activo con fuente oficial", () => {
+describe("patch data (real, datafeed de Valve)", () => {
+  it("expone el patch activo con fuente oficial y conteos reales", () => {
     const patch = getActivePatch();
-    expect(patch.version).toBe("7.41d");
-    expect(patch.source.url).toContain("dota2.com/patches/7.41d");
+    expect(patch.version).toMatch(/^\d+\.\d+/);
+    expect(patch.source.url).toContain("dota2.com/patches/");
+    expect(patch.heroesChanged).toBeGreaterThan(0);
+    expect(patch.releasedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
   });
 
-  it("incluye cambios globales versionados", () => {
-    const changes = getGlobalPatchChanges();
-    expect(changes.length).toBeGreaterThan(0);
-    expect(changes[0].kind).toBe("hecho");
+  it("devuelve cambios reales por héroe cuando los hay", () => {
+    const change = getHeroPatchChange("morphling");
+    expect(change).toBeDefined();
+    expect(change?.changeCount).toBeGreaterThan(0);
+    expect(heroChangedThisPatch("morphling")).toBe(true);
   });
 
-  it("recupera señales de meta por heroe sin inventar buff directo", () => {
-    const changes = getPatchChangesForHero("invoker");
-    expect(changes.some((change) => change.kind === "estadistica")).toBe(true);
-    expect(changes.every((change) => change.impact === "unknown")).toBe(true);
-  });
-
-  it("degrada confianza cuando no hay cambio revisado para el heroe", () => {
-    expect(getPatchConfidenceForHero("viper")).toBe("baja");
-  });
-
-  it("marca para revisar heroes con señal externa de meta", () => {
-    expect(getPatchRecommendationLabel("lina")).toBe("Revisar");
+  it("no inventa cambios para héroes sin ajustes", () => {
+    const change = getHeroPatchChange("__heroe-inexistente__");
+    expect(change).toBeUndefined();
+    expect(heroChangedThisPatch("__heroe-inexistente__")).toBe(false);
   });
 });

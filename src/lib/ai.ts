@@ -2,7 +2,7 @@
 // Si no hay OPENROUTER_API_KEY, la app sigue funcionando con el reporte
 // determinista (la IA explica, no es la fuente de verdad).
 
-import type { MockReplayReport } from "@/data/dota";
+import type { ReplayReport } from "@/data/dota";
 import type { ReportFacts } from "@/lib/report";
 
 const OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions";
@@ -97,8 +97,8 @@ type OpenRouterResponse = { choices?: OpenRouterChoice[]; error?: { message?: st
  */
 export async function enrichReportWithAI(
   facts: ReportFacts,
-  deterministic: MockReplayReport,
-): Promise<{ report: MockReplayReport; source: "ai" | "deterministic" }> {
+  deterministic: ReplayReport,
+): Promise<{ report: ReplayReport; source: "ai" | "deterministic" }> {
   if (!aiEnabled()) {
     return { report: deterministic, source: "deterministic" };
   }
@@ -175,11 +175,11 @@ export async function enrichReportWithAI(
       console.error("[ai] Argumentos del tool no son JSON válido:", parseError);
       return { report: deterministic, source: "deterministic" };
     }
-    const prose = parsed as Partial<MockReplayReport>;
+    const prose = parsed as Partial<ReplayReport>;
 
     // Blindaje: identificadores y estructura vienen del motor; de la IA solo la
     // prosa, y cada campo cae al determinista si no llega bien formado.
-    const merged: MockReplayReport = {
+    const merged: ReplayReport = {
       ...deterministic,
       verdict: typeof prose.verdict === "string" ? prose.verdict : deterministic.verdict,
       phases: isValidPhases(prose.phases) ? prose.phases : deterministic.phases,
@@ -204,13 +204,13 @@ function isPhase(value: unknown): value is { good: string; error: string; change
   return typeof p.good === "string" && typeof p.error === "string" && typeof p.change === "string";
 }
 
-function isValidPhases(value: unknown): value is MockReplayReport["phases"] {
+function isValidPhases(value: unknown): value is ReplayReport["phases"] {
   if (!value || typeof value !== "object") return false;
   const p = value as Record<string, unknown>;
   return isPhase(p.lane) && isPhase(p.mid) && isPhase(p.late);
 }
 
-function isValidErrors(value: unknown): value is MockReplayReport["errors"] {
+function isValidErrors(value: unknown): value is ReplayReport["errors"] {
   return (
     Array.isArray(value) &&
     value.length > 0 &&
@@ -228,7 +228,7 @@ function isValidErrors(value: unknown): value is MockReplayReport["errors"] {
   );
 }
 
-function isValidNextSteps(value: unknown): value is MockReplayReport["nextSteps"] {
+function isValidNextSteps(value: unknown): value is ReplayReport["nextSteps"] {
   if (!value || typeof value !== "object") return false;
   const n = value as Record<string, unknown>;
   return (

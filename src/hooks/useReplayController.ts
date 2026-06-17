@@ -1,11 +1,11 @@
 import { useState } from "react";
-import type { Role, MockReplayReport } from "@/data/dota";
+import type { Role, ReplayReport } from "@/data/dota";
 import { APP_CONFIG } from "@/config/constants";
 import { track } from "@/lib/analytics";
 import type { ReportPerspective } from "@/components/ReplayPanel";
 
 type ReportApiResponse = {
-  report?: MockReplayReport;
+  report?: ReplayReport;
   source?: "ai" | "deterministic";
   parsed?: boolean;
   perspective?: {
@@ -26,7 +26,7 @@ export function useReplayController(role: Role) {
   const [reportSource, setReportSource] = useState<"ai" | "deterministic" | null>(null);
   const [reportParsed, setReportParsed] = useState<boolean | null>(null);
   const [reportPerspective, setReportPerspective] = useState<ReportPerspective>(null);
-  const [replayReport, setReplayReport] = useState<MockReplayReport | null>(null);
+  const [replayReport, setReplayReport] = useState<ReplayReport | null>(null);
 
   const startReplayAnalysis = async () => {
     if (!matchId.trim()) return;

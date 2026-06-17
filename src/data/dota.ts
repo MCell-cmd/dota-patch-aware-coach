@@ -37,10 +37,12 @@ export type Hero = {
   lanePlan: string;
 };
 
+import { PATCH_NOTES_META } from "./patchNotes.generated";
+
 export const PATCH_STATE = {
-  version: "7.41d",
-  updatedAt: "2026-06-16",
-  freshness: "Patch 7.41d versionado con fuente oficial y señales de meta. Cambios finos de héroes/items requieren revisión manual.",
+  version: PATCH_NOTES_META.version,
+  updatedAt: PATCH_NOTES_META.releasedAt,
+  freshness: `Parche ${PATCH_NOTES_META.version} (salió ${PATCH_NOTES_META.releasedAt}): ${PATCH_NOTES_META.heroesChanged} héroes cambiados, según el datafeed oficial de Valve. Winrates por bracket desde OpenDota.`,
 };
 
 export const ROLE_LABELS: Record<Role, string> = {
@@ -481,7 +483,6 @@ export const HEROES: Hero[] = [
 ];
 
 import { HERO_ROSTER } from "./heroRoster.generated";
-// @ts-ignore Si tsc no ve el archivo todavía, lo ignora hasta que termine el build
 import { HERO_DATA_BY_ID } from "./heroData.generated";
 
 export const HERO_BY_ID = new Map<string, Hero>();
@@ -560,7 +561,7 @@ HERO_ROSTER.forEach((rosterHero) => {
 // formateado para mostrar (p. ej. "458 GPM").
 export type BenchmarkBar = { label: string; pct: number; valueLabel: string };
 
-export type MockReplayReport = {
+export type ReplayReport = {
   matchId: string;
   duration: string;
   result: "Victoria" | "Derrota";
@@ -581,77 +582,6 @@ export type MockReplayReport = {
   // reportes reales (los mocks no lo traen). Dato duro: la IA no lo altera.
   benchmarks?: BenchmarkBar[];
 };
-
-export const MOCK_REPLAY_REPORTS: Record<string, MockReplayReport> = {
-  "8850507008": {
-    matchId: "8850507008",
-    duration: "34:12",
-    result: "Derrota",
-    hero: "Viper",
-    role: "Midlaner",
-    bracket: "Archon",
-    question: "¿Qué decisión me hizo perder más impacto?",
-    verdict: "Ganaste la línea con holgura pero jugaste de forma pasiva en tu jungla en lugar de presiónar las torres y anular el espacio de farm de la Phantom Assassin enemiga.",
-    phases: {
-      lane: {
-        good: "Denegaste 14 creeps a Lina y le sacaste una ventaja de 1.2k de net worth al minuto 8.",
-        error: "Ignoraste las runas de agua del minuto 4 y permitiste que Lina se reabasteciera gratis.",
-        change: "Mantener el creep equilibrium cerca de tu río y forzar a Lina bajo torre usando Poison Attack."
-      },
-      mid: {
-        good: "Buen posicionamiento defensivo en la pelea del minuto 15 cerca de tu torre Tier 1 de Mid.",
-        error: "Farmear jungla propia en lugar de liderar invasiones con Axe en el triángulo enemigo.",
-        change: "Hacer call de smoke con CM y Axe para cazar a la PA enemiga que estaba farmeando sola en bot."
-      },
-      late: {
-        good: "Excelente uso de Viper Strike sobre Tidehunter anulando su combo de Ravage a tiempo.",
-        error: "Pelear sin oro de Buyback en el pit de Roshan al minuto 28, lo que entregó el juego.",
-        change: "Evitar el pit por completo si el carry aliado no tiene Aegis y tú no tienes Buyback."
-      }
-    },
-    errors: [
-      {
-        title: "Pelear en Roshan sin oro para Buyback en el minuto 28",
-        evidence: "Tu oro disponible era de 420. Moriste por el foco de la PA enemiga y no pudiste regresar a defender.",
-        impact: "El enemigo tomó Roshan, Aegis y empujó directamente por el carril central destruyendo dos sets de barracas.",
-        fix: "Monitorear el indicador de Buyback por encima de tu oro a partir del minuto 20. Si no está en verde, juega pasivo.",
-        practice: "Coloca un recordatorio visual: no cruces el río si Roshan está vivo y no tienes Buyback."
-      },
-      {
-        title: "Falta de invasión y presión activa tras ganar la línea de Mid",
-        evidence: "Entre el minuto 10 y 16 gastaste el 60% de tu tiempo en campos de jungla neutrales propios.",
-        impact: "PA enemiga recuperó su línea de farm en la jungla de bot sin ninguna presión, logrando su Battle Fury al minuto 15.",
-        fix: "Como Viper, tu rol es ocupar la jungla enemiga y forzar al equipo rival a defender sus torres de Tier 1 y Tier 2.",
-        practice: "Tira la T1 de Mid e inmediatamente viaja a la safe lane enemiga con un support para tomar control de su jungla."
-      },
-      {
-        title: "Pérdida de control de Runas de Sabiduría al minuto 7 y 14",
-        evidence: "Las runas de sabiduría aliadas fueron robadas por el Lion enemigo en ambas ocasiones.",
-        impact: "Los supports enemigos alcanzaron el nivel 6 un 20% más rápido que los tuyos, ganando peleas en bot.",
-        fix: "Escribe en el chat o pintea a los 6:30 y 13:30 para que tu support pos 4 controle la runa con un TP listo.",
-        practice: "Acostúmbrate a mirar el reloj del juego y planificar movimientos 30 segundos antes de los múltiplos de 7."
-      }
-    ],
-    plan: [
-      "Día 1-2: Enfócate en creep aggro y denegar creeps en el río de Mid.",
-      "Día 3-4: Practica la transición ofensiva tras tirar la torre T1 (mínimo 3 oleadas en jungla enemiga).",
-      "Día 5-6: Juega partidas ranked manteniendo siempre el Buyback activo a partir del minuto 22.",
-      "Día 7: Revisa el replay de tu propia partida en velocidad 4x enfocándote únicamente en el posicionamiento en peleas."
-    ],
-    nextSteps: {
-      objective: "Mantener el buyback disponible y no farmear en jungla propia tras ganar la línea.",
-      metric: "Minutos de presión ofensiva en el mapa y net worth de buyback reservado.",
-      question: "¿Logré iniciar la presión en el triángulo enemigo al minuto 12?"
-    }
-  }
-};
-
-// Devuelve un reporte de demo válido sin depender de una clave concreta: si el
-// match ID por defecto no tiene mock (p. ej. cambió a un match real de OpenDota),
-// cae al primero disponible en lugar de devolver undefined y romper la UI.
-export function getDefaultMockReport(): MockReplayReport {
-  return Object.values(MOCK_REPLAY_REPORTS)[0];
-}
 
 // Algunos héroes usan un nombre interno distinto al id legible en la CDN de Valve.
 const HERO_IMAGE_OVERRIDES: Record<string, string> = {

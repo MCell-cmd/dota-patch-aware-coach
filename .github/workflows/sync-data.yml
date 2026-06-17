@@ -1,0 +1,58 @@
+name: Sync Dota data
+
+# Refresca los datos REALES (winrate/pickrate de OpenDota y cambios del parche
+# desde el datafeed de Valve) y commitea los archivos generados si cambiaron.
+# Así el meta y el parche no quedan congelados en una foto vieja.
+
+on:
+  schedule:
+    # Lunes y jueves a las 06:00 UTC.
+    - cron: "0 6 * * 1,4"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    name: Sync OpenDota + patch notes
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Sync hero data (OpenDota)
+        run: npm run sync:data
+        env:
+          OPENDOTA_API_KEY: ${{ secrets.OPENDOTA_API_KEY }}
+
+      - name: Sync patch notes (Valve datafeed)
+        run: npm run sync:patch
+
+      - name: Typecheck generated data
+        run: npm run typecheck
+
+      - name: Unit tests
+        run: npm run test
+
+      - name: Commit refreshed data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- src/data; then
+            echo "Sin cambios en los datos generados."
+          else
+            git add src/data
+            git commit -m "chore(data): refrescar datos reales de OpenDota y parche"
+            git push
+          fi

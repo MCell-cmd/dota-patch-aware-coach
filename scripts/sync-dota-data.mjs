@@ -1,4 +1,4 @@
-/* global console, process, fetch */
+/* global console, process, fetch, setTimeout */
 
 // Sincroniza datos reales de OpenDota (uso público, sin credenciales) y genera
 // src/data/heroData.generated.ts con, por cada uno de los 127 héroes:

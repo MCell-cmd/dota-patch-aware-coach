@@ -1,6 +1,6 @@
-import type { MockReplayReport } from "@/data/dota";
+import type { ReplayReport } from "@/data/dota";
 
-export function generateMarkdown(report: MockReplayReport) {
+export function generateMarkdown(report: ReplayReport) {
   return `
 # REPORTE DE COACHING - DOTA 2
 **Match ID:** ${report.matchId}

@@ -21,7 +21,10 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "audit:web": "node scripts/web-audit.mjs"
+    "audit:web": "node scripts/web-audit.mjs",
+    "sync:data": "node scripts/sync-dota-data.mjs",
+    "sync:patch": "node scripts/sync-patch-notes.mjs",
+    "sync": "npm run sync:data && npm run sync:patch"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

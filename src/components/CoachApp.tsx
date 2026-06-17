@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, Crosshair, Eye, FileText, Gauge, Swords, TrendingUp, BarChart3, BookOpen } from "lucide-react";
+import { Crosshair, Eye, FileText, Gauge, Swords, TrendingUp, BarChart3, BookOpen } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "motion/react";
@@ -29,6 +29,7 @@ import { Footer } from "@/components/Footer";
 import { Analytics } from "@/components/Analytics";
 import { track } from "@/lib/analytics";
 import { PatchCoachPanel } from "@/components/PatchCoachPanel";
+import { getActivePatch } from "@/data/patches";
 import { ReplayPanel } from "@/components/ReplayPanel";
 import { VisionCoachPanel } from "@/components/VisionCoachPanel";
 import { VisionPhase } from "@/data/vision";
@@ -87,6 +88,7 @@ export function CoachApp({ initialMode = "draft" }: { initialMode?: CoachMode })
   const replay = useReplayController(draft.role);
   const [copyStatus, setCopyStatus] = useState(false);
   const [draftTab, setDraftTab] = useState<"config" | "pool" | "draft">("config");
+  const activePatch = getActivePatch();
 
   // Patch states
   const [selectedPatchHeroId, setSelectedPatchHeroId] = useState<string>("viper");
@@ -188,10 +190,10 @@ export function CoachApp({ initialMode = "draft" }: { initialMode?: CoachMode })
               <Gauge size={14} className="iconRed" /> Parche <strong>{PATCH_STATE.version}</strong>
             </span>
             <span className="statusPill">
-              <BarChart3 size={14} className="iconAmber" /> Base <strong>{PATCH_STATE.updatedAt}</strong>
+              <BarChart3 size={14} className="iconAmber" /> Salió <strong>{PATCH_STATE.updatedAt}</strong>
             </span>
             <span className="statusPill">
-              <TrendingUp size={14} className="iconGreen" /> Meta <strong>Estable</strong>
+              <TrendingUp size={14} className="iconGreen" /> <strong>{activePatch.heroesChanged}</strong> héroes cambiados
             </span>
           </div>
         </div>
@@ -339,6 +341,7 @@ export function CoachApp({ initialMode = "draft" }: { initialMode?: CoachMode })
               heroPool={draft.heroPool}
               selectedHeroId={selectedPatchHeroId}
               onSelectHero={setSelectedPatchHeroId}
+              bracket={draft.bracket}
             />
           )}
 

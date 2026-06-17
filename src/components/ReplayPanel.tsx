@@ -10,7 +10,7 @@ import {
   RefreshCw,
   ThumbsUp,
 } from "lucide-react";
-import { MockReplayReport } from "@/data/dota";
+import { ReplayReport } from "@/data/dota";
 
 export type ReportPerspective = {
   heroName: string;
@@ -56,7 +56,7 @@ export function ReplayPanel({
   reportSource: string | null;
   reportParsed: boolean | null;
   reportPerspective: ReportPerspective;
-  replayReport: MockReplayReport | null;
+  replayReport: ReplayReport | null;
   startAnalysis: () => void;
   copyReport: () => void;
   copyStatus: boolean;
