@@ -1,9 +1,16 @@
 "use client";
 
-import { AlertTriangle, Ban, Clock, Eye, Footprints, ShieldCheck, Target, Users } from "lucide-react";
+import { AlertTriangle, Ban, Clock, Eye, Footprints, ShieldCheck, Target, Users, BarChart3, Crosshair } from "lucide-react";
 import { useMemo, useState } from "react";
 import { ROLE_LABELS, type Role } from "@/data/dota";
 import { VISION_SCENARIOS, type VisionObjective, type VisionPhase } from "@/data/vision";
+import type { VisionReport } from "@/lib/visionReport";
+
+const READ_COLOR: Record<"good" | "warn" | "info", string> = {
+  good: "greenText",
+  warn: "goldText",
+  info: "",
+};
 
 const PHASE_LABELS: Record<VisionPhase | "all", string> = {
   all: "Todas",
@@ -35,11 +42,49 @@ export function VisionCoachPanel({
   role,
   phase,
   onPhaseChange,
+  defaultMatchId = "",
+  defaultAccountId = "",
 }: {
   role: Role;
   phase: VisionPhase | "all";
   onPhaseChange: (phase: VisionPhase | "all") => void;
+  defaultMatchId?: string;
+  defaultAccountId?: string;
 }) {
+  const [matchId, setMatchId] = useState(defaultMatchId);
+  const [accountId, setAccountId] = useState(defaultAccountId);
+  const [loading, setLoading] = useState(false);
+  const [reportError, setReportError] = useState<string | null>(null);
+  const [report, setReport] = useState<VisionReport | null>(null);
+  const [perspective, setPerspective] = useState<{ heroName: string } | null>(null);
+
+  async function analyzeVision(withParse = false) {
+    if (!matchId.trim()) return;
+    setLoading(true);
+    setReportError(null);
+    try {
+      const res = await fetch("/api/vision", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          matchId: matchId.trim(),
+          accountId: accountId.trim() || null,
+          role,
+          parse: withParse,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.report) throw new Error(data.error || "No se pudo generar el reporte de visión.");
+      setReport(data.report);
+      setPerspective(data.perspective ?? null);
+    } catch (e) {
+      setReport(null);
+      setReportError(e instanceof Error ? e.message : "Error inesperado.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   const scenarios = useMemo(
     () =>
       VISION_SCENARIOS.filter(
@@ -54,10 +99,93 @@ export function VisionCoachPanel({
   const confidenceScore = active ? CONFIDENCE_SCORE[active.confidence] : 0;
 
   return (
-    <div className="placeholderGrid visionGrid">
+    <>
+      <section className="panel" style={{ marginBottom: "16px" }}>
+        <div className="panelHeader">
+          <h3 className="panelTitle">Reporte de visión real</h3>
+          <p className="panelNote">
+            Analiza tu warding real de una partida (OpenDota): wards plantadas, dewards y timings, con lectura para {ROLE_LABELS[role]}.
+          </p>
+        </div>
+        <div className="panelBody">
+          <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", alignItems: "flex-end" }}>
+            <label className="fieldGroup" style={{ flex: "1 1 160px" }}>
+              <span className="fieldLabel">Match ID</span>
+              <input
+                className="textInput"
+                value={matchId}
+                onChange={(e) => setMatchId(e.target.value)}
+                placeholder="Ej. 8853647494"
+                disabled={loading}
+              />
+            </label>
+            <label className="fieldGroup" style={{ flex: "1 1 140px" }}>
+              <span className="fieldLabel">Account ID (opcional)</span>
+              <input
+                className="textInput"
+                value={accountId}
+                onChange={(e) => setAccountId(e.target.value)}
+                placeholder="Steam32 (opcional)"
+                disabled={loading}
+              />
+            </label>
+            <button
+              className="primaryAction"
+              type="button"
+              onClick={() => analyzeVision(false)}
+              disabled={loading || !matchId.trim()}
+            >
+              {loading ? "Analizando…" : "Analizar visión"}
+            </button>
+          </div>
+
+          {reportError && (
+            <div className="emptyState" style={{ marginTop: "12px" }}>
+              <AlertTriangle size={24} />
+              <p>{reportError}</p>
+            </div>
+          )}
+
+          {report && !reportError && (
+            <div className="patchNotesContent" style={{ marginTop: "14px" }}>
+              <p className="tacticalDesc">
+                <strong>{report.verdict}</strong>
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", margin: "10px 0" }}>
+                <span className="statusPill"><Eye size={13} /> Obs: <strong>{report.stats.obsPlaced ?? "—"}</strong></span>
+                <span className="statusPill"><ShieldCheck size={13} /> Sen: <strong>{report.stats.senPlaced ?? "—"}</strong></span>
+                <span className="statusPill"><Crosshair size={13} /> Dewards: <strong>{report.stats.dewards}</strong></span>
+                {report.stats.obsPerMin != null && (
+                  <span className="statusPill"><BarChart3 size={13} /> {report.stats.obsPerMin} obs/min</span>
+                )}
+                {report.stats.firstWardLabel && (
+                  <span className="statusPill"><Clock size={13} /> 1ª ward {report.stats.firstWardLabel}</span>
+                )}
+                <span className="statusPill">{report.parsed ? "Parseada" : "Sin parsear"}</span>
+                {perspective && <span className="statusPill">{perspective.heroName}</span>}
+              </div>
+              <ul className="notesList">
+                {report.reads.map((r, i) => (
+                  <li key={i}>
+                    <span className="noteBullet">•</span>
+                    <p className={READ_COLOR[r.kind]}>{r.text}</p>
+                  </li>
+                ))}
+              </ul>
+              {!report.parsed && (
+                <button className="pickerResetBtn" type="button" onClick={() => analyzeVision(true)} disabled={loading}>
+                  Pedir parseo y reintentar
+                </button>
+              )}
+            </div>
+          )}
+        </div>
+      </section>
+
+      <div className="placeholderGrid visionGrid">
       <section className="panel">
         <div className="panelHeader">
-          <h3 className="panelTitle">Vision Coach</h3>
+          <h3 className="panelTitle">Guías de visión</h3>
           <p className="panelNote">
             Guía manual/off-client para {ROLE_LABELS[role]}. No lee la partida ni automatiza acciones.
           </p>
@@ -228,6 +356,7 @@ export function VisionCoachPanel({
           )}
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

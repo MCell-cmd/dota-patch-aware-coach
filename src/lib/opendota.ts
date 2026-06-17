@@ -33,6 +33,15 @@ export type OpenDotaPlayer = {
   lh_t?: number[] | null;
   gold_t?: number[] | null;
   xp_t?: number[] | null;
+  // Visión. obs_placed/sen_placed/obs_log requieren partida parseada; los kills y
+  // las compras suelen venir incluso sin parsear.
+  obs_placed?: number | null;
+  sen_placed?: number | null;
+  observer_kills?: number | null;
+  sentry_kills?: number | null;
+  purchase_ward_observer?: number | null;
+  purchase_ward_sentry?: number | null;
+  obs_log?: Array<{ time: number }> | null;
   // Percentiles relativos al héroe que calcula OpenDota (pct entre 0 y 1).
   benchmarks?: Record<string, { raw: number; pct: number }> | null;
 };
@@ -107,6 +116,17 @@ export type NormalizedPlayer = {
   goldAt10: number | null;
   // Percentiles vs otros jugadores del mismo héroe (vacío si OpenDota no los trae).
   benchmarks: BenchmarkBar[];
+  // Visión real de la partida. obsPlaced/senPlaced/firstWardTime son null si la
+  // partida no está parseada; los dewards y compras suelen estar igual.
+  vision: {
+    obsPlaced: number | null;
+    senPlaced: number | null;
+    observerKills: number;
+    sentryKills: number;
+    obsBought: number | null;
+    senBought: number | null;
+    firstWardSeconds: number | null;
+  };
 };
 
 export type NormalizedMatch = {
@@ -247,6 +267,16 @@ export function normalizeMatch(
       lastHitsAt10: Array.isArray(p.lh_t) ? p.lh_t[10] ?? null : null,
       goldAt10: Array.isArray(p.gold_t) ? p.gold_t[10] ?? null : null,
       benchmarks: normalizeBenchmarks(p.benchmarks),
+      vision: {
+        obsPlaced: p.obs_placed ?? null,
+        senPlaced: p.sen_placed ?? null,
+        observerKills: p.observer_kills ?? 0,
+        sentryKills: p.sentry_kills ?? 0,
+        obsBought: p.purchase_ward_observer ?? null,
+        senBought: p.purchase_ward_sentry ?? null,
+        firstWardSeconds:
+          Array.isArray(p.obs_log) && p.obs_log.length > 0 ? p.obs_log[0].time ?? null : null,
+      },
     };
   });
 

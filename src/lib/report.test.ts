@@ -26,6 +26,15 @@ function player(overrides: Partial<NormalizedPlayer>): NormalizedPlayer {
     lastHitsAt10: null,
     goldAt10: null,
     benchmarks: [],
+    vision: {
+      obsPlaced: null,
+      senPlaced: null,
+      observerKills: 0,
+      sentryKills: 0,
+      obsBought: null,
+      senBought: null,
+      firstWardSeconds: null,
+    },
     ...overrides,
   };
 }

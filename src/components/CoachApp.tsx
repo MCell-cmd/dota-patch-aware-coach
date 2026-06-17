@@ -358,6 +358,8 @@ export function CoachApp({ initialMode = "draft" }: { initialMode?: CoachMode })
               role={draft.role}
               phase={visionPhase}
               onPhaseChange={setVisionPhase}
+              defaultMatchId={replay.matchId}
+              defaultAccountId={replay.accountId}
             />
           )}
 
