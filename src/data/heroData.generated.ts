@@ -1,6 +1,6 @@
 // Auto-generado por scripts/sync-dota-data.mjs desde la API pública de OpenDota.
 // NO editar a mano. Re-sincroniza con: node scripts/sync-dota-data.mjs
-// Última sync: 2026-06-16
+// Última sync: 2026-06-18
 // Fuente: https://api.opendota.com (heroStats, matchups, itemPopularity).
 
 export type Bracket =
@@ -43,31 +43,31 @@ export const HERO_DATA: readonly HeroData[] = [
       "Carry",
       "Durable"
     ],
-    "overallWin": 0.517,
+    "overallWin": 0.516,
     "winByBracket": {
-      "herald": 0.516,
-      "guardian": 0.516,
-      "crusader": 0.507,
-      "archon": 0.522,
-      "legend": 0.524,
-      "ancient": 0.523,
-      "divine": 0.51
+      "herald": 0.512,
+      "guardian": 0.517,
+      "crusader": 0.512,
+      "archon": 0.517,
+      "legend": 0.52,
+      "ancient": 0.522,
+      "divine": 0.515
     },
     "pickByBracket": {
-      "herald": 10067,
-      "guardian": 18721,
-      "crusader": 21204,
-      "archon": 19791,
-      "legend": 15203,
-      "ancient": 9624,
-      "divine": 9150
+      "herald": 9433,
+      "guardian": 17774,
+      "crusader": 19663,
+      "archon": 18676,
+      "legend": 14253,
+      "ancient": 9030,
+      "divine": 8641
     },
     "counters": [
       "troll-warlord",
       "legion-commander",
       "sand-king",
-      "terrorblade",
       "axe",
+      "terrorblade",
       "lion"
     ],
     "weakAgainst": [
@@ -111,27 +111,54 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.474,
     "winByBracket": {
-      "herald": 0.484,
+      "herald": 0.482,
       "guardian": 0.476,
-      "crusader": 0.478,
-      "archon": 0.476,
-      "legend": 0.473,
-      "ancient": 0.47,
-      "divine": 0.456
+      "crusader": 0.476,
+      "archon": 0.477,
+      "legend": 0.475,
+      "ancient": 0.472,
+      "divine": 0.452
     },
     "pickByBracket": {
-      "herald": 12631,
-      "guardian": 26889,
-      "crusader": 31241,
-      "archon": 29224,
-      "legend": 21697,
-      "ancient": 13766,
-      "divine": 13216
+      "herald": 11572,
+      "guardian": 24755,
+      "crusader": 28740,
+      "archon": 26997,
+      "legend": 20157,
+      "ancient": 12598,
+      "divine": 12043
     },
-    "counters": [],
-    "weakAgainst": [],
-    "startItems": [],
-    "coreItems": []
+    "counters": [
+      "ring-master",
+      "ursa",
+      "lifestealer",
+      "void-spirit",
+      "gyrocopter",
+      "sand-king"
+    ],
+    "weakAgainst": [
+      "monkey-king",
+      "luna",
+      "warlock",
+      "storm-spirit",
+      "phoenix",
+      "puck"
+    ],
+    "startItems": [
+      "Gauntlets of Strength",
+      "Iron Branch",
+      "Quelling Blade",
+      "Tango",
+      "Magic Stick",
+      "Faerie Fire"
+    ],
+    "coreItems": [
+      "Ogre Axe",
+      "Blade of Alacrity",
+      "Staff of Wizardry",
+      "Point Booster",
+      "Aghanim's Scepter"
+    ]
   },
   {
     "id": "ancient-apparition",
@@ -145,29 +172,56 @@ export const HERO_DATA: readonly HeroData[] = [
       "Disabler",
       "Nuker"
     ],
-    "overallWin": 0.511,
+    "overallWin": 0.509,
     "winByBracket": {
-      "herald": 0.515,
-      "guardian": 0.518,
+      "herald": 0.513,
+      "guardian": 0.514,
       "crusader": 0.513,
-      "archon": 0.514,
-      "legend": 0.511,
-      "ancient": 0.504,
-      "divine": 0.487
+      "archon": 0.51,
+      "legend": 0.508,
+      "ancient": 0.502,
+      "divine": 0.486
     },
     "pickByBracket": {
-      "herald": 19647,
-      "guardian": 36801,
-      "crusader": 39527,
-      "archon": 35429,
-      "legend": 26221,
-      "ancient": 16280,
-      "divine": 15266
+      "herald": 18390,
+      "guardian": 34576,
+      "crusader": 37272,
+      "archon": 33449,
+      "legend": 24696,
+      "ancient": 15443,
+      "divine": 14234
     },
-    "counters": [],
-    "weakAgainst": [],
-    "startItems": [],
-    "coreItems": []
+    "counters": [
+      "kunkka",
+      "mars",
+      "marci",
+      "disruptor",
+      "sven",
+      "hoodwink"
+    ],
+    "weakAgainst": [
+      "underlord",
+      "spirit-breaker",
+      "clinkz",
+      "largo",
+      "tusk",
+      "viper"
+    ],
+    "startItems": [
+      "Iron Branch",
+      "Tango",
+      "Blood Grenade",
+      "Sentry Ward",
+      "Faerie Fire",
+      "Observer and Sentry Wards"
+    ],
+    "coreItems": [
+      "Arcane Boots",
+      "Staff of Wizardry",
+      "Vitality Booster",
+      "Rod of Atos",
+      "Aghanim's Shard"
+    ]
   },
   {
     "id": "anti-mage",
@@ -181,24 +235,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Escape",
       "Nuker"
     ],
-    "overallWin": 0.497,
+    "overallWin": 0.498,
     "winByBracket": {
-      "herald": 0.498,
-      "guardian": 0.499,
-      "crusader": 0.496,
-      "archon": 0.498,
-      "legend": 0.498,
-      "ancient": 0.494,
-      "divine": 0.497
+      "herald": 0.497,
+      "guardian": 0.498,
+      "crusader": 0.499,
+      "archon": 0.501,
+      "legend": 0.496,
+      "ancient": 0.493,
+      "divine": 0.492
     },
     "pickByBracket": {
-      "herald": 43177,
-      "guardian": 83699,
-      "crusader": 83432,
-      "archon": 67952,
-      "legend": 46364,
-      "ancient": 27668,
-      "divine": 25128
+      "herald": 40723,
+      "guardian": 78631,
+      "crusader": 78689,
+      "archon": 64079,
+      "legend": 43574,
+      "ancient": 26078,
+      "divine": 23916
     },
     "counters": [
       "sven",
@@ -244,29 +298,42 @@ export const HERO_DATA: readonly HeroData[] = [
       "Escape",
       "Nuker"
     ],
-    "overallWin": 0.505,
+    "overallWin": 0.506,
     "winByBracket": {
-      "herald": 0.485,
-      "guardian": 0.505,
+      "herald": 0.479,
+      "guardian": 0.504,
       "crusader": 0.508,
-      "archon": 0.501,
-      "legend": 0.512,
-      "ancient": 0.52,
-      "divine": 0.514
+      "archon": 0.507,
+      "legend": 0.514,
+      "ancient": 0.521,
+      "divine": 0.521
     },
     "pickByBracket": {
-      "herald": 11405,
-      "guardian": 21930,
-      "crusader": 21017,
-      "archon": 15689,
-      "legend": 10961,
-      "ancient": 7222,
-      "divine": 7839
+      "herald": 10937,
+      "guardian": 20808,
+      "crusader": 20176,
+      "archon": 15048,
+      "legend": 10461,
+      "ancient": 6912,
+      "divine": 7471
     },
     "counters": [],
     "weakAgainst": [],
-    "startItems": [],
-    "coreItems": []
+    "startItems": [
+      "Iron Branch",
+      "Observer Ward",
+      "Circlet",
+      "Faerie Fire",
+      "Tango",
+      "Gloves of Haste"
+    ],
+    "coreItems": [
+      "Maelstrom",
+      "Hyperstone",
+      "Mjollnir",
+      "Mithril Hammer",
+      "Blade of Alacrity"
+    ]
   },
   {
     "id": "axe",
@@ -283,38 +350,38 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.521,
     "winByBracket": {
-      "herald": 0.536,
-      "guardian": 0.53,
+      "herald": 0.535,
+      "guardian": 0.529,
       "crusader": 0.524,
       "archon": 0.52,
-      "legend": 0.514,
-      "ancient": 0.51,
+      "legend": 0.513,
+      "ancient": 0.509,
       "divine": 0.508
     },
     "pickByBracket": {
-      "herald": 54239,
-      "guardian": 111558,
-      "crusader": 122581,
-      "archon": 111458,
-      "legend": 84052,
-      "ancient": 54776,
-      "divine": 57438
+      "herald": 50781,
+      "guardian": 104589,
+      "crusader": 115020,
+      "archon": 104300,
+      "legend": 78530,
+      "ancient": 51491,
+      "divine": 53672
     },
     "counters": [
       "winter-wyvern",
       "faceless-void",
-      "drow-ranger",
       "techies",
-      "morphling",
-      "death-prophet"
+      "drow-ranger",
+      "death-prophet",
+      "troll-warlord"
     ],
     "weakAgainst": [
       "bane",
-      "lycan",
       "naga-siren",
+      "lycan",
       "treant-protector",
-      "abaddon",
-      "huskar"
+      "chen",
+      "abaddon"
     ],
     "startItems": [
       "Iron Branch",
@@ -345,44 +412,44 @@ export const HERO_DATA: readonly HeroData[] = [
       "Nuker",
       "Durable"
     ],
-    "overallWin": 0.506,
+    "overallWin": 0.507,
     "winByBracket": {
-      "herald": 0.478,
-      "guardian": 0.497,
-      "crusader": 0.499,
-      "archon": 0.514,
-      "legend": 0.509,
-      "ancient": 0.508,
-      "divine": 0.529
+      "herald": 0.471,
+      "guardian": 0.501,
+      "crusader": 0.501,
+      "archon": 0.512,
+      "legend": 0.514,
+      "ancient": 0.511,
+      "divine": 0.528
     },
     "pickByBracket": {
-      "herald": 8813,
-      "guardian": 16575,
-      "crusader": 18308,
-      "archon": 16999,
-      "legend": 13268,
-      "ancient": 9627,
-      "divine": 13251
+      "herald": 8179,
+      "guardian": 15442,
+      "crusader": 17072,
+      "archon": 15692,
+      "legend": 12329,
+      "ancient": 8911,
+      "divine": 12226
     },
     "counters": [
       "axe",
+      "hoodwink",
       "tiny",
       "sven",
-      "hoodwink",
       "bristleback",
-      "templar-assassin"
+      "ember-spirit"
     ],
     "weakAgainst": [
       "monkey-king",
+      "dark-willow",
       "skywrath-mage",
       "primal-beast",
-      "dark-willow",
       "mars"
     ],
     "startItems": [
       "Iron Branch",
-      "Tango",
       "Observer and Sentry Wards",
+      "Tango",
       "Blood Grenade",
       "Faerie Fire",
       "Smoke of Deceit"
@@ -390,8 +457,8 @@ export const HERO_DATA: readonly HeroData[] = [
     "coreItems": [
       "Aether Lens",
       "Arcane Boots",
-      "Staff of Wizardry",
       "Ogre Axe",
+      "Staff of Wizardry",
       "Point Booster"
     ]
   },
@@ -409,38 +476,38 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.438,
     "winByBracket": {
-      "herald": 0.437,
-      "guardian": 0.433,
-      "crusader": 0.43,
-      "archon": 0.441,
-      "legend": 0.442,
+      "herald": 0.446,
+      "guardian": 0.432,
+      "crusader": 0.424,
+      "archon": 0.436,
+      "legend": 0.449,
       "ancient": 0.451,
-      "divine": 0.438
+      "divine": 0.44
     },
     "pickByBracket": {
-      "herald": 3475,
-      "guardian": 7251,
-      "crusader": 8090,
-      "archon": 7441,
-      "legend": 5999,
-      "ancient": 4492,
-      "divine": 5569
+      "herald": 3176,
+      "guardian": 6676,
+      "crusader": 7513,
+      "archon": 6905,
+      "legend": 5493,
+      "ancient": 4215,
+      "divine": 5047
     },
     "counters": [
       "death-prophet",
       "magnus",
       "bristleback",
-      "weaver",
       "vengeful-spirit",
+      "weaver",
       "hoodwink"
     ],
     "weakAgainst": [
       "oracle",
       "naga-siren",
       "templar-assassin",
-      "marci",
       "bane",
-      "lycan"
+      "marci",
+      "luna"
     ],
     "startItems": [
       "Iron Branch",
@@ -471,32 +538,32 @@ export const HERO_DATA: readonly HeroData[] = [
       "Durable",
       "Nuker"
     ],
-    "overallWin": 0.447,
+    "overallWin": 0.448,
     "winByBracket": {
-      "herald": 0.449,
+      "herald": 0.448,
       "guardian": 0.44,
       "crusader": 0.451,
-      "archon": 0.438,
-      "legend": 0.447,
-      "ancient": 0.455,
-      "divine": 0.464
+      "archon": 0.439,
+      "legend": 0.445,
+      "ancient": 0.457,
+      "divine": 0.466
     },
     "pickByBracket": {
-      "herald": 10109,
-      "guardian": 19333,
-      "crusader": 19887,
-      "archon": 16678,
-      "legend": 11965,
-      "ancient": 7916,
-      "divine": 9451
+      "herald": 9132,
+      "guardian": 17614,
+      "crusader": 18425,
+      "archon": 15258,
+      "legend": 10914,
+      "ancient": 7341,
+      "divine": 8727
     },
     "counters": [
       "chaos-knight",
       "vengeful-spirit",
       "zeus",
       "shadow-shaman",
-      "undying",
-      "ancient-apparition"
+      "techies",
+      "undying"
     ],
     "weakAgainst": [
       "slark",
@@ -510,9 +577,9 @@ export const HERO_DATA: readonly HeroData[] = [
       "Iron Branch",
       "Tango",
       "Magic Stick",
+      "Sage's Mask",
       "Quelling Blade",
-      "Circlet",
-      "Sage's Mask"
+      "Circlet"
     ],
     "coreItems": [
       "Ogre Axe",
@@ -535,24 +602,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Nuker",
       "Initiator"
     ],
-    "overallWin": 0.519,
+    "overallWin": 0.52,
     "winByBracket": {
-      "herald": 0.519,
+      "herald": 0.52,
       "guardian": 0.521,
-      "crusader": 0.519,
-      "archon": 0.516,
-      "legend": 0.52,
-      "ancient": 0.525,
-      "divine": 0.516
+      "crusader": 0.52,
+      "archon": 0.515,
+      "legend": 0.519,
+      "ancient": 0.527,
+      "divine": 0.515
     },
     "pickByBracket": {
-      "herald": 22695,
-      "guardian": 29587,
-      "crusader": 22672,
-      "archon": 16661,
-      "legend": 11260,
-      "ancient": 6634,
-      "divine": 5702
+      "herald": 21791,
+      "guardian": 28287,
+      "crusader": 21631,
+      "archon": 15619,
+      "legend": 10552,
+      "ancient": 6204,
+      "divine": 5262
     },
     "counters": [],
     "weakAgainst": [
@@ -585,24 +652,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Escape",
       "Nuker"
     ],
-    "overallWin": 0.514,
+    "overallWin": 0.517,
     "winByBracket": {
-      "herald": 0.497,
-      "guardian": 0.499,
-      "crusader": 0.509,
-      "archon": 0.516,
-      "legend": 0.522,
-      "ancient": 0.528,
-      "divine": 0.549
+      "herald": 0.494,
+      "guardian": 0.502,
+      "crusader": 0.513,
+      "archon": 0.521,
+      "legend": 0.523,
+      "ancient": 0.532,
+      "divine": 0.553
     },
     "pickByBracket": {
-      "herald": 17759,
-      "guardian": 30311,
-      "crusader": 29947,
-      "archon": 25322,
-      "legend": 20065,
-      "ancient": 12985,
-      "divine": 16540
+      "herald": 16333,
+      "guardian": 28076,
+      "crusader": 27994,
+      "archon": 23926,
+      "legend": 18594,
+      "ancient": 12307,
+      "divine": 15697
     },
     "counters": [
       "dragon-knight",
@@ -618,8 +685,21 @@ export const HERO_DATA: readonly HeroData[] = [
       "hoodwink",
       "chen"
     ],
-    "startItems": [],
-    "coreItems": []
+    "startItems": [
+      "Observer and Sentry Wards",
+      "Iron Branch",
+      "Blood Grenade",
+      "Tango",
+      "Sentry Ward",
+      "Boots of Speed"
+    ],
+    "coreItems": [
+      "Drum of Endurance",
+      "Ring of Tarrasque",
+      "Staff of Wizardry",
+      "Diadem",
+      "Boots of Bearing"
+    ]
   },
   {
     "id": "brewmaster",
@@ -635,24 +715,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Disabler",
       "Nuker"
     ],
-    "overallWin": 0.515,
+    "overallWin": 0.514,
     "winByBracket": {
-      "herald": 0.506,
-      "guardian": 0.509,
-      "crusader": 0.508,
-      "archon": 0.514,
+      "herald": 0.505,
+      "guardian": 0.504,
+      "crusader": 0.507,
+      "archon": 0.52,
       "legend": 0.521,
-      "ancient": 0.508,
-      "divine": 0.533
+      "ancient": 0.503,
+      "divine": 0.529
     },
     "pickByBracket": {
-      "herald": 3392,
-      "guardian": 6160,
-      "crusader": 6911,
-      "archon": 6780,
-      "legend": 5847,
-      "ancient": 4356,
-      "divine": 6127
+      "herald": 3116,
+      "guardian": 5851,
+      "crusader": 6667,
+      "archon": 6581,
+      "legend": 5586,
+      "ancient": 4168,
+      "divine": 5859
     },
     "counters": [
       "sven",
@@ -666,8 +746,8 @@ export const HERO_DATA: readonly HeroData[] = [
       "bristleback",
       "largo",
       "beastmaster",
-      "dawnbreaker",
       "rubick",
+      "dawnbreaker",
       "puck"
     ],
     "startItems": [
@@ -701,25 +781,39 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.491,
     "winByBracket": {
-      "herald": 0.533,
+      "herald": 0.534,
       "guardian": 0.506,
-      "crusader": 0.483,
+      "crusader": 0.485,
       "archon": 0.471,
       "legend": 0.466,
-      "ancient": 0.463,
-      "divine": 0.458
+      "ancient": 0.462,
+      "divine": 0.45
     },
     "pickByBracket": {
-      "herald": 43023,
-      "guardian": 63977,
-      "crusader": 53772,
-      "archon": 40051,
-      "legend": 26212,
-      "ancient": 15570,
-      "divine": 14268
+      "herald": 40128,
+      "guardian": 59840,
+      "crusader": 50433,
+      "archon": 37206,
+      "legend": 24242,
+      "ancient": 14436,
+      "divine": 13149
     },
-    "counters": [],
-    "weakAgainst": [],
+    "counters": [
+      "brewmaster",
+      "templar-assassin",
+      "sand-king",
+      "techies",
+      "razor",
+      "pugna"
+    ],
+    "weakAgainst": [
+      "nyx-assassin",
+      "chen",
+      "bane",
+      "viper",
+      "terrorblade",
+      "keeper-of-the-light"
+    ],
     "startItems": [
       "Iron Branch",
       "Gauntlets of Strength",
@@ -749,24 +843,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Escape",
       "Nuker"
     ],
-    "overallWin": 0.492,
+    "overallWin": 0.495,
     "winByBracket": {
-      "herald": 0.485,
-      "guardian": 0.49,
-      "crusader": 0.494,
-      "archon": 0.494,
-      "legend": 0.505,
-      "ancient": 0.484,
-      "divine": 0.495
+      "herald": 0.489,
+      "guardian": 0.493,
+      "crusader": 0.496,
+      "archon": 0.501,
+      "legend": 0.501,
+      "ancient": 0.502,
+      "divine": 0.487
     },
     "pickByBracket": {
-      "herald": 13644,
-      "guardian": 20289,
-      "crusader": 16721,
-      "archon": 11472,
-      "legend": 7117,
-      "ancient": 4184,
-      "divine": 4994
+      "herald": 12372,
+      "guardian": 18661,
+      "crusader": 15548,
+      "archon": 10627,
+      "legend": 6622,
+      "ancient": 3967,
+      "divine": 4624
     },
     "counters": [
       "disruptor",
@@ -789,8 +883,8 @@ export const HERO_DATA: readonly HeroData[] = [
     "coreItems": [
       "Diadem",
       "Manta Style",
-      "Blade of Alacrity",
       "Yasha",
+      "Blade of Alacrity",
       "Oblivion Staff"
     ]
   },
@@ -810,30 +904,30 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.507,
     "winByBracket": {
-      "herald": 0.512,
-      "guardian": 0.514,
-      "crusader": 0.512,
-      "archon": 0.505,
+      "herald": 0.514,
+      "guardian": 0.513,
+      "crusader": 0.513,
+      "archon": 0.506,
       "legend": 0.497,
-      "ancient": 0.505,
+      "ancient": 0.502,
       "divine": 0.496
     },
     "pickByBracket": {
-      "herald": 12798,
-      "guardian": 27731,
-      "crusader": 32537,
-      "archon": 30994,
-      "legend": 23447,
-      "ancient": 14828,
-      "divine": 14504
+      "herald": 12177,
+      "guardian": 26263,
+      "crusader": 30649,
+      "archon": 29214,
+      "legend": 22098,
+      "ancient": 14091,
+      "divine": 13691
     },
     "counters": [
       "weaver",
       "medusa",
       "silencer",
       "lich",
-      "witch-doctor",
-      "vengeful-spirit"
+      "vengeful-spirit",
+      "witch-doctor"
     ],
     "weakAgainst": [
       "treant-protector",
@@ -873,24 +967,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Pusher",
       "Initiator"
     ],
-    "overallWin": 0.507,
+    "overallWin": 0.509,
     "winByBracket": {
-      "herald": 0.523,
-      "guardian": 0.517,
+      "herald": 0.52,
+      "guardian": 0.521,
       "crusader": 0.495,
-      "archon": 0.496,
-      "legend": 0.5,
-      "ancient": 0.505,
-      "divine": 0.514
+      "archon": 0.497,
+      "legend": 0.504,
+      "ancient": 0.51,
+      "divine": 0.523
     },
     "pickByBracket": {
-      "herald": 18568,
-      "guardian": 27724,
-      "crusader": 24067,
-      "archon": 17703,
-      "legend": 11622,
-      "ancient": 6622,
-      "divine": 5744
+      "herald": 17394,
+      "guardian": 26350,
+      "crusader": 22450,
+      "archon": 16590,
+      "legend": 10893,
+      "ancient": 6341,
+      "divine": 5576
     },
     "counters": [
       "lich",
@@ -934,29 +1028,51 @@ export const HERO_DATA: readonly HeroData[] = [
       "Support",
       "Pusher"
     ],
-    "overallWin": 0.448,
+    "overallWin": 0.452,
     "winByBracket": {
-      "herald": 0.419,
-      "guardian": 0.447,
-      "crusader": 0.423,
-      "archon": 0.451,
-      "legend": 0.453,
-      "ancient": 0.459,
-      "divine": 0.501
+      "herald": 0.418,
+      "guardian": 0.458,
+      "crusader": 0.416,
+      "archon": 0.464,
+      "legend": 0.467,
+      "ancient": 0.465,
+      "divine": 0.491
     },
     "pickByBracket": {
-      "herald": 1753,
-      "guardian": 2701,
-      "crusader": 2620,
-      "archon": 2419,
-      "legend": 1597,
-      "ancient": 1205,
-      "divine": 1822
+      "herald": 1706,
+      "guardian": 2609,
+      "crusader": 2469,
+      "archon": 2254,
+      "legend": 1457,
+      "ancient": 1163,
+      "divine": 1679
     },
-    "counters": [],
-    "weakAgainst": [],
-    "startItems": [],
-    "coreItems": []
+    "counters": [
+      "dawnbreaker",
+      "bristleback",
+      "storm-spirit",
+      "monkey-king",
+      "ring-master",
+      "terrorblade"
+    ],
+    "weakAgainst": [
+      "nature-s-prophet"
+    ],
+    "startItems": [
+      "Iron Branch",
+      "Tango",
+      "Blood Grenade",
+      "Sentry Ward",
+      "Smoke of Deceit",
+      "Observer and Sentry Wards"
+    ],
+    "coreItems": [
+      "Arcane Boots",
+      "Mekansm",
+      "Drum of Endurance",
+      "Guardian Greaves",
+      "Pavise"
+    ]
   },
   {
     "id": "clinkz",
@@ -972,38 +1088,38 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.499,
     "winByBracket": {
-      "herald": 0.489,
+      "herald": 0.49,
       "guardian": 0.491,
-      "crusader": 0.493,
-      "archon": 0.504,
-      "legend": 0.505,
-      "ancient": 0.524,
-      "divine": 0.522
+      "crusader": 0.494,
+      "archon": 0.502,
+      "legend": 0.503,
+      "ancient": 0.521,
+      "divine": 0.526
     },
     "pickByBracket": {
-      "herald": 24428,
-      "guardian": 32290,
-      "crusader": 27531,
-      "archon": 20991,
-      "legend": 14723,
-      "ancient": 9421,
-      "divine": 10448
+      "herald": 22892,
+      "guardian": 30346,
+      "crusader": 25718,
+      "archon": 19953,
+      "legend": 13601,
+      "ancient": 8881,
+      "divine": 9785
     },
     "counters": [
       "ancient-apparition",
       "clockwerk",
-      "skywrath-mage",
       "tidehunter",
-      "dragon-knight",
-      "abaddon"
+      "skywrath-mage",
+      "abaddon",
+      "snapfire"
     ],
     "weakAgainst": [
       "spirit-breaker",
-      "dazzle",
       "pudge",
       "hoodwink",
       "templar-assassin",
-      "slardar"
+      "slardar",
+      "razor"
     ],
     "startItems": [
       "Iron Branch",
@@ -1034,46 +1150,46 @@ export const HERO_DATA: readonly HeroData[] = [
       "Durable",
       "Nuker"
     ],
-    "overallWin": 0.49,
+    "overallWin": 0.491,
     "winByBracket": {
-      "herald": 0.482,
-      "guardian": 0.481,
-      "crusader": 0.483,
-      "archon": 0.485,
+      "herald": 0.484,
+      "guardian": 0.483,
+      "crusader": 0.484,
+      "archon": 0.483,
       "legend": 0.49,
-      "ancient": 0.497,
-      "divine": 0.504
+      "ancient": 0.503,
+      "divine": 0.507
     },
     "pickByBracket": {
-      "herald": 7700,
-      "guardian": 17708,
-      "crusader": 22360,
-      "archon": 23885,
-      "legend": 21623,
-      "ancient": 16684,
-      "divine": 22386
+      "herald": 6946,
+      "guardian": 16107,
+      "crusader": 20450,
+      "archon": 21734,
+      "legend": 19630,
+      "ancient": 15277,
+      "divine": 20225
     },
     "counters": [
       "dark-seer",
       "luna",
       "tidehunter",
       "death-prophet",
-      "witch-doctor",
-      "silencer"
+      "silencer",
+      "witch-doctor"
     ],
     "weakAgainst": [
       "venomancer",
       "clinkz",
       "monkey-king",
       "beastmaster",
-      "abaddon",
-      "storm-spirit"
+      "enchantress",
+      "abaddon"
     ],
     "startItems": [
-      "Iron Branch",
       "Observer and Sentry Wards",
-      "Tango",
+      "Iron Branch",
       "Blood Grenade",
+      "Tango",
       "Sentry Ward",
       "Boots of Speed"
     ],
@@ -1097,40 +1213,40 @@ export const HERO_DATA: readonly HeroData[] = [
       "Disabler",
       "Nuker"
     ],
-    "overallWin": 0.513,
+    "overallWin": 0.514,
     "winByBracket": {
-      "herald": 0.537,
+      "herald": 0.535,
       "guardian": 0.523,
-      "crusader": 0.511,
+      "crusader": 0.513,
       "archon": 0.506,
       "legend": 0.508,
-      "ancient": 0.501,
+      "ancient": 0.5,
       "divine": 0.494
     },
     "pickByBracket": {
-      "herald": 44741,
-      "guardian": 76777,
-      "crusader": 75610,
-      "archon": 64199,
-      "legend": 46410,
-      "ancient": 29207,
-      "divine": 27906
+      "herald": 41836,
+      "guardian": 72061,
+      "crusader": 70869,
+      "archon": 60133,
+      "legend": 43490,
+      "ancient": 27566,
+      "divine": 26350
     },
     "counters": [
       "drow-ranger",
-      "oracle",
       "sniper",
-      "storm-spirit",
       "pugna",
-      "chaos-knight"
+      "storm-spirit",
+      "chaos-knight",
+      "anti-mage"
     ],
     "weakAgainst": [
       "razor",
       "mirana",
       "batrider",
-      "keeper-of-the-light",
       "puck",
-      "kez"
+      "keeper-of-the-light",
+      "weaver"
     ],
     "startItems": [
       "Iron Branch",
@@ -1160,32 +1276,32 @@ export const HERO_DATA: readonly HeroData[] = [
       "Escape",
       "Disabler"
     ],
-    "overallWin": 0.495,
+    "overallWin": 0.496,
     "winByBracket": {
-      "herald": 0.49,
-      "guardian": 0.494,
-      "crusader": 0.485,
-      "archon": 0.492,
-      "legend": 0.502,
-      "ancient": 0.491,
-      "divine": 0.512
+      "herald": 0.483,
+      "guardian": 0.492,
+      "crusader": 0.484,
+      "archon": 0.494,
+      "legend": 0.506,
+      "ancient": 0.496,
+      "divine": 0.514
     },
     "pickByBracket": {
-      "herald": 6193,
-      "guardian": 11964,
-      "crusader": 12467,
-      "archon": 11456,
-      "legend": 9822,
-      "ancient": 6846,
-      "divine": 9159
+      "herald": 5740,
+      "guardian": 10981,
+      "crusader": 11462,
+      "archon": 10443,
+      "legend": 8877,
+      "ancient": 6434,
+      "divine": 8654
     },
     "counters": [
       "queen-of-pain",
       "puck",
       "tusk",
       "undying",
-      "slardar",
-      "terrorblade"
+      "silencer",
+      "pangolier"
     ],
     "weakAgainst": [
       "phoenix",
@@ -1198,10 +1314,10 @@ export const HERO_DATA: readonly HeroData[] = [
     "startItems": [
       "Iron Branch",
       "Tango",
-      "Magic Stick",
       "Circlet",
-      "Clarity",
-      "Gauntlets of Strength"
+      "Magic Stick",
+      "Gauntlets of Strength",
+      "Clarity"
     ],
     "coreItems": [
       "Guardian Greaves",
@@ -1227,37 +1343,37 @@ export const HERO_DATA: readonly HeroData[] = [
     "overallWin": 0.483,
     "winByBracket": {
       "herald": 0.471,
-      "guardian": 0.477,
-      "crusader": 0.478,
-      "archon": 0.484,
+      "guardian": 0.479,
+      "crusader": 0.477,
+      "archon": 0.481,
       "legend": 0.49,
-      "ancient": 0.49,
-      "divine": 0.5
+      "ancient": 0.491,
+      "divine": 0.499
     },
     "pickByBracket": {
-      "herald": 13097,
-      "guardian": 22524,
-      "crusader": 23212,
-      "archon": 21120,
-      "legend": 17166,
-      "ancient": 12033,
-      "divine": 13894
+      "herald": 12460,
+      "guardian": 21247,
+      "crusader": 21680,
+      "archon": 19677,
+      "legend": 16042,
+      "ancient": 11246,
+      "divine": 13095
     },
     "counters": [
       "weaver",
       "witch-doctor",
       "luna",
+      "bane",
       "jakiro",
-      "storm-spirit",
-      "bane"
+      "storm-spirit"
     ],
     "weakAgainst": [
       "treant-protector",
       "brewmaster",
       "ring-master",
+      "terrorblade",
       "phantom-lancer",
-      "night-stalker",
-      "pugna"
+      "night-stalker"
     ],
     "startItems": [
       "Iron Branch",
@@ -1286,46 +1402,46 @@ export const HERO_DATA: readonly HeroData[] = [
       "Carry",
       "Durable"
     ],
-    "overallWin": 0.518,
+    "overallWin": 0.517,
     "winByBracket": {
       "herald": 0.507,
-      "guardian": 0.513,
-      "crusader": 0.518,
-      "archon": 0.519,
-      "legend": 0.524,
-      "ancient": 0.518,
-      "divine": 0.517
+      "guardian": 0.514,
+      "crusader": 0.517,
+      "archon": 0.518,
+      "legend": 0.521,
+      "ancient": 0.517,
+      "divine": 0.515
     },
     "pickByBracket": {
-      "herald": 16655,
-      "guardian": 38233,
-      "crusader": 49909,
-      "archon": 52384,
-      "legend": 45723,
-      "ancient": 33400,
-      "divine": 39712
+      "herald": 15322,
+      "guardian": 35414,
+      "crusader": 46455,
+      "archon": 48546,
+      "legend": 42463,
+      "ancient": 31084,
+      "divine": 36979
     },
     "counters": [
       "tinker",
       "outworld-devourer",
       "phantom-lancer",
       "vengeful-spirit",
-      "death-prophet",
-      "earthshaker"
+      "medusa",
+      "death-prophet"
     ],
     "weakAgainst": [
       "chen",
       "treant-protector",
       "kez",
       "bane",
-      "morphling",
-      "venomancer"
+      "venomancer",
+      "alchemist"
     ],
     "startItems": [
       "Gauntlets of Strength",
       "Iron Branch",
-      "Circlet",
       "Tango",
+      "Circlet",
       "Quelling Blade",
       "Magic Stick"
     ],
@@ -1349,32 +1465,32 @@ export const HERO_DATA: readonly HeroData[] = [
       "Nuker",
       "Disabler"
     ],
-    "overallWin": 0.507,
+    "overallWin": 0.508,
     "winByBracket": {
-      "herald": 0.484,
+      "herald": 0.488,
       "guardian": 0.501,
-      "crusader": 0.509,
-      "archon": 0.51,
-      "legend": 0.51,
-      "ancient": 0.521,
-      "divine": 0.522
+      "crusader": 0.505,
+      "archon": 0.511,
+      "legend": 0.515,
+      "ancient": 0.526,
+      "divine": 0.524
     },
     "pickByBracket": {
-      "herald": 12987,
-      "guardian": 26050,
-      "crusader": 27933,
-      "archon": 23231,
-      "legend": 15818,
-      "ancient": 9545,
-      "divine": 9321
+      "herald": 12239,
+      "guardian": 24676,
+      "crusader": 26379,
+      "archon": 22035,
+      "legend": 14933,
+      "ancient": 9136,
+      "divine": 8918
     },
     "counters": [
       "magnus",
-      "clinkz",
       "skywrath-mage",
       "morphling",
       "warlock",
-      "underlord"
+      "underlord",
+      "beastmaster"
     ],
     "weakAgainst": [
       "pugna",
@@ -1413,40 +1529,40 @@ export const HERO_DATA: readonly HeroData[] = [
       "Nuker",
       "Disabler"
     ],
-    "overallWin": 0.475,
+    "overallWin": 0.474,
     "winByBracket": {
-      "herald": 0.474,
-      "guardian": 0.472,
-      "crusader": 0.469,
-      "archon": 0.482,
-      "legend": 0.471,
-      "ancient": 0.479,
-      "divine": 0.479
+      "herald": 0.473,
+      "guardian": 0.47,
+      "crusader": 0.471,
+      "archon": 0.479,
+      "legend": 0.47,
+      "ancient": 0.474,
+      "divine": 0.483
     },
     "pickByBracket": {
-      "herald": 16648,
-      "guardian": 24045,
-      "crusader": 24110,
-      "archon": 21131,
-      "legend": 16497,
-      "ancient": 11214,
-      "divine": 12814
+      "herald": 15625,
+      "guardian": 22823,
+      "crusader": 22602,
+      "archon": 20205,
+      "legend": 15668,
+      "ancient": 10483,
+      "divine": 12055
     },
     "counters": [
       "viper",
+      "shadow-demon",
       "slardar",
       "shadow-shaman",
-      "shadow-demon",
-      "lifestealer",
-      "ogre-magi"
+      "zeus",
+      "lifestealer"
     ],
     "weakAgainst": [
       "terrorblade",
       "batrider",
       "monkey-king",
       "clockwerk",
-      "marci",
-      "tiny"
+      "tiny",
+      "marci"
     ],
     "startItems": [
       "Iron Branch",
@@ -1479,22 +1595,22 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.5,
     "winByBracket": {
-      "herald": 0.484,
-      "guardian": 0.491,
-      "crusader": 0.499,
+      "herald": 0.489,
+      "guardian": 0.49,
+      "crusader": 0.5,
       "archon": 0.5,
-      "legend": 0.502,
-      "ancient": 0.505,
-      "divine": 0.511
+      "legend": 0.503,
+      "ancient": 0.507,
+      "divine": 0.508
     },
     "pickByBracket": {
-      "herald": 12921,
-      "guardian": 31044,
-      "crusader": 39668,
-      "archon": 40873,
-      "legend": 34177,
-      "ancient": 24172,
-      "divine": 27758
+      "herald": 11989,
+      "guardian": 29347,
+      "crusader": 37635,
+      "archon": 38550,
+      "legend": 32219,
+      "ancient": 22884,
+      "divine": 26195
     },
     "counters": [
       "outworld-devourer",
@@ -1502,15 +1618,15 @@ export const HERO_DATA: readonly HeroData[] = [
       "chaos-knight",
       "phantom-lancer",
       "muerta",
-      "weaver"
+      "sven"
     ],
     "weakAgainst": [
       "broodmother",
       "kez",
       "chen",
       "drow-ranger",
-      "enchantress",
-      "io"
+      "io",
+      "enchantress"
     ],
     "startItems": [
       "Iron Branch",
@@ -1542,29 +1658,56 @@ export const HERO_DATA: readonly HeroData[] = [
       "Durable",
       "Nuker"
     ],
-    "overallWin": 0.472,
+    "overallWin": 0.473,
     "winByBracket": {
-      "herald": 0.457,
-      "guardian": 0.454,
+      "herald": 0.462,
+      "guardian": 0.456,
       "crusader": 0.463,
-      "archon": 0.465,
-      "legend": 0.474,
-      "ancient": 0.489,
-      "divine": 0.499
+      "archon": 0.469,
+      "legend": 0.477,
+      "ancient": 0.488,
+      "divine": 0.498
     },
     "pickByBracket": {
-      "herald": 11712,
-      "guardian": 25187,
-      "crusader": 31114,
-      "archon": 31102,
-      "legend": 26734,
-      "ancient": 19390,
-      "divine": 25223
+      "herald": 10807,
+      "guardian": 23042,
+      "crusader": 28472,
+      "archon": 28689,
+      "legend": 24205,
+      "ancient": 17878,
+      "divine": 23398
     },
-    "counters": [],
-    "weakAgainst": [],
-    "startItems": [],
-    "coreItems": []
+    "counters": [
+      "sven",
+      "morphling",
+      "lifestealer",
+      "weaver",
+      "chaos-knight",
+      "sand-king"
+    ],
+    "weakAgainst": [
+      "keeper-of-the-light",
+      "nature-s-prophet",
+      "bane",
+      "magnus",
+      "undying",
+      "leshrac"
+    ],
+    "startItems": [
+      "Iron Branch",
+      "Gauntlets of Strength",
+      "Circlet",
+      "Tango",
+      "Magic Stick",
+      "Quelling Blade"
+    ],
+    "coreItems": [
+      "Ogre Axe",
+      "Blink Dagger",
+      "Mithril Hammer",
+      "Sacred Relic",
+      "Radiance"
+    ]
   },
   {
     "id": "dragon-knight",
@@ -1581,24 +1724,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Initiator",
       "Nuker"
     ],
-    "overallWin": 0.492,
+    "overallWin": 0.49,
     "winByBracket": {
-      "herald": 0.499,
-      "guardian": 0.495,
-      "crusader": 0.491,
-      "archon": 0.494,
-      "legend": 0.488,
-      "ancient": 0.485,
-      "divine": 0.475
+      "herald": 0.497,
+      "guardian": 0.493,
+      "crusader": 0.488,
+      "archon": 0.492,
+      "legend": 0.491,
+      "ancient": 0.478,
+      "divine": 0.47
     },
     "pickByBracket": {
-      "herald": 16675,
-      "guardian": 27871,
-      "crusader": 26719,
-      "archon": 20708,
-      "legend": 13660,
-      "ancient": 7374,
-      "divine": 6119
+      "herald": 15736,
+      "guardian": 26324,
+      "crusader": 25145,
+      "archon": 19682,
+      "legend": 12946,
+      "ancient": 7096,
+      "divine": 5641
     },
     "counters": [
       "drow-ranger",
@@ -1611,10 +1754,10 @@ export const HERO_DATA: readonly HeroData[] = [
     "weakAgainst": [
       "bounty-hunter",
       "venomancer",
-      "clinkz",
       "treant-protector",
-      "keeper-of-the-light",
-      "largo"
+      "clinkz",
+      "largo",
+      "keeper-of-the-light"
     ],
     "startItems": [
       "Iron Branch",
@@ -1646,36 +1789,36 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.509,
     "winByBracket": {
-      "herald": 0.5,
-      "guardian": 0.503,
-      "crusader": 0.511,
-      "archon": 0.511,
-      "legend": 0.514,
-      "ancient": 0.516,
+      "herald": 0.501,
+      "guardian": 0.505,
+      "crusader": 0.508,
+      "archon": 0.509,
+      "legend": 0.512,
+      "ancient": 0.517,
       "divine": 0.513
     },
     "pickByBracket": {
-      "herald": 52137,
-      "guardian": 93166,
-      "crusader": 99627,
-      "archon": 90193,
-      "legend": 70211,
-      "ancient": 47010,
-      "divine": 51256
+      "herald": 49105,
+      "guardian": 88875,
+      "crusader": 94532,
+      "archon": 85371,
+      "legend": 66215,
+      "ancient": 44635,
+      "divine": 48416
     },
     "counters": [
+      "kez",
       "disruptor",
       "underlord",
       "tidehunter",
-      "death-prophet",
       "necrophos",
       "lich"
     ],
     "weakAgainst": [
       "crystal-maiden",
       "dragon-knight",
-      "treant-protector",
       "warlock",
+      "treant-protector",
       "mars",
       "beastmaster"
     ],
@@ -1690,8 +1833,8 @@ export const HERO_DATA: readonly HeroData[] = [
     "coreItems": [
       "Blade of Alacrity",
       "Staff of Wizardry",
-      "Dragon Lance",
       "Yasha",
+      "Dragon Lance",
       "Diadem"
     ]
   },
@@ -1711,27 +1854,54 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.51,
     "winByBracket": {
-      "herald": 0.466,
-      "guardian": 0.485,
-      "crusader": 0.5,
-      "archon": 0.515,
+      "herald": 0.48,
+      "guardian": 0.487,
+      "crusader": 0.498,
+      "archon": 0.513,
       "legend": 0.516,
-      "ancient": 0.527,
-      "divine": 0.528
+      "ancient": 0.524,
+      "divine": 0.527
     },
     "pickByBracket": {
-      "herald": 5858,
-      "guardian": 14497,
-      "crusader": 18865,
-      "archon": 19831,
-      "legend": 18449,
-      "ancient": 14007,
-      "divine": 19262
+      "herald": 5508,
+      "guardian": 13633,
+      "crusader": 17970,
+      "archon": 18894,
+      "legend": 17499,
+      "ancient": 13458,
+      "divine": 18326
     },
-    "counters": [],
-    "weakAgainst": [],
-    "startItems": [],
-    "coreItems": []
+    "counters": [
+      "slardar",
+      "pudge",
+      "lion",
+      "queen-of-pain",
+      "rubick",
+      "jakiro"
+    ],
+    "weakAgainst": [
+      "ember-spirit",
+      "ring-master",
+      "gyrocopter",
+      "pangolier",
+      "snapfire",
+      "storm-spirit"
+    ],
+    "startItems": [
+      "Iron Branch",
+      "Tango",
+      "Observer Ward",
+      "Faerie Fire",
+      "Blood Grenade",
+      "Circlet"
+    ],
+    "coreItems": [
+      "Spirit Vessel",
+      "Ogre Axe",
+      "Diadem",
+      "Staff of Wizardry",
+      "Mithril Hammer"
+    ]
   },
   {
     "id": "earthshaker",
@@ -1746,28 +1916,28 @@ export const HERO_DATA: readonly HeroData[] = [
       "Disabler",
       "Nuker"
     ],
-    "overallWin": 0.503,
+    "overallWin": 0.502,
     "winByBracket": {
       "herald": 0.5,
       "guardian": 0.496,
-      "crusader": 0.501,
-      "archon": 0.503,
-      "legend": 0.504,
+      "crusader": 0.499,
+      "archon": 0.504,
+      "legend": 0.503,
       "ancient": 0.509,
-      "divine": 0.514
+      "divine": 0.515
     },
     "pickByBracket": {
-      "herald": 38403,
-      "guardian": 71224,
-      "crusader": 77156,
-      "archon": 68588,
-      "legend": 52149,
-      "ancient": 33690,
-      "divine": 33660
+      "herald": 36090,
+      "guardian": 67041,
+      "crusader": 72767,
+      "archon": 64783,
+      "legend": 49304,
+      "ancient": 32115,
+      "divine": 32244
     },
     "counters": [
-      "primal-beast",
       "wraith-king",
+      "primal-beast",
       "sven",
       "sniper",
       "undying",
@@ -1786,8 +1956,8 @@ export const HERO_DATA: readonly HeroData[] = [
       "Tango",
       "Gauntlets of Strength",
       "Circlet",
-      "Observer Ward",
-      "Observer and Sentry Wards"
+      "Observer and Sentry Wards",
+      "Observer Ward"
     ],
     "coreItems": [
       "Blink Dagger",
@@ -1810,29 +1980,42 @@ export const HERO_DATA: readonly HeroData[] = [
       "Nuker",
       "Durable"
     ],
-    "overallWin": 0.511,
+    "overallWin": 0.506,
     "winByBracket": {
-      "herald": 0.485,
-      "guardian": 0.495,
-      "crusader": 0.511,
-      "archon": 0.518,
-      "legend": 0.51,
-      "ancient": 0.537,
-      "divine": 0.534
+      "herald": 0.478,
+      "guardian": 0.489,
+      "crusader": 0.507,
+      "archon": 0.511,
+      "legend": 0.523,
+      "ancient": 0.518,
+      "divine": 0.53
     },
     "pickByBracket": {
-      "herald": 3161,
-      "guardian": 5437,
-      "crusader": 5463,
-      "archon": 4515,
-      "legend": 3262,
-      "ancient": 2326,
-      "divine": 3303
+      "herald": 3018,
+      "guardian": 5072,
+      "crusader": 5198,
+      "archon": 4270,
+      "legend": 3085,
+      "ancient": 2180,
+      "divine": 3025
     },
     "counters": [],
     "weakAgainst": [],
-    "startItems": [],
-    "coreItems": []
+    "startItems": [
+      "Iron Branch",
+      "Tango",
+      "Blood Grenade",
+      "Observer and Sentry Wards",
+      "Wind Lace",
+      "Smoke of Deceit"
+    ],
+    "coreItems": [
+      "Staff of Wizardry",
+      "Ogre Axe",
+      "Drum of Endurance",
+      "Point Booster",
+      "Pavise"
+    ]
   },
   {
     "id": "ember-spirit",
@@ -1848,29 +2031,56 @@ export const HERO_DATA: readonly HeroData[] = [
       "Disabler",
       "Initiator"
     ],
-    "overallWin": 0.492,
+    "overallWin": 0.491,
     "winByBracket": {
-      "herald": 0.455,
+      "herald": 0.459,
       "guardian": 0.475,
-      "crusader": 0.482,
-      "archon": 0.49,
-      "legend": 0.499,
+      "crusader": 0.483,
+      "archon": 0.488,
+      "legend": 0.498,
       "ancient": 0.507,
-      "divine": 0.514
+      "divine": 0.509
     },
     "pickByBracket": {
-      "herald": 11475,
-      "guardian": 25528,
-      "crusader": 32931,
-      "archon": 34517,
-      "legend": 30434,
-      "ancient": 22867,
-      "divine": 28825
+      "herald": 10726,
+      "guardian": 23793,
+      "crusader": 30701,
+      "archon": 32003,
+      "legend": 28162,
+      "ancient": 21422,
+      "divine": 26947
     },
-    "counters": [],
-    "weakAgainst": [],
-    "startItems": [],
-    "coreItems": []
+    "counters": [
+      "witch-doctor",
+      "venomancer",
+      "sniper",
+      "anti-mage",
+      "earth-spirit",
+      "dark-seer"
+    ],
+    "weakAgainst": [
+      "bane",
+      "io",
+      "treant-protector",
+      "clinkz",
+      "puck",
+      "lycan"
+    ],
+    "startItems": [
+      "Iron Branch",
+      "Tango",
+      "Observer Ward",
+      "Faerie Fire",
+      "Quelling Blade",
+      "Circlet"
+    ],
+    "coreItems": [
+      "Staff of Wizardry",
+      "Mage Slayer",
+      "Ogre Axe",
+      "Perseverance",
+      "Spirit Vessel"
+    ]
   },
   {
     "id": "enchantress",
@@ -1885,24 +2095,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Durable",
       "Disabler"
     ],
-    "overallWin": 0.482,
+    "overallWin": 0.481,
     "winByBracket": {
-      "herald": 0.484,
-      "guardian": 0.481,
-      "crusader": 0.485,
-      "archon": 0.476,
-      "legend": 0.482,
-      "ancient": 0.475,
-      "divine": 0.49
+      "herald": 0.482,
+      "guardian": 0.483,
+      "crusader": 0.48,
+      "archon": 0.478,
+      "legend": 0.484,
+      "ancient": 0.473,
+      "divine": 0.487
     },
     "pickByBracket": {
-      "herald": 12512,
-      "guardian": 15922,
-      "crusader": 13335,
-      "archon": 10716,
-      "legend": 7887,
-      "ancient": 5125,
-      "divine": 6753
+      "herald": 11941,
+      "guardian": 15042,
+      "crusader": 12657,
+      "archon": 10043,
+      "legend": 7271,
+      "ancient": 4753,
+      "divine": 6190
     },
     "counters": [
       "disruptor",
@@ -1913,15 +2123,28 @@ export const HERO_DATA: readonly HeroData[] = [
       "dark-willow"
     ],
     "weakAgainst": [
+      "keeper-of-the-light",
       "marci",
       "slardar",
       "juggernaut",
       "bane",
-      "doom",
-      "venomancer"
+      "doom"
     ],
-    "startItems": [],
-    "coreItems": []
+    "startItems": [
+      "Iron Branch",
+      "Faerie Fire",
+      "Tango",
+      "Observer and Sentry Wards",
+      "Blood Grenade",
+      "Smoke of Deceit"
+    ],
+    "coreItems": [
+      "Staff of Wizardry",
+      "Drum of Endurance",
+      "Blade of Alacrity",
+      "Power Treads",
+      "Ogre Axe"
+    ]
   },
   {
     "id": "enigma",
@@ -1937,22 +2160,22 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.502,
     "winByBracket": {
-      "herald": 0.475,
+      "herald": 0.473,
       "guardian": 0.495,
-      "crusader": 0.494,
-      "archon": 0.501,
-      "legend": 0.512,
-      "ancient": 0.526,
-      "divine": 0.547
+      "crusader": 0.495,
+      "archon": 0.5,
+      "legend": 0.508,
+      "ancient": 0.527,
+      "divine": 0.545
     },
     "pickByBracket": {
-      "herald": 11428,
-      "guardian": 20760,
-      "crusader": 20967,
-      "archon": 17072,
-      "legend": 11696,
-      "ancient": 7567,
-      "divine": 8486
+      "herald": 10832,
+      "guardian": 19996,
+      "crusader": 19973,
+      "archon": 16282,
+      "legend": 11103,
+      "ancient": 7188,
+      "divine": 8185
     },
     "counters": [
       "ursa",
@@ -1970,8 +2193,21 @@ export const HERO_DATA: readonly HeroData[] = [
       "snapfire",
       "tusk"
     ],
-    "startItems": [],
-    "coreItems": []
+    "startItems": [
+      "Iron Branch",
+      "Tango",
+      "Faerie Fire",
+      "Magic Stick",
+      "Circlet",
+      "Magic Wand"
+    ],
+    "coreItems": [
+      "Blink Dagger",
+      "Ogre Axe",
+      "Mithril Hammer",
+      "Aghanim's Shard",
+      "Ring of Tarrasque"
+    ]
   },
   {
     "id": "faceless-void",
@@ -1989,38 +2225,38 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.496,
     "winByBracket": {
-      "herald": 0.496,
+      "herald": 0.497,
       "guardian": 0.489,
-      "crusader": 0.492,
-      "archon": 0.498,
-      "legend": 0.499,
-      "ancient": 0.505,
+      "crusader": 0.491,
+      "archon": 0.496,
+      "legend": 0.5,
+      "ancient": 0.51,
       "divine": 0.504
     },
     "pickByBracket": {
-      "herald": 35984,
-      "guardian": 71608,
-      "crusader": 79005,
-      "archon": 72021,
-      "legend": 56045,
-      "ancient": 37046,
-      "divine": 39856
+      "herald": 33445,
+      "guardian": 66729,
+      "crusader": 73065,
+      "archon": 66531,
+      "legend": 51423,
+      "ancient": 34021,
+      "divine": 36664
     },
     "counters": [
       "templar-assassin",
       "dragon-knight",
       "dawnbreaker",
-      "storm-spirit",
       "abaddon",
+      "storm-spirit",
       "silencer"
     ],
     "weakAgainst": [
-      "muerta",
       "keeper-of-the-light",
+      "muerta",
       "sniper",
       "tidehunter",
-      "axe",
-      "juggernaut"
+      "juggernaut",
+      "axe"
     ],
     "startItems": [
       "Iron Branch",
@@ -2053,38 +2289,38 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.521,
     "winByBracket": {
-      "herald": 0.505,
+      "herald": 0.512,
       "guardian": 0.511,
-      "crusader": 0.518,
-      "archon": 0.53,
-      "legend": 0.524,
-      "ancient": 0.529,
-      "divine": 0.524
+      "crusader": 0.517,
+      "archon": 0.529,
+      "legend": 0.525,
+      "ancient": 0.526,
+      "divine": 0.521
     },
     "pickByBracket": {
-      "herald": 13060,
-      "guardian": 28060,
-      "crusader": 34290,
-      "archon": 33255,
-      "legend": 26760,
-      "ancient": 18905,
-      "divine": 22087
+      "herald": 12310,
+      "guardian": 26349,
+      "crusader": 32228,
+      "archon": 31499,
+      "legend": 25112,
+      "ancient": 17874,
+      "divine": 20909
     },
     "counters": [
       "muerta",
-      "templar-assassin",
       "leshrac",
+      "templar-assassin",
       "necrophos",
       "ring-master",
-      "wraith-king"
+      "tidehunter"
     ],
     "weakAgainst": [
       "sniper",
       "monkey-king",
       "techies",
       "snapfire",
-      "timbersaw",
-      "lifestealer"
+      "lifestealer",
+      "batrider"
     ],
     "startItems": [
       "Iron Branch",
@@ -2114,29 +2350,56 @@ export const HERO_DATA: readonly HeroData[] = [
       "Nuker",
       "Disabler"
     ],
-    "overallWin": 0.424,
+    "overallWin": 0.425,
     "winByBracket": {
-      "herald": 0.423,
-      "guardian": 0.423,
-      "crusader": 0.419,
-      "archon": 0.427,
-      "legend": 0.428,
-      "ancient": 0.421,
-      "divine": 0.427
+      "herald": 0.426,
+      "guardian": 0.421,
+      "crusader": 0.422,
+      "archon": 0.423,
+      "legend": 0.436,
+      "ancient": 0.423,
+      "divine": 0.424
     },
     "pickByBracket": {
-      "herald": 7475,
-      "guardian": 13554,
-      "crusader": 15932,
-      "archon": 14973,
-      "legend": 11524,
-      "ancient": 6972,
-      "divine": 6227
+      "herald": 7021,
+      "guardian": 12719,
+      "crusader": 14878,
+      "archon": 14355,
+      "legend": 10929,
+      "ancient": 6693,
+      "divine": 6102
     },
-    "counters": [],
-    "weakAgainst": [],
-    "startItems": [],
-    "coreItems": []
+    "counters": [
+      "templar-assassin",
+      "techies",
+      "lion",
+      "earth-spirit",
+      "troll-warlord",
+      "sven"
+    ],
+    "weakAgainst": [
+      "treant-protector",
+      "nyx-assassin",
+      "witch-doctor",
+      "alchemist",
+      "naga-siren",
+      "bane"
+    ],
+    "startItems": [
+      "Iron Branch",
+      "Faerie Fire",
+      "Tango",
+      "Magic Wand",
+      "Magic Stick",
+      "Quelling Blade"
+    ],
+    "coreItems": [
+      "Ogre Axe",
+      "Blade of Alacrity",
+      "Claymore",
+      "Staff of Wizardry",
+      "Point Booster"
+    ]
   },
   {
     "id": "hoodwink",
@@ -2151,24 +2414,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Escape",
       "Disabler"
     ],
-    "overallWin": 0.481,
+    "overallWin": 0.482,
     "winByBracket": {
-      "herald": 0.474,
-      "guardian": 0.479,
+      "herald": 0.473,
+      "guardian": 0.48,
       "crusader": 0.481,
-      "archon": 0.483,
-      "legend": 0.486,
-      "ancient": 0.479,
-      "divine": 0.487
+      "archon": 0.486,
+      "legend": 0.485,
+      "ancient": 0.478,
+      "divine": 0.485
     },
     "pickByBracket": {
-      "herald": 29388,
-      "guardian": 56270,
-      "crusader": 62450,
-      "archon": 57677,
-      "legend": 45981,
-      "ancient": 31794,
-      "divine": 36383
+      "herald": 27810,
+      "guardian": 52738,
+      "crusader": 58415,
+      "archon": 53786,
+      "legend": 42288,
+      "ancient": 29582,
+      "divine": 33620
     },
     "counters": [
       "phantom-lancer",
@@ -2183,16 +2446,16 @@ export const HERO_DATA: readonly HeroData[] = [
       "bane",
       "keeper-of-the-light",
       "lone-druid",
-      "broodmother",
-      "treant-protector"
+      "kunkka",
+      "broodmother"
     ],
     "startItems": [
       "Iron Branch",
       "Tango",
       "Blood Grenade",
       "Faerie Fire",
-      "Observer and Sentry Wards",
-      "Sentry Ward"
+      "Sentry Ward",
+      "Observer and Sentry Wards"
     ],
     "coreItems": [
       "Arcane Boots",
@@ -2214,27 +2477,41 @@ export const HERO_DATA: readonly HeroData[] = [
       "Durable",
       "Initiator"
     ],
-    "overallWin": 0.449,
+    "overallWin": 0.45,
     "winByBracket": {
       "herald": 0.445,
-      "guardian": 0.442,
-      "crusader": 0.445,
+      "guardian": 0.444,
+      "crusader": 0.444,
       "archon": 0.452,
-      "legend": 0.458,
+      "legend": 0.461,
       "ancient": 0.457,
-      "divine": 0.458
+      "divine": 0.462
     },
     "pickByBracket": {
-      "herald": 22844,
-      "guardian": 31439,
-      "crusader": 29272,
-      "archon": 24306,
-      "legend": 17382,
-      "ancient": 11418,
-      "divine": 13519
+      "herald": 21037,
+      "guardian": 28873,
+      "crusader": 26712,
+      "archon": 22285,
+      "legend": 15938,
+      "ancient": 10514,
+      "divine": 12170
     },
-    "counters": [],
-    "weakAgainst": [],
+    "counters": [
+      "silencer",
+      "earthshaker",
+      "storm-spirit",
+      "spirit-breaker",
+      "templar-assassin",
+      "tidehunter"
+    ],
+    "weakAgainst": [
+      "nature-s-prophet",
+      "hoodwink",
+      "shadow-shaman",
+      "beastmaster",
+      "marci",
+      "rubick"
+    ],
     "startItems": [
       "Gauntlets of Strength",
       "Faerie Fire",
@@ -2268,21 +2545,21 @@ export const HERO_DATA: readonly HeroData[] = [
     "overallWin": 0.505,
     "winByBracket": {
       "herald": 0.494,
-      "guardian": 0.496,
-      "crusader": 0.503,
-      "archon": 0.502,
-      "legend": 0.508,
-      "ancient": 0.513,
-      "divine": 0.52
+      "guardian": 0.497,
+      "crusader": 0.504,
+      "archon": 0.503,
+      "legend": 0.509,
+      "ancient": 0.514,
+      "divine": 0.519
     },
     "pickByBracket": {
-      "herald": 41616,
-      "guardian": 95436,
-      "crusader": 113402,
-      "archon": 107871,
-      "legend": 84880,
-      "ancient": 57142,
-      "divine": 63237
+      "herald": 38742,
+      "guardian": 88895,
+      "crusader": 106425,
+      "archon": 101007,
+      "legend": 79215,
+      "ancient": 54063,
+      "divine": 59538
     },
     "counters": [
       "lina",
@@ -2298,13 +2575,13 @@ export const HERO_DATA: readonly HeroData[] = [
       "tinker",
       "oracle",
       "naga-siren",
-      "monkey-king"
+      "lycan"
     ],
     "startItems": [
       "Iron Branch",
       "Circlet",
-      "Faerie Fire",
       "Observer Ward",
+      "Faerie Fire",
       "Mantle of Intelligence",
       "Tango"
     ],
@@ -2328,24 +2605,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Escape",
       "Nuker"
     ],
-    "overallWin": 0.501,
+    "overallWin": 0.499,
     "winByBracket": {
-      "herald": 0.495,
-      "guardian": 0.496,
+      "herald": 0.49,
+      "guardian": 0.498,
       "crusader": 0.499,
-      "archon": 0.501,
-      "legend": 0.499,
-      "ancient": 0.512,
-      "divine": 0.514
+      "archon": 0.495,
+      "legend": 0.501,
+      "ancient": 0.511,
+      "divine": 0.509
     },
     "pickByBracket": {
-      "herald": 10433,
-      "guardian": 19900,
-      "crusader": 19740,
-      "archon": 16260,
-      "legend": 12203,
-      "ancient": 8332,
-      "divine": 10719
+      "herald": 9850,
+      "guardian": 18901,
+      "crusader": 19160,
+      "archon": 15625,
+      "legend": 11882,
+      "ancient": 8220,
+      "divine": 10345
     },
     "counters": [
       "ember-spirit",
@@ -2390,24 +2667,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Pusher",
       "Disabler"
     ],
-    "overallWin": 0.474,
+    "overallWin": 0.473,
     "winByBracket": {
-      "herald": 0.487,
-      "guardian": 0.485,
-      "crusader": 0.475,
+      "herald": 0.491,
+      "guardian": 0.48,
+      "crusader": 0.474,
       "archon": 0.469,
       "legend": 0.468,
       "ancient": 0.465,
-      "divine": 0.459
+      "divine": 0.463
     },
     "pickByBracket": {
-      "herald": 20881,
-      "guardian": 43837,
-      "crusader": 51148,
-      "archon": 46712,
-      "legend": 33723,
-      "ancient": 20985,
-      "divine": 17551
+      "herald": 19384,
+      "guardian": 41030,
+      "crusader": 47950,
+      "archon": 43965,
+      "legend": 31516,
+      "ancient": 19628,
+      "divine": 16449
     },
     "counters": [
       "chaos-knight",
@@ -2422,11 +2699,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "io",
       "lone-druid",
       "clinkz",
-      "bane",
+      "naga-siren",
       "bounty-hunter"
     ],
-    "startItems": [],
-    "coreItems": []
+    "startItems": [
+      "Iron Branch",
+      "Tango",
+      "Observer and Sentry Wards",
+      "Blood Grenade",
+      "Magic Stick",
+      "Sentry Ward"
+    ],
+    "coreItems": [
+      "Arcane Boots",
+      "Staff of Wizardry",
+      "Glimmer Cape",
+      "Eul's Scepter of Divinity",
+      "Aghanim's Shard"
+    ]
   },
   {
     "id": "juggernaut",
@@ -2440,24 +2730,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Pusher",
       "Escape"
     ],
-    "overallWin": 0.52,
+    "overallWin": 0.518,
     "winByBracket": {
-      "herald": 0.514,
-      "guardian": 0.516,
-      "crusader": 0.521,
-      "archon": 0.52,
+      "herald": 0.51,
+      "guardian": 0.515,
+      "crusader": 0.52,
+      "archon": 0.519,
       "legend": 0.522,
-      "ancient": 0.523,
-      "divine": 0.522
+      "ancient": 0.522,
+      "divine": 0.515
     },
     "pickByBracket": {
-      "herald": 48346,
-      "guardian": 91474,
-      "crusader": 98235,
-      "archon": 86137,
-      "legend": 64587,
-      "ancient": 39975,
-      "divine": 38112
+      "herald": 45296,
+      "guardian": 85915,
+      "crusader": 92428,
+      "archon": 80969,
+      "legend": 60515,
+      "ancient": 37738,
+      "divine": 35984
     },
     "counters": [
       "zeus",
@@ -2503,38 +2793,38 @@ export const HERO_DATA: readonly HeroData[] = [
       "Nuker",
       "Disabler"
     ],
-    "overallWin": 0.513,
+    "overallWin": 0.512,
     "winByBracket": {
-      "herald": 0.488,
-      "guardian": 0.504,
-      "crusader": 0.509,
-      "archon": 0.515,
-      "legend": 0.521,
-      "ancient": 0.525,
-      "divine": 0.535
+      "herald": 0.486,
+      "guardian": 0.502,
+      "crusader": 0.508,
+      "archon": 0.514,
+      "legend": 0.52,
+      "ancient": 0.524,
+      "divine": 0.536
     },
     "pickByBracket": {
-      "herald": 15948,
-      "guardian": 30099,
-      "crusader": 31844,
-      "archon": 27022,
-      "legend": 21216,
-      "ancient": 14826,
-      "divine": 20986
+      "herald": 15013,
+      "guardian": 28218,
+      "crusader": 29934,
+      "archon": 25708,
+      "legend": 19745,
+      "ancient": 13997,
+      "divine": 19772
     },
     "counters": [
       "warlock",
+      "enchantress",
       "spirit-breaker",
       "hoodwink",
       "bristleback",
-      "abaddon",
       "queen-of-pain"
     ],
     "weakAgainst": [
       "treant-protector",
       "batrider",
-      "monkey-king",
       "viper",
+      "monkey-king",
       "slardar",
       "primal-beast"
     ],
@@ -2543,8 +2833,8 @@ export const HERO_DATA: readonly HeroData[] = [
       "Tango",
       "Faerie Fire",
       "Circlet",
-      "Observer Ward",
-      "Blood Grenade"
+      "Blood Grenade",
+      "Observer Ward"
     ],
     "coreItems": [
       "Holy Locket",
@@ -2568,22 +2858,22 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.445,
     "winByBracket": {
-      "herald": 0.454,
+      "herald": 0.448,
       "guardian": 0.455,
-      "crusader": 0.445,
-      "archon": 0.444,
-      "legend": 0.443,
-      "ancient": 0.436,
+      "crusader": 0.447,
+      "archon": 0.447,
+      "legend": 0.442,
+      "ancient": 0.435,
       "divine": 0.437
     },
     "pickByBracket": {
-      "herald": 12432,
-      "guardian": 23325,
-      "crusader": 27697,
-      "archon": 27462,
-      "legend": 23816,
-      "ancient": 17500,
-      "divine": 22178
+      "herald": 11763,
+      "guardian": 21907,
+      "crusader": 25845,
+      "archon": 25565,
+      "legend": 22056,
+      "ancient": 16310,
+      "divine": 20311
     },
     "counters": [
       "lifestealer",
@@ -2594,12 +2884,12 @@ export const HERO_DATA: readonly HeroData[] = [
       "tiny"
     ],
     "weakAgainst": [
+      "drow-ranger",
       "treant-protector",
       "largo",
-      "batrider",
       "windranger",
-      "razor",
-      "faceless-void"
+      "batrider",
+      "razor"
     ],
     "startItems": [
       "Iron Branch",
@@ -2632,24 +2922,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Durable",
       "Nuker"
     ],
-    "overallWin": 0.492,
+    "overallWin": 0.493,
     "winByBracket": {
-      "herald": 0.49,
-      "guardian": 0.481,
-      "crusader": 0.488,
-      "archon": 0.494,
-      "legend": 0.502,
-      "ancient": 0.502,
+      "herald": 0.493,
+      "guardian": 0.486,
+      "crusader": 0.489,
+      "archon": 0.495,
+      "legend": 0.5,
+      "ancient": 0.499,
       "divine": 0.493
     },
     "pickByBracket": {
-      "herald": 13891,
-      "guardian": 25924,
-      "crusader": 29000,
-      "archon": 26604,
-      "legend": 21303,
-      "ancient": 13900,
-      "divine": 14369
+      "herald": 13102,
+      "guardian": 24496,
+      "crusader": 27159,
+      "archon": 24889,
+      "legend": 19844,
+      "ancient": 13174,
+      "divine": 13567
     },
     "counters": [
       "sven",
@@ -2664,7 +2954,7 @@ export const HERO_DATA: readonly HeroData[] = [
       "terrorblade",
       "monkey-king",
       "templar-assassin",
-      "batrider",
+      "phoenix",
       "shadow-demon"
     ],
     "startItems": [
@@ -2697,29 +2987,29 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.482,
     "winByBracket": {
-      "herald": 0.462,
-      "guardian": 0.479,
-      "crusader": 0.472,
+      "herald": 0.453,
+      "guardian": 0.481,
+      "crusader": 0.47,
       "archon": 0.482,
-      "legend": 0.485,
-      "ancient": 0.483,
-      "divine": 0.507
+      "legend": 0.487,
+      "ancient": 0.488,
+      "divine": 0.506
     },
     "pickByBracket": {
-      "herald": 3886,
-      "guardian": 7807,
-      "crusader": 9216,
-      "archon": 9560,
-      "legend": 8037,
-      "ancient": 5642,
-      "divine": 7333
+      "herald": 3682,
+      "guardian": 7289,
+      "crusader": 8671,
+      "archon": 8793,
+      "legend": 7454,
+      "ancient": 5297,
+      "divine": 6716
     },
     "counters": [
-      "pangolier",
       "queen-of-pain",
       "primal-beast",
-      "timbersaw",
+      "pangolier",
       "pudge",
+      "timbersaw",
       "ancient-apparition"
     ],
     "weakAgainst": [
@@ -2736,7 +3026,7 @@ export const HERO_DATA: readonly HeroData[] = [
       "Tango",
       "Magic Stick",
       "Faerie Fire",
-      "Blood Grenade"
+      "Observer and Sentry Wards"
     ],
     "coreItems": [
       "Ogre Axe",
@@ -2762,41 +3052,54 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.526,
     "winByBracket": {
-      "herald": 0.521,
-      "guardian": 0.531,
-      "crusader": 0.529,
-      "archon": 0.528,
+      "herald": 0.525,
+      "guardian": 0.529,
+      "crusader": 0.528,
+      "archon": 0.527,
       "legend": 0.526,
-      "ancient": 0.519,
-      "divine": 0.516
+      "ancient": 0.517,
+      "divine": 0.518
     },
     "pickByBracket": {
-      "herald": 44536,
-      "guardian": 92742,
-      "crusader": 97860,
-      "archon": 83994,
-      "legend": 59697,
-      "ancient": 35878,
-      "divine": 32925
+      "herald": 41837,
+      "guardian": 87343,
+      "crusader": 92506,
+      "archon": 79245,
+      "legend": 56454,
+      "ancient": 34075,
+      "divine": 31333
     },
     "counters": [
       "venomancer",
       "luna",
-      "bristleback",
       "medusa",
-      "doom",
-      "magnus"
+      "bristleback",
+      "shadow-shaman",
+      "doom"
     ],
     "weakAgainst": [
       "storm-spirit",
       "tusk",
       "abaddon",
-      "juggernaut",
       "slardar",
+      "juggernaut",
       "phoenix"
     ],
-    "startItems": [],
-    "coreItems": []
+    "startItems": [
+      "Iron Branch",
+      "Gauntlets of Strength",
+      "Tango",
+      "Quelling Blade",
+      "Circlet",
+      "Magic Stick"
+    ],
+    "coreItems": [
+      "Blink Dagger",
+      "Blade Mail",
+      "Broadsword",
+      "Ogre Axe",
+      "Mithril Hammer"
+    ]
   },
   {
     "id": "leshrac",
@@ -2812,24 +3115,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Pusher",
       "Disabler"
     ],
-    "overallWin": 0.5,
+    "overallWin": 0.501,
     "winByBracket": {
-      "herald": 0.5,
-      "guardian": 0.494,
-      "crusader": 0.489,
-      "archon": 0.499,
+      "herald": 0.495,
+      "guardian": 0.493,
+      "crusader": 0.498,
+      "archon": 0.498,
       "legend": 0.505,
       "ancient": 0.502,
-      "divine": 0.52
+      "divine": 0.518
     },
     "pickByBracket": {
-      "herald": 6034,
-      "guardian": 10737,
-      "crusader": 10833,
-      "archon": 9617,
-      "legend": 7659,
-      "ancient": 5502,
-      "divine": 6810
+      "herald": 5545,
+      "guardian": 9953,
+      "crusader": 10190,
+      "archon": 9006,
+      "legend": 7072,
+      "ancient": 5206,
+      "divine": 6427
     },
     "counters": [
       "muerta",
@@ -2877,26 +3180,53 @@ export const HERO_DATA: readonly HeroData[] = [
     "overallWin": 0.519,
     "winByBracket": {
       "herald": 0.522,
-      "guardian": 0.522,
-      "crusader": 0.523,
-      "archon": 0.523,
-      "legend": 0.518,
-      "ancient": 0.516,
-      "divine": 0.507
+      "guardian": 0.521,
+      "crusader": 0.524,
+      "archon": 0.522,
+      "legend": 0.515,
+      "ancient": 0.515,
+      "divine": 0.509
     },
     "pickByBracket": {
-      "herald": 27970,
-      "guardian": 55286,
-      "crusader": 65112,
-      "archon": 63160,
-      "legend": 51623,
-      "ancient": 35797,
-      "divine": 37456
+      "herald": 26436,
+      "guardian": 51747,
+      "crusader": 61080,
+      "archon": 58879,
+      "legend": 48011,
+      "ancient": 33274,
+      "divine": 34943
     },
-    "counters": [],
-    "weakAgainst": [],
-    "startItems": [],
-    "coreItems": []
+    "counters": [
+      "sven",
+      "ursa",
+      "ring-master",
+      "wraith-king",
+      "tidehunter",
+      "abaddon"
+    ],
+    "weakAgainst": [
+      "nyx-assassin",
+      "treant-protector",
+      "chaos-knight",
+      "muerta",
+      "kez",
+      "sniper"
+    ],
+    "startItems": [
+      "Iron Branch",
+      "Tango",
+      "Blood Grenade",
+      "Sentry Ward",
+      "Enchanted Mango",
+      "Faerie Fire"
+    ],
+    "coreItems": [
+      "Glimmer Cape",
+      "Aghanim's Shard",
+      "Blink Dagger",
+      "Staff of Wizardry",
+      "Pavise"
+    ]
   },
   {
     "id": "lifestealer",
@@ -2911,40 +3241,40 @@ export const HERO_DATA: readonly HeroData[] = [
       "Escape",
       "Disabler"
     ],
-    "overallWin": 0.52,
+    "overallWin": 0.521,
     "winByBracket": {
-      "herald": 0.5,
-      "guardian": 0.51,
-      "crusader": 0.521,
-      "archon": 0.526,
+      "herald": 0.501,
+      "guardian": 0.513,
+      "crusader": 0.522,
+      "archon": 0.528,
       "legend": 0.526,
       "ancient": 0.526,
-      "divine": 0.524
+      "divine": 0.522
     },
     "pickByBracket": {
-      "herald": 22372,
-      "guardian": 49309,
-      "crusader": 57664,
-      "archon": 54453,
-      "legend": 43027,
-      "ancient": 29118,
-      "divine": 29364
+      "herald": 20972,
+      "guardian": 46369,
+      "crusader": 54195,
+      "archon": 51093,
+      "legend": 40467,
+      "ancient": 27332,
+      "divine": 27772
     },
     "counters": [
-      "phantom-assassin",
       "weaver",
       "night-stalker",
       "witch-doctor",
-      "grimstroke",
-      "vengeful-spirit"
+      "phantom-assassin",
+      "bristleback",
+      "grimstroke"
     ],
     "weakAgainst": [
       "kez",
       "alchemist",
       "phoenix",
-      "doom",
+      "morphling",
       "slardar",
-      "morphling"
+      "doom"
     ],
     "startItems": [
       "Gauntlets of Strength",
@@ -2975,39 +3305,39 @@ export const HERO_DATA: readonly HeroData[] = [
       "Nuker",
       "Disabler"
     ],
-    "overallWin": 0.495,
+    "overallWin": 0.494,
     "winByBracket": {
-      "herald": 0.472,
-      "guardian": 0.488,
-      "crusader": 0.495,
-      "archon": 0.5,
-      "legend": 0.504,
-      "ancient": 0.506,
-      "divine": 0.509
+      "herald": 0.473,
+      "guardian": 0.484,
+      "crusader": 0.492,
+      "archon": 0.499,
+      "legend": 0.502,
+      "ancient": 0.507,
+      "divine": 0.506
     },
     "pickByBracket": {
-      "herald": 44856,
-      "guardian": 76303,
-      "crusader": 80708,
-      "archon": 71794,
-      "legend": 53873,
-      "ancient": 35194,
-      "divine": 36407
+      "herald": 42042,
+      "guardian": 71611,
+      "crusader": 75798,
+      "archon": 67562,
+      "legend": 50815,
+      "ancient": 33304,
+      "divine": 34529
     },
     "counters": [
       "underlord",
       "abaddon",
-      "phoenix",
+      "warlock",
       "axe",
-      "storm-spirit",
-      "warlock"
+      "phoenix",
+      "bristleback"
     ],
     "weakAgainst": [
       "invoker",
-      "monkey-king",
-      "timbersaw",
       "pangolier",
+      "monkey-king",
       "slardar",
+      "timbersaw",
       "leshrac"
     ],
     "startItems": [
@@ -3039,27 +3369,41 @@ export const HERO_DATA: readonly HeroData[] = [
       "Nuker",
       "Initiator"
     ],
-    "overallWin": 0.489,
+    "overallWin": 0.488,
     "winByBracket": {
       "herald": 0.491,
       "guardian": 0.492,
-      "crusader": 0.49,
-      "archon": 0.487,
+      "crusader": 0.489,
+      "archon": 0.488,
       "legend": 0.487,
-      "ancient": 0.486,
-      "divine": 0.484
+      "ancient": 0.485,
+      "divine": 0.483
     },
     "pickByBracket": {
-      "herald": 75041,
-      "guardian": 155439,
-      "crusader": 173022,
-      "archon": 156734,
-      "legend": 118626,
-      "ancient": 77507,
-      "divine": 79201
+      "herald": 70026,
+      "guardian": 146051,
+      "crusader": 162389,
+      "archon": 147044,
+      "legend": 111041,
+      "ancient": 72971,
+      "divine": 74422
     },
-    "counters": [],
-    "weakAgainst": [],
+    "counters": [
+      "troll-warlord",
+      "tinker",
+      "dark-willow",
+      "grimstroke",
+      "sven",
+      "death-prophet"
+    ],
+    "weakAgainst": [
+      "lycan",
+      "treant-protector",
+      "monkey-king",
+      "undying",
+      "abaddon",
+      "kunkka"
+    ],
     "startItems": [
       "Iron Branch",
       "Tango",
@@ -3070,9 +3414,9 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "coreItems": [
       "Blink Dagger",
+      "Staff of Wizardry",
       "Ghost Scepter",
       "Blitz Knuckles",
-      "Staff of Wizardry",
       "Claymore"
     ]
   },
@@ -3090,22 +3434,22 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.49,
     "winByBracket": {
-      "herald": 0.489,
-      "guardian": 0.494,
+      "herald": 0.49,
+      "guardian": 0.496,
       "crusader": 0.494,
-      "archon": 0.487,
-      "legend": 0.482,
-      "ancient": 0.482,
-      "divine": 0.498
+      "archon": 0.485,
+      "legend": 0.479,
+      "ancient": 0.48,
+      "divine": 0.5
     },
     "pickByBracket": {
-      "herald": 7246,
-      "guardian": 15469,
-      "crusader": 17346,
-      "archon": 14861,
-      "legend": 11765,
-      "ancient": 8105,
-      "divine": 10119
+      "herald": 6848,
+      "guardian": 14465,
+      "crusader": 16210,
+      "archon": 13995,
+      "legend": 11087,
+      "ancient": 7705,
+      "divine": 9501
     },
     "counters": [
       "shadow-fiend",
@@ -3144,32 +3488,32 @@ export const HERO_DATA: readonly HeroData[] = [
       "Nuker",
       "Pusher"
     ],
-    "overallWin": 0.494,
+    "overallWin": 0.495,
     "winByBracket": {
       "herald": 0.502,
-      "guardian": 0.498,
-      "crusader": 0.493,
-      "archon": 0.495,
+      "guardian": 0.496,
+      "crusader": 0.496,
+      "archon": 0.496,
       "legend": 0.488,
-      "ancient": 0.488,
-      "divine": 0.494
+      "ancient": 0.487,
+      "divine": 0.496
     },
     "pickByBracket": {
-      "herald": 22132,
-      "guardian": 38534,
-      "crusader": 40969,
-      "archon": 37966,
-      "legend": 30725,
-      "ancient": 21282,
-      "divine": 25233
+      "herald": 20590,
+      "guardian": 36066,
+      "crusader": 38311,
+      "archon": 35600,
+      "legend": 28787,
+      "ancient": 20154,
+      "divine": 23933
     },
     "counters": [
       "morphling",
       "sand-king",
       "phantom-assassin",
       "sniper",
-      "alchemist",
-      "dragon-knight"
+      "dragon-knight",
+      "alchemist"
     ],
     "weakAgainst": [
       "clockwerk",
@@ -3210,22 +3554,22 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.489,
     "winByBracket": {
-      "herald": 0.47,
-      "guardian": 0.459,
-      "crusader": 0.484,
-      "archon": 0.491,
-      "legend": 0.503,
-      "ancient": 0.493,
-      "divine": 0.531
+      "herald": 0.463,
+      "guardian": 0.457,
+      "crusader": 0.485,
+      "archon": 0.496,
+      "legend": 0.499,
+      "ancient": 0.502,
+      "divine": 0.535
     },
     "pickByBracket": {
-      "herald": 4047,
-      "guardian": 7254,
-      "crusader": 7605,
-      "archon": 6599,
-      "legend": 5215,
-      "ancient": 3621,
-      "divine": 5101
+      "herald": 3833,
+      "guardian": 6787,
+      "crusader": 7184,
+      "archon": 6197,
+      "legend": 4899,
+      "ancient": 3374,
+      "divine": 4810
     },
     "counters": [
       "skywrath-mage",
@@ -3239,9 +3583,9 @@ export const HERO_DATA: readonly HeroData[] = [
       "leshrac",
       "beastmaster",
       "terrorblade",
+      "bane",
       "ogre-magi",
-      "tusk",
-      "bane"
+      "tusk"
     ],
     "startItems": [
       "Iron Branch",
@@ -3255,8 +3599,8 @@ export const HERO_DATA: readonly HeroData[] = [
       "Ultimate Orb",
       "Helm of the Overlord",
       "Aghanim's Shard",
-      "Platemail",
-      "Hyperstone"
+      "Hyperstone",
+      "Platemail"
     ]
   },
   {
@@ -3274,27 +3618,27 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.491,
     "winByBracket": {
-      "herald": 0.469,
+      "herald": 0.471,
       "guardian": 0.478,
       "crusader": 0.488,
-      "archon": 0.493,
+      "archon": 0.494,
       "legend": 0.496,
-      "ancient": 0.501,
-      "divine": 0.502
+      "ancient": 0.5,
+      "divine": 0.499
     },
     "pickByBracket": {
-      "herald": 14403,
-      "guardian": 41390,
-      "crusader": 58454,
-      "archon": 61727,
-      "legend": 51874,
-      "ancient": 35881,
-      "divine": 36718
+      "herald": 13289,
+      "guardian": 38601,
+      "crusader": 54762,
+      "archon": 57959,
+      "legend": 48607,
+      "ancient": 33881,
+      "divine": 34907
     },
     "counters": [
       "void-spirit",
-      "phoenix",
       "bristleback",
+      "phoenix",
       "doom",
       "warlock",
       "hoodwink"
@@ -3337,40 +3681,40 @@ export const HERO_DATA: readonly HeroData[] = [
       "Disabler",
       "Escape"
     ],
-    "overallWin": 0.492,
+    "overallWin": 0.491,
     "winByBracket": {
-      "herald": 0.482,
-      "guardian": 0.488,
-      "crusader": 0.491,
-      "archon": 0.494,
-      "legend": 0.491,
-      "ancient": 0.499,
+      "herald": 0.475,
+      "guardian": 0.486,
+      "crusader": 0.492,
+      "archon": 0.492,
+      "legend": 0.492,
+      "ancient": 0.501,
       "divine": 0.507
     },
     "pickByBracket": {
-      "herald": 12100,
-      "guardian": 19757,
-      "crusader": 20737,
-      "archon": 18435,
-      "legend": 13862,
-      "ancient": 9605,
-      "divine": 10800
+      "herald": 11180,
+      "guardian": 18440,
+      "crusader": 19358,
+      "archon": 17434,
+      "legend": 13059,
+      "ancient": 9076,
+      "divine": 10371
     },
     "counters": [
       "death-prophet",
       "witch-doctor",
       "void-spirit",
-      "enchantress",
       "ursa",
-      "storm-spirit"
+      "storm-spirit",
+      "dark-seer"
     ],
     "weakAgainst": [
       "dazzle",
       "ancient-apparition",
       "phoenix",
-      "rubick",
       "lycan",
-      "puck"
+      "puck",
+      "rubick"
     ],
     "startItems": [
       "Iron Branch",
@@ -3401,24 +3745,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Disabler",
       "Durable"
     ],
-    "overallWin": 0.463,
+    "overallWin": 0.464,
     "winByBracket": {
       "herald": 0.461,
-      "guardian": 0.459,
+      "guardian": 0.463,
       "crusader": 0.46,
       "archon": 0.463,
-      "legend": 0.468,
-      "ancient": 0.464,
-      "divine": 0.468
+      "legend": 0.466,
+      "ancient": 0.462,
+      "divine": 0.469
     },
     "pickByBracket": {
-      "herald": 10187,
-      "guardian": 23486,
-      "crusader": 31593,
-      "archon": 33325,
-      "legend": 29850,
-      "ancient": 22199,
-      "divine": 25440
+      "herald": 9491,
+      "guardian": 21719,
+      "crusader": 29214,
+      "archon": 31061,
+      "legend": 27880,
+      "ancient": 20803,
+      "divine": 23990
     },
     "counters": [
       "chaos-knight",
@@ -3467,29 +3811,29 @@ export const HERO_DATA: readonly HeroData[] = [
     "overallWin": 0.498,
     "winByBracket": {
       "herald": 0.502,
-      "guardian": 0.502,
-      "crusader": 0.502,
-      "archon": 0.498,
+      "guardian": 0.504,
+      "crusader": 0.501,
+      "archon": 0.496,
       "legend": 0.488,
-      "ancient": 0.495,
-      "divine": 0.491
+      "ancient": 0.494,
+      "divine": 0.492
     },
     "pickByBracket": {
-      "herald": 12775,
-      "guardian": 23440,
-      "crusader": 24223,
-      "archon": 21115,
-      "legend": 14721,
-      "ancient": 8938,
-      "divine": 8049
+      "herald": 11920,
+      "guardian": 22033,
+      "crusader": 22519,
+      "archon": 19688,
+      "legend": 13811,
+      "ancient": 8373,
+      "divine": 7594
     },
     "counters": [
-      "dark-willow",
       "weaver",
+      "dark-willow",
       "warlock",
-      "templar-assassin",
       "sand-king",
-      "undying"
+      "undying",
+      "slardar"
     ],
     "weakAgainst": [
       "shadow-demon",
@@ -3530,24 +3874,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Initiator",
       "Pusher"
     ],
-    "overallWin": 0.511,
+    "overallWin": 0.509,
     "winByBracket": {
-      "herald": 0.507,
-      "guardian": 0.509,
-      "crusader": 0.508,
-      "archon": 0.513,
-      "legend": 0.506,
-      "ancient": 0.518,
-      "divine": 0.529
+      "herald": 0.502,
+      "guardian": 0.505,
+      "crusader": 0.504,
+      "archon": 0.512,
+      "legend": 0.512,
+      "ancient": 0.521,
+      "divine": 0.534
     },
     "pickByBracket": {
-      "herald": 7744,
-      "guardian": 11666,
-      "crusader": 10620,
-      "archon": 8048,
-      "legend": 5296,
-      "ancient": 3289,
-      "divine": 3833
+      "herald": 7249,
+      "guardian": 11048,
+      "crusader": 10080,
+      "archon": 7430,
+      "legend": 4946,
+      "ancient": 3036,
+      "divine": 3621
     },
     "counters": [],
     "weakAgainst": [],
@@ -3583,22 +3927,22 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.511,
     "winByBracket": {
-      "herald": 0.511,
-      "guardian": 0.511,
+      "herald": 0.512,
+      "guardian": 0.512,
       "crusader": 0.512,
-      "archon": 0.51,
-      "legend": 0.516,
-      "ancient": 0.51,
-      "divine": 0.508
+      "archon": 0.509,
+      "legend": 0.513,
+      "ancient": 0.509,
+      "divine": 0.506
     },
     "pickByBracket": {
-      "herald": 19199,
-      "guardian": 37342,
-      "crusader": 41547,
-      "archon": 36088,
-      "legend": 26917,
-      "ancient": 16907,
-      "divine": 16997
+      "herald": 17881,
+      "guardian": 35167,
+      "crusader": 39136,
+      "archon": 33781,
+      "legend": 25342,
+      "ancient": 15982,
+      "divine": 15986
     },
     "counters": [
       "ursa",
@@ -3629,7 +3973,7 @@ export const HERO_DATA: readonly HeroData[] = [
       "Arcane Boots",
       "Blade of Alacrity",
       "Eul's Scepter of Divinity",
-      "Ogre Axe"
+      "Point Booster"
     ]
   },
   {
@@ -3647,38 +3991,38 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.444,
     "winByBracket": {
-      "herald": 0.434,
-      "guardian": 0.434,
-      "crusader": 0.437,
+      "herald": 0.435,
+      "guardian": 0.433,
+      "crusader": 0.435,
       "archon": 0.448,
-      "legend": 0.453,
-      "ancient": 0.451,
-      "divine": 0.462
+      "legend": 0.45,
+      "ancient": 0.455,
+      "divine": 0.463
     },
     "pickByBracket": {
-      "herald": 19679,
-      "guardian": 33567,
-      "crusader": 35217,
-      "archon": 32862,
-      "legend": 25738,
-      "ancient": 16813,
-      "divine": 19641
+      "herald": 18287,
+      "guardian": 31235,
+      "crusader": 32654,
+      "archon": 30486,
+      "legend": 23723,
+      "ancient": 15619,
+      "divine": 18179
     },
     "counters": [
       "undying",
       "earthshaker",
       "death-prophet",
       "weaver",
-      "clockwerk",
-      "underlord"
+      "skywrath-mage",
+      "clockwerk"
     ],
     "weakAgainst": [
       "treant-protector",
       "chen",
-      "naga-siren",
       "crystal-maiden",
       "zeus",
-      "timbersaw"
+      "timbersaw",
+      "dawnbreaker"
     ],
     "startItems": [
       "Iron Branch",
@@ -3712,27 +4056,27 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.486,
     "winByBracket": {
-      "herald": 0.481,
+      "herald": 0.484,
       "guardian": 0.484,
       "crusader": 0.488,
-      "archon": 0.485,
+      "archon": 0.484,
       "legend": 0.488,
-      "ancient": 0.494,
-      "divine": 0.484
+      "ancient": 0.497,
+      "divine": 0.483
     },
     "pickByBracket": {
-      "herald": 12879,
-      "guardian": 25367,
-      "crusader": 26430,
-      "archon": 22375,
-      "legend": 17182,
-      "ancient": 11970,
-      "divine": 14276
+      "herald": 12085,
+      "guardian": 24032,
+      "crusader": 25087,
+      "archon": 21236,
+      "legend": 15936,
+      "ancient": 11425,
+      "divine": 13484
     },
     "counters": [
       "weaver",
-      "terrorblade",
       "lifestealer",
+      "terrorblade",
       "dawnbreaker",
       "void-spirit",
       "anti-mage"
@@ -3741,9 +4085,9 @@ export const HERO_DATA: readonly HeroData[] = [
       "luna",
       "doom",
       "dazzle",
+      "pudge",
       "viper",
-      "timbersaw",
-      "pudge"
+      "timbersaw"
     ],
     "startItems": [
       "Iron Branch",
@@ -3773,32 +4117,32 @@ export const HERO_DATA: readonly HeroData[] = [
       "Nuker",
       "Disabler"
     ],
-    "overallWin": 0.473,
+    "overallWin": 0.472,
     "winByBracket": {
-      "herald": 0.485,
-      "guardian": 0.483,
-      "crusader": 0.471,
-      "archon": 0.467,
-      "legend": 0.47,
-      "ancient": 0.466,
+      "herald": 0.484,
+      "guardian": 0.479,
+      "crusader": 0.47,
+      "archon": 0.47,
+      "legend": 0.469,
+      "ancient": 0.467,
       "divine": 0.466
     },
     "pickByBracket": {
-      "herald": 13759,
-      "guardian": 22831,
-      "crusader": 25148,
-      "archon": 24023,
-      "legend": 19621,
-      "ancient": 13695,
-      "divine": 15145
+      "herald": 12823,
+      "guardian": 20955,
+      "crusader": 23152,
+      "archon": 22063,
+      "legend": 17796,
+      "ancient": 12556,
+      "divine": 13906
     },
     "counters": [
       "techies",
-      "faceless-void",
       "lich",
+      "faceless-void",
       "bristleback",
       "luna",
-      "sven"
+      "necrophos"
     ],
     "weakAgainst": [
       "slark",
@@ -3814,7 +4158,7 @@ export const HERO_DATA: readonly HeroData[] = [
       "Magic Wand",
       "Tango",
       "Magic Stick",
-      "Quelling Blade"
+      "Circlet"
     ],
     "coreItems": [
       "Mithril Hammer",
@@ -3839,29 +4183,29 @@ export const HERO_DATA: readonly HeroData[] = [
       "Initiator",
       "Escape"
     ],
-    "overallWin": 0.5,
+    "overallWin": 0.497,
     "winByBracket": {
-      "herald": 0.514,
+      "herald": 0.507,
       "guardian": 0.495,
-      "crusader": 0.496,
-      "archon": 0.487,
-      "legend": 0.5,
-      "ancient": 0.503,
-      "divine": 0.508
+      "crusader": 0.491,
+      "archon": 0.482,
+      "legend": 0.499,
+      "ancient": 0.508,
+      "divine": 0.507
     },
     "pickByBracket": {
-      "herald": 10197,
-      "guardian": 13296,
-      "crusader": 10102,
-      "archon": 6997,
-      "legend": 4542,
-      "ancient": 2725,
-      "divine": 3328
+      "herald": 9373,
+      "guardian": 12414,
+      "crusader": 9308,
+      "archon": 6560,
+      "legend": 4245,
+      "ancient": 2628,
+      "divine": 3071
     },
     "counters": [
       "void-spirit",
-      "windranger",
       "hoodwink",
+      "windranger",
       "puck",
       "pangolier",
       "axe"
@@ -3881,8 +4225,8 @@ export const HERO_DATA: readonly HeroData[] = [
       "Magic Stick"
     ],
     "coreItems": [
-      "Blitz Knuckles",
       "Claymore",
+      "Blitz Knuckles",
       "Oblivion Staff",
       "Diadem",
       "Manta Style"
@@ -3903,30 +4247,30 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.433,
     "winByBracket": {
-      "herald": 0.446,
-      "guardian": 0.434,
-      "crusader": 0.429,
-      "archon": 0.43,
-      "legend": 0.428,
-      "ancient": 0.432,
-      "divine": 0.437
+      "herald": 0.443,
+      "guardian": 0.435,
+      "crusader": 0.428,
+      "archon": 0.428,
+      "legend": 0.432,
+      "ancient": 0.435,
+      "divine": 0.435
     },
     "pickByBracket": {
-      "herald": 32142,
-      "guardian": 57599,
-      "crusader": 59326,
-      "archon": 51366,
-      "legend": 38096,
-      "ancient": 24834,
-      "divine": 27185
+      "herald": 29815,
+      "guardian": 53568,
+      "crusader": 54970,
+      "archon": 47449,
+      "legend": 35083,
+      "ancient": 22918,
+      "divine": 24915
     },
     "counters": [
       "razor",
       "phantom-lancer",
       "pangolier",
-      "doom",
       "huskar",
-      "sniper"
+      "sniper",
+      "doom"
     ],
     "weakAgainst": [
       "kez",
@@ -3967,30 +4311,30 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.524,
     "winByBracket": {
-      "herald": 0.545,
-      "guardian": 0.535,
-      "crusader": 0.527,
+      "herald": 0.547,
+      "guardian": 0.534,
+      "crusader": 0.526,
       "archon": 0.521,
-      "legend": 0.519,
-      "ancient": 0.513,
-      "divine": 0.504
+      "legend": 0.52,
+      "ancient": 0.511,
+      "divine": 0.503
     },
     "pickByBracket": {
-      "herald": 51356,
-      "guardian": 101679,
-      "crusader": 111027,
-      "archon": 100929,
-      "legend": 77366,
-      "ancient": 50552,
-      "divine": 53327
+      "herald": 47861,
+      "guardian": 95192,
+      "crusader": 103516,
+      "archon": 93884,
+      "legend": 71955,
+      "ancient": 47412,
+      "divine": 49846
     },
     "counters": [
       "underlord",
       "sven",
       "witch-doctor",
       "medusa",
-      "void-spirit",
-      "bristleback"
+      "bristleback",
+      "void-spirit"
     ],
     "weakAgainst": [
       "grimstroke",
@@ -3998,15 +4342,15 @@ export const HERO_DATA: readonly HeroData[] = [
       "beastmaster",
       "ring-master",
       "muerta",
-      "keeper-of-the-light"
+      "invoker"
     ],
     "startItems": [
       "Iron Branch",
       "Circlet",
       "Faerie Fire",
       "Tango",
-      "Magic Stick",
-      "Magic Wand"
+      "Magic Wand",
+      "Magic Stick"
     ],
     "coreItems": [
       "Radiance",
@@ -4030,32 +4374,32 @@ export const HERO_DATA: readonly HeroData[] = [
       "Disabler",
       "Nuker"
     ],
-    "overallWin": 0.525,
+    "overallWin": 0.526,
     "winByBracket": {
-      "herald": 0.477,
-      "guardian": 0.508,
-      "crusader": 0.522,
+      "herald": 0.481,
+      "guardian": 0.506,
+      "crusader": 0.521,
       "archon": 0.528,
-      "legend": 0.536,
+      "legend": 0.538,
       "ancient": 0.536,
       "divine": 0.545
     },
     "pickByBracket": {
-      "herald": 12958,
-      "guardian": 29901,
-      "crusader": 38970,
-      "archon": 40185,
-      "legend": 33896,
-      "ancient": 24253,
-      "divine": 30261
+      "herald": 12269,
+      "guardian": 28467,
+      "crusader": 37028,
+      "archon": 37780,
+      "legend": 32026,
+      "ancient": 22919,
+      "divine": 28676
     },
     "counters": [
       "dark-willow",
       "ancient-apparition",
       "zeus",
+      "storm-spirit",
       "tidehunter",
-      "troll-warlord",
-      "storm-spirit"
+      "troll-warlord"
     ],
     "weakAgainst": [
       "lifestealer",
@@ -4063,7 +4407,7 @@ export const HERO_DATA: readonly HeroData[] = [
       "undying",
       "beastmaster",
       "crystal-maiden",
-      "rubick"
+      "shadow-fiend"
     ],
     "startItems": [
       "Iron Branch",
@@ -4094,24 +4438,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Initiator",
       "Escape"
     ],
-    "overallWin": 0.521,
+    "overallWin": 0.522,
     "winByBracket": {
-      "herald": 0.512,
-      "guardian": 0.515,
-      "crusader": 0.522,
-      "archon": 0.523,
-      "legend": 0.523,
-      "ancient": 0.522,
-      "divine": 0.529
+      "herald": 0.515,
+      "guardian": 0.519,
+      "crusader": 0.521,
+      "archon": 0.52,
+      "legend": 0.524,
+      "ancient": 0.521,
+      "divine": 0.531
     },
     "pickByBracket": {
-      "herald": 19200,
-      "guardian": 39207,
-      "crusader": 44273,
-      "archon": 42298,
-      "legend": 34069,
-      "ancient": 23046,
-      "divine": 25285
+      "herald": 17975,
+      "guardian": 37055,
+      "crusader": 41599,
+      "archon": 40133,
+      "legend": 32477,
+      "ancient": 21861,
+      "divine": 24033
     },
     "counters": [
       "lich",
@@ -4127,7 +4471,7 @@ export const HERO_DATA: readonly HeroData[] = [
       "phoenix",
       "terrorblade",
       "abaddon",
-      "clockwerk"
+      "rubick"
     ],
     "startItems": [
       "Iron Branch",
@@ -4140,8 +4484,8 @@ export const HERO_DATA: readonly HeroData[] = [
     "coreItems": [
       "Staff of Wizardry",
       "Eul's Scepter of Divinity",
-      "Point Booster",
       "Arcane Boots",
+      "Point Booster",
       "Blink Dagger"
     ]
   },
@@ -4161,22 +4505,22 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.505,
     "winByBracket": {
-      "herald": 0.521,
-      "guardian": 0.512,
-      "crusader": 0.505,
-      "archon": 0.502,
+      "herald": 0.519,
+      "guardian": 0.51,
+      "crusader": 0.504,
+      "archon": 0.503,
       "legend": 0.499,
-      "ancient": 0.495,
-      "divine": 0.489
+      "ancient": 0.497,
+      "divine": 0.49
     },
     "pickByBracket": {
-      "herald": 57765,
-      "guardian": 108252,
-      "crusader": 108094,
-      "archon": 88671,
-      "legend": 60502,
-      "ancient": 35025,
-      "divine": 28533
+      "herald": 53870,
+      "guardian": 101455,
+      "crusader": 101103,
+      "archon": 83050,
+      "legend": 56665,
+      "ancient": 33025,
+      "divine": 26944
     },
     "counters": [
       "medusa",
@@ -4222,24 +4566,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Durable",
       "Nuker"
     ],
-    "overallWin": 0.502,
+    "overallWin": 0.5,
     "winByBracket": {
-      "herald": 0.484,
+      "herald": 0.48,
       "guardian": 0.495,
-      "crusader": 0.492,
-      "archon": 0.506,
-      "legend": 0.51,
-      "ancient": 0.519,
-      "divine": 0.52
+      "crusader": 0.491,
+      "archon": 0.507,
+      "legend": 0.508,
+      "ancient": 0.518,
+      "divine": 0.507
     },
     "pickByBracket": {
-      "herald": 7500,
-      "guardian": 13549,
-      "crusader": 14137,
-      "archon": 13063,
-      "legend": 9647,
-      "ancient": 6600,
-      "divine": 7278
+      "herald": 7054,
+      "guardian": 13051,
+      "crusader": 13430,
+      "archon": 12251,
+      "legend": 9004,
+      "ancient": 6094,
+      "divine": 6725
     },
     "counters": [
       "tiny",
@@ -4282,29 +4626,56 @@ export const HERO_DATA: readonly HeroData[] = [
       "Disabler",
       "Escape"
     ],
-    "overallWin": 0.502,
+    "overallWin": 0.504,
     "winByBracket": {
-      "herald": 0.463,
-      "guardian": 0.483,
-      "crusader": 0.497,
-      "archon": 0.506,
-      "legend": 0.517,
-      "ancient": 0.51,
-      "divine": 0.518
+      "herald": 0.466,
+      "guardian": 0.484,
+      "crusader": 0.499,
+      "archon": 0.511,
+      "legend": 0.516,
+      "ancient": 0.515,
+      "divine": 0.52
     },
     "pickByBracket": {
-      "herald": 6432,
-      "guardian": 14602,
-      "crusader": 18759,
-      "archon": 18338,
-      "legend": 15313,
-      "ancient": 10809,
-      "divine": 12821
+      "herald": 6111,
+      "guardian": 13559,
+      "crusader": 17275,
+      "archon": 17210,
+      "legend": 14242,
+      "ancient": 10156,
+      "divine": 12181
     },
-    "counters": [],
-    "weakAgainst": [],
-    "startItems": [],
-    "coreItems": []
+    "counters": [
+      "shadow-shaman",
+      "tiny",
+      "batrider",
+      "invoker",
+      "puck",
+      "night-stalker"
+    ],
+    "weakAgainst": [
+      "windranger",
+      "jakiro",
+      "queen-of-pain",
+      "ember-spirit",
+      "ogre-magi",
+      "templar-assassin"
+    ],
+    "startItems": [
+      "Iron Branch",
+      "Tango",
+      "Blood Grenade",
+      "Observer and Sentry Wards",
+      "Magic Stick",
+      "Sentry Ward"
+    ],
+    "coreItems": [
+      "Arcane Boots",
+      "Blink Dagger",
+      "Ghost Scepter",
+      "Mekansm",
+      "Glimmer Cape"
+    ]
   },
   {
     "id": "outworld-devourer",
@@ -4318,24 +4689,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Nuker",
       "Disabler"
     ],
-    "overallWin": 0.5,
+    "overallWin": 0.499,
     "winByBracket": {
-      "herald": 0.468,
-      "guardian": 0.495,
-      "crusader": 0.504,
+      "herald": 0.465,
+      "guardian": 0.496,
+      "crusader": 0.501,
       "archon": 0.501,
-      "legend": 0.507,
-      "ancient": 0.511,
-      "divine": 0.508
+      "legend": 0.508,
+      "ancient": 0.5,
+      "divine": 0.511
     },
     "pickByBracket": {
-      "herald": 11172,
-      "guardian": 22328,
-      "crusader": 25790,
-      "archon": 23932,
-      "legend": 18372,
-      "ancient": 11551,
-      "divine": 11399
+      "herald": 10473,
+      "guardian": 20856,
+      "crusader": 24383,
+      "archon": 22336,
+      "legend": 17221,
+      "ancient": 10865,
+      "divine": 10771
     },
     "counters": [
       "jakiro",
@@ -4380,30 +4751,30 @@ export const HERO_DATA: readonly HeroData[] = [
       "Escape",
       "Initiator"
     ],
-    "overallWin": 0.457,
+    "overallWin": 0.456,
     "winByBracket": {
-      "herald": 0.436,
-      "guardian": 0.454,
-      "crusader": 0.45,
-      "archon": 0.46,
-      "legend": 0.459,
-      "ancient": 0.462,
-      "divine": 0.463
+      "herald": 0.438,
+      "guardian": 0.453,
+      "crusader": 0.454,
+      "archon": 0.462,
+      "legend": 0.46,
+      "ancient": 0.454,
+      "divine": 0.459
     },
     "pickByBracket": {
-      "herald": 6450,
-      "guardian": 14486,
-      "crusader": 19967,
-      "archon": 22339,
-      "legend": 20529,
-      "ancient": 16236,
-      "divine": 21817
+      "herald": 5935,
+      "guardian": 13254,
+      "crusader": 18238,
+      "archon": 20379,
+      "legend": 18744,
+      "ancient": 14902,
+      "divine": 19930
     },
     "counters": [
       "lina",
       "sven",
       "jakiro",
-      "drow-ranger",
+      "lion",
       "beastmaster",
       "earth-spirit"
     ],
@@ -4442,24 +4813,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Carry",
       "Escape"
     ],
-    "overallWin": 0.506,
+    "overallWin": 0.507,
     "winByBracket": {
-      "herald": 0.516,
+      "herald": 0.517,
       "guardian": 0.514,
-      "crusader": 0.504,
-      "archon": 0.505,
-      "legend": 0.497,
+      "crusader": 0.506,
+      "archon": 0.506,
+      "legend": 0.498,
       "ancient": 0.492,
-      "divine": 0.497
+      "divine": 0.496
     },
     "pickByBracket": {
-      "herald": 59338,
-      "guardian": 95654,
-      "crusader": 88617,
-      "archon": 69516,
-      "legend": 46153,
-      "ancient": 26571,
-      "divine": 22930
+      "herald": 55155,
+      "guardian": 90063,
+      "crusader": 83276,
+      "archon": 65309,
+      "legend": 43347,
+      "ancient": 24908,
+      "divine": 21401
     },
     "counters": [
       "ogre-magi",
@@ -4468,11 +4839,11 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "weakAgainst": [
       "rubick",
-      "lifestealer",
       "pudge",
+      "lifestealer",
       "queen-of-pain",
-      "ursa",
-      "shadow-shaman"
+      "shadow-shaman",
+      "ursa"
     ],
     "startItems": [
       "Iron Branch",
@@ -4503,24 +4874,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Pusher",
       "Nuker"
     ],
-    "overallWin": 0.528,
+    "overallWin": 0.527,
     "winByBracket": {
-      "herald": 0.522,
-      "guardian": 0.528,
-      "crusader": 0.531,
-      "archon": 0.527,
-      "legend": 0.531,
-      "ancient": 0.531,
-      "divine": 0.529
+      "herald": 0.523,
+      "guardian": 0.527,
+      "crusader": 0.529,
+      "archon": 0.522,
+      "legend": 0.529,
+      "ancient": 0.528,
+      "divine": 0.531
     },
     "pickByBracket": {
-      "herald": 37440,
-      "guardian": 67406,
-      "crusader": 64283,
-      "archon": 50743,
-      "legend": 36072,
-      "ancient": 23655,
-      "divine": 27571
+      "herald": 35144,
+      "guardian": 63270,
+      "crusader": 60729,
+      "archon": 47731,
+      "legend": 33826,
+      "ancient": 22323,
+      "divine": 25833
     },
     "counters": [
       "dark-willow",
@@ -4568,29 +4939,56 @@ export const HERO_DATA: readonly HeroData[] = [
       "Escape",
       "Disabler"
     ],
-    "overallWin": 0.502,
+    "overallWin": 0.504,
     "winByBracket": {
-      "herald": 0.498,
-      "guardian": 0.505,
-      "crusader": 0.505,
-      "archon": 0.501,
-      "legend": 0.504,
+      "herald": 0.493,
+      "guardian": 0.506,
+      "crusader": 0.506,
+      "archon": 0.503,
+      "legend": 0.506,
       "ancient": 0.498,
-      "divine": 0.501
+      "divine": 0.505
     },
     "pickByBracket": {
-      "herald": 10380,
-      "guardian": 26252,
-      "crusader": 33717,
-      "archon": 34093,
-      "legend": 29113,
-      "ancient": 21292,
-      "divine": 26632
+      "herald": 9728,
+      "guardian": 24485,
+      "crusader": 31252,
+      "archon": 31915,
+      "legend": 26976,
+      "ancient": 20059,
+      "divine": 24889
     },
-    "counters": [],
-    "weakAgainst": [],
-    "startItems": [],
-    "coreItems": []
+    "counters": [
+      "dark-seer",
+      "sand-king",
+      "underlord",
+      "techies",
+      "void-spirit",
+      "razor"
+    ],
+    "weakAgainst": [
+      "keeper-of-the-light",
+      "magnus",
+      "juggernaut",
+      "dazzle",
+      "night-stalker",
+      "drow-ranger"
+    ],
+    "startItems": [
+      "Iron Branch",
+      "Tango",
+      "Faerie Fire",
+      "Blood Grenade",
+      "Observer and Sentry Wards",
+      "Sentry Ward"
+    ],
+    "coreItems": [
+      "Diadem",
+      "Aghanim's Shard",
+      "Spirit Vessel",
+      "Platemail",
+      "Staff of Wizardry"
+    ]
   },
   {
     "id": "primal-beast",
@@ -4604,24 +5002,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Durable",
       "Disabler"
     ],
-    "overallWin": 0.488,
+    "overallWin": 0.489,
     "winByBracket": {
-      "herald": 0.49,
-      "guardian": 0.479,
-      "crusader": 0.484,
-      "archon": 0.481,
+      "herald": 0.487,
+      "guardian": 0.483,
+      "crusader": 0.485,
+      "archon": 0.483,
       "legend": 0.495,
       "ancient": 0.496,
-      "divine": 0.502
+      "divine": 0.504
     },
     "pickByBracket": {
-      "herald": 10725,
-      "guardian": 21241,
-      "crusader": 22282,
-      "archon": 19961,
-      "legend": 15229,
-      "ancient": 10856,
-      "divine": 12845
+      "herald": 9731,
+      "guardian": 19362,
+      "crusader": 20365,
+      "archon": 18243,
+      "legend": 13983,
+      "ancient": 9948,
+      "divine": 11766
     },
     "counters": [
       "muerta",
@@ -4632,8 +5030,8 @@ export const HERO_DATA: readonly HeroData[] = [
       "dark-willow"
     ],
     "weakAgainst": [
-      "largo",
       "earthshaker",
+      "largo",
       "shadow-demon",
       "razor",
       "invoker",
@@ -4668,32 +5066,32 @@ export const HERO_DATA: readonly HeroData[] = [
       "Escape",
       "Nuker"
     ],
-    "overallWin": 0.471,
+    "overallWin": 0.472,
     "winByBracket": {
       "herald": 0.445,
-      "guardian": 0.445,
-      "crusader": 0.465,
-      "archon": 0.467,
-      "legend": 0.476,
-      "ancient": 0.487,
-      "divine": 0.501
+      "guardian": 0.447,
+      "crusader": 0.466,
+      "archon": 0.465,
+      "legend": 0.479,
+      "ancient": 0.49,
+      "divine": 0.502
     },
     "pickByBracket": {
-      "herald": 8728,
-      "guardian": 18285,
-      "crusader": 23080,
-      "archon": 23813,
-      "legend": 19905,
-      "ancient": 14512,
-      "divine": 18984
+      "herald": 8149,
+      "guardian": 16930,
+      "crusader": 21223,
+      "archon": 21892,
+      "legend": 18384,
+      "ancient": 13548,
+      "divine": 17580
     },
     "counters": [
       "weaver",
       "sven",
       "dark-willow",
       "crystal-maiden",
-      "invoker",
-      "underlord"
+      "underlord",
+      "invoker"
     ],
     "weakAgainst": [
       "naga-siren",
@@ -4701,7 +5099,7 @@ export const HERO_DATA: readonly HeroData[] = [
       "clinkz",
       "bounty-hunter",
       "nyx-assassin",
-      "huskar"
+      "dazzle"
     ],
     "startItems": [
       "Iron Branch",
@@ -4709,7 +5107,7 @@ export const HERO_DATA: readonly HeroData[] = [
       "Observer Ward",
       "Faerie Fire",
       "Circlet",
-      "Mantle of Intelligence"
+      "Sentry Ward"
     ],
     "coreItems": [
       "Witch Blade",
@@ -4732,24 +5130,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Durable",
       "Nuker"
     ],
-    "overallWin": 0.512,
+    "overallWin": 0.511,
     "winByBracket": {
-      "herald": 0.511,
-      "guardian": 0.513,
-      "crusader": 0.513,
-      "archon": 0.513,
-      "legend": 0.511,
-      "ancient": 0.506,
-      "divine": 0.509
+      "herald": 0.512,
+      "guardian": 0.512,
+      "crusader": 0.512,
+      "archon": 0.512,
+      "legend": 0.51,
+      "ancient": 0.508,
+      "divine": 0.506
     },
     "pickByBracket": {
-      "herald": 75333,
-      "guardian": 161261,
-      "crusader": 170974,
-      "archon": 144774,
-      "legend": 106575,
-      "ancient": 70376,
-      "divine": 80390
+      "herald": 70545,
+      "guardian": 151637,
+      "crusader": 160398,
+      "archon": 135187,
+      "legend": 99550,
+      "ancient": 66193,
+      "divine": 75393
     },
     "counters": [
       "io",
@@ -4794,30 +5192,30 @@ export const HERO_DATA: readonly HeroData[] = [
       "Nuker",
       "Pusher"
     ],
-    "overallWin": 0.498,
+    "overallWin": 0.499,
     "winByBracket": {
       "herald": 0.475,
-      "guardian": 0.487,
+      "guardian": 0.489,
       "crusader": 0.5,
       "archon": 0.507,
       "legend": 0.508,
-      "ancient": 0.502,
-      "divine": 0.518
+      "ancient": 0.508,
+      "divine": 0.512
     },
     "pickByBracket": {
-      "herald": 14372,
-      "guardian": 25069,
-      "crusader": 25218,
-      "archon": 21651,
-      "legend": 16438,
-      "ancient": 10540,
-      "divine": 10103
+      "herald": 13335,
+      "guardian": 23385,
+      "crusader": 23697,
+      "archon": 20242,
+      "legend": 15470,
+      "ancient": 9820,
+      "divine": 9512
     },
     "counters": [
       "night-stalker",
       "dark-willow",
-      "dazzle",
       "beastmaster",
+      "dazzle",
       "muerta",
       "tusk"
     ],
@@ -4825,8 +5223,8 @@ export const HERO_DATA: readonly HeroData[] = [
       "chen",
       "naga-siren",
       "crystal-maiden",
-      "shadow-fiend",
       "terrorblade",
+      "shadow-fiend",
       "centaur-warrunner"
     ],
     "startItems": [
@@ -4857,24 +5255,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Nuker",
       "Escape"
     ],
-    "overallWin": 0.462,
+    "overallWin": 0.463,
     "winByBracket": {
-      "herald": 0.461,
-      "guardian": 0.461,
+      "herald": 0.462,
+      "guardian": 0.46,
       "crusader": 0.464,
-      "archon": 0.464,
-      "legend": 0.465,
-      "ancient": 0.459,
+      "archon": 0.463,
+      "legend": 0.463,
+      "ancient": 0.461,
       "divine": 0.461
     },
     "pickByBracket": {
-      "herald": 26934,
-      "guardian": 58961,
-      "crusader": 72984,
-      "archon": 69322,
-      "legend": 54627,
-      "ancient": 35871,
-      "divine": 37464
+      "herald": 24833,
+      "guardian": 55288,
+      "crusader": 67881,
+      "archon": 64618,
+      "legend": 50693,
+      "ancient": 33317,
+      "divine": 34824
     },
     "counters": [
       "phantom-lancer",
@@ -4921,40 +5319,40 @@ export const HERO_DATA: readonly HeroData[] = [
       "Nuker",
       "Pusher"
     ],
-    "overallWin": 0.506,
+    "overallWin": 0.505,
     "winByBracket": {
       "herald": 0.51,
-      "guardian": 0.504,
-      "crusader": 0.505,
-      "archon": 0.506,
+      "guardian": 0.505,
+      "crusader": 0.506,
+      "archon": 0.504,
       "legend": 0.505,
-      "ancient": 0.505,
-      "divine": 0.501
+      "ancient": 0.509,
+      "divine": 0.496
     },
     "pickByBracket": {
-      "herald": 21753,
-      "guardian": 32564,
-      "crusader": 32722,
-      "archon": 27417,
-      "legend": 20738,
-      "ancient": 13131,
-      "divine": 12474
+      "herald": 20429,
+      "guardian": 30655,
+      "crusader": 30723,
+      "archon": 25915,
+      "legend": 19503,
+      "ancient": 12362,
+      "divine": 11927
     },
     "counters": [
-      "witch-doctor",
       "silencer",
       "crystal-maiden",
       "primal-beast",
       "tidehunter",
-      "warlock"
+      "gyrocopter",
+      "skywrath-mage"
     ],
     "weakAgainst": [
       "treant-protector",
       "nature-s-prophet",
       "terrorblade",
       "phoenix",
-      "kunkka",
-      "sniper"
+      "huskar",
+      "kunkka"
     ],
     "startItems": [
       "Iron Branch",
@@ -4986,24 +5384,26 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.524,
     "winByBracket": {
-      "herald": 0.522,
-      "guardian": 0.526,
-      "crusader": 0.527,
+      "herald": 0.524,
+      "guardian": 0.523,
+      "crusader": 0.528,
       "archon": 0.524,
-      "legend": 0.525,
-      "ancient": 0.527,
-      "divine": 0.515
+      "legend": 0.521,
+      "ancient": 0.524,
+      "divine": 0.513
     },
     "pickByBracket": {
-      "herald": 25672,
-      "guardian": 41985,
-      "crusader": 37473,
-      "archon": 29023,
-      "legend": 20502,
-      "ancient": 12348,
-      "divine": 11233
+      "herald": 24033,
+      "guardian": 39197,
+      "crusader": 34941,
+      "archon": 27391,
+      "legend": 19102,
+      "ancient": 11602,
+      "divine": 10494
     },
-    "counters": [],
+    "counters": [
+      "puck"
+    ],
     "weakAgainst": [],
     "startItems": [
       "Iron Branch",
@@ -5036,22 +5436,22 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.478,
     "winByBracket": {
-      "herald": 0.463,
-      "guardian": 0.474,
-      "crusader": 0.475,
+      "herald": 0.468,
+      "guardian": 0.472,
+      "crusader": 0.472,
       "archon": 0.48,
-      "legend": 0.485,
-      "ancient": 0.481,
-      "divine": 0.482
+      "legend": 0.481,
+      "ancient": 0.484,
+      "divine": 0.483
     },
     "pickByBracket": {
-      "herald": 7807,
-      "guardian": 16971,
-      "crusader": 20254,
-      "archon": 20697,
-      "legend": 17866,
-      "ancient": 13405,
-      "divine": 16870
+      "herald": 7223,
+      "guardian": 15692,
+      "crusader": 18906,
+      "archon": 19264,
+      "legend": 16701,
+      "ancient": 12488,
+      "divine": 15657
     },
     "counters": [
       "troll-warlord",
@@ -5066,8 +5466,8 @@ export const HERO_DATA: readonly HeroData[] = [
       "chen",
       "grimstroke",
       "bane",
-      "dazzle",
-      "treant-protector"
+      "lich",
+      "dazzle"
     ],
     "startItems": [
       "Iron Branch",
@@ -5097,54 +5497,54 @@ export const HERO_DATA: readonly HeroData[] = [
       "Disabler",
       "Nuker"
     ],
-    "overallWin": 0.492,
+    "overallWin": 0.491,
     "winByBracket": {
-      "herald": 0.483,
-      "guardian": 0.483,
-      "crusader": 0.489,
-      "archon": 0.492,
-      "legend": 0.497,
-      "ancient": 0.502,
-      "divine": 0.496
+      "herald": 0.48,
+      "guardian": 0.481,
+      "crusader": 0.488,
+      "archon": 0.494,
+      "legend": 0.495,
+      "ancient": 0.499,
+      "divine": 0.497
     },
     "pickByBracket": {
-      "herald": 34740,
-      "guardian": 87739,
-      "crusader": 116266,
-      "archon": 121548,
-      "legend": 102645,
-      "ancient": 72241,
-      "divine": 80165
+      "herald": 32606,
+      "guardian": 82294,
+      "crusader": 108833,
+      "archon": 114150,
+      "legend": 95866,
+      "ancient": 67770,
+      "divine": 75040
     },
     "counters": [
       "phantom-assassin",
       "phantom-lancer",
       "sven",
       "weaver",
-      "magnus",
-      "chaos-knight"
+      "brewmaster",
+      "magnus"
     ],
     "weakAgainst": [
       "lone-druid",
-      "lycan",
       "broodmother",
+      "lycan",
       "leshrac",
       "visage",
       "bane"
     ],
     "startItems": [
       "Iron Branch",
-      "Tango",
       "Blood Grenade",
+      "Tango",
       "Sentry Ward",
-      "Faerie Fire",
-      "Magic Stick"
+      "Observer and Sentry Wards",
+      "Faerie Fire"
     ],
     "coreItems": [
       "Blink Dagger",
       "Staff of Wizardry",
-      "Arcane Boots",
       "Essence Distiller",
+      "Arcane Boots",
       "Point Booster"
     ]
   },
@@ -5162,24 +5562,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Nuker",
       "Escape"
     ],
-    "overallWin": 0.485,
+    "overallWin": 0.484,
     "winByBracket": {
       "herald": 0.506,
-      "guardian": 0.497,
-      "crusader": 0.481,
-      "archon": 0.481,
-      "legend": 0.472,
+      "guardian": 0.496,
+      "crusader": 0.484,
+      "archon": 0.479,
+      "legend": 0.47,
       "ancient": 0.472,
-      "divine": 0.469
+      "divine": 0.467
     },
     "pickByBracket": {
-      "herald": 14812,
-      "guardian": 25562,
-      "crusader": 25126,
-      "archon": 21188,
-      "legend": 15399,
-      "ancient": 9894,
-      "divine": 8901
+      "herald": 13816,
+      "guardian": 23750,
+      "crusader": 23556,
+      "archon": 19926,
+      "legend": 14469,
+      "ancient": 9302,
+      "divine": 8426
     },
     "counters": [
       "muerta",
@@ -5187,7 +5587,7 @@ export const HERO_DATA: readonly HeroData[] = [
       "ursa",
       "void-spirit",
       "lion",
-      "beastmaster"
+      "templar-assassin"
     ],
     "weakAgainst": [
       "warlock",
@@ -5228,22 +5628,22 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.452,
     "winByBracket": {
-      "herald": 0.433,
-      "guardian": 0.436,
-      "crusader": 0.446,
-      "archon": 0.458,
-      "legend": 0.461,
-      "ancient": 0.46,
-      "divine": 0.465
+      "herald": 0.431,
+      "guardian": 0.434,
+      "crusader": 0.447,
+      "archon": 0.456,
+      "legend": 0.463,
+      "ancient": 0.462,
+      "divine": 0.467
     },
     "pickByBracket": {
-      "herald": 4944,
-      "guardian": 9511,
-      "crusader": 11810,
-      "archon": 11713,
-      "legend": 10023,
-      "ancient": 7228,
-      "divine": 8831
+      "herald": 4600,
+      "guardian": 9108,
+      "crusader": 10970,
+      "archon": 10948,
+      "legend": 9243,
+      "ancient": 6707,
+      "divine": 8164
     },
     "counters": [
       "medusa",
@@ -5254,26 +5654,26 @@ export const HERO_DATA: readonly HeroData[] = [
       "warlock"
     ],
     "weakAgainst": [
-      "wraith-king",
       "naga-siren",
-      "zeus",
       "alchemist",
-      "techies",
-      "chen"
+      "chen",
+      "grimstroke",
+      "zeus",
+      "techies"
     ],
     "startItems": [
       "Iron Branch",
       "Tango",
       "Blood Grenade",
-      "Observer and Sentry Wards",
       "Faerie Fire",
+      "Observer and Sentry Wards",
       "Sentry Ward"
     ],
     "coreItems": [
       "Blink Dagger",
       "Arcane Boots",
-      "Aether Lens",
       "Aghanim's Shard",
+      "Aether Lens",
       "Staff of Wizardry"
     ]
   },
@@ -5290,22 +5690,22 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.488,
     "winByBracket": {
-      "herald": 0.486,
-      "guardian": 0.493,
-      "crusader": 0.488,
-      "archon": 0.489,
+      "herald": 0.485,
+      "guardian": 0.492,
+      "crusader": 0.487,
+      "archon": 0.487,
       "legend": 0.487,
       "ancient": 0.485,
-      "divine": 0.489
+      "divine": 0.488
     },
     "pickByBracket": {
-      "herald": 40666,
-      "guardian": 78869,
-      "crusader": 85962,
-      "archon": 78058,
-      "legend": 60079,
-      "ancient": 40591,
-      "divine": 47311
+      "herald": 38016,
+      "guardian": 74297,
+      "crusader": 81155,
+      "archon": 73246,
+      "legend": 56251,
+      "ancient": 38395,
+      "divine": 45223
     },
     "counters": [
       "winter-wyvern",
@@ -5326,8 +5726,8 @@ export const HERO_DATA: readonly HeroData[] = [
     "startItems": [
       "Iron Branch",
       "Faerie Fire",
-      "Tango",
       "Magic Wand",
+      "Tango",
       "Observer Ward",
       "Magic Stick"
     ],
@@ -5353,24 +5753,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Nuker",
       "Initiator"
     ],
-    "overallWin": 0.521,
+    "overallWin": 0.52,
     "winByBracket": {
-      "herald": 0.522,
+      "herald": 0.521,
       "guardian": 0.518,
-      "crusader": 0.523,
+      "crusader": 0.521,
       "archon": 0.521,
       "legend": 0.52,
       "ancient": 0.525,
-      "divine": 0.518
+      "divine": 0.515
     },
     "pickByBracket": {
-      "herald": 51192,
-      "guardian": 92326,
-      "crusader": 93861,
-      "archon": 78948,
-      "legend": 56602,
-      "ancient": 35130,
-      "divine": 34716
+      "herald": 47923,
+      "guardian": 86610,
+      "crusader": 88302,
+      "archon": 74203,
+      "legend": 53169,
+      "ancient": 33121,
+      "divine": 32658
     },
     "counters": [
       "medusa",
@@ -5382,8 +5782,8 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "weakAgainst": [
       "oracle",
-      "bane",
       "beastmaster",
+      "bane",
       "naga-siren",
       "treant-protector",
       "phantom-lancer"
@@ -5418,24 +5818,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Initiator",
       "Nuker"
     ],
-    "overallWin": 0.51,
+    "overallWin": 0.509,
     "winByBracket": {
-      "herald": 0.523,
-      "guardian": 0.515,
+      "herald": 0.524,
+      "guardian": 0.514,
       "crusader": 0.511,
-      "archon": 0.507,
-      "legend": 0.506,
-      "ancient": 0.5,
+      "archon": 0.508,
+      "legend": 0.504,
+      "ancient": 0.501,
       "divine": 0.501
     },
     "pickByBracket": {
-      "herald": 33865,
-      "guardian": 71073,
-      "crusader": 76673,
-      "archon": 68103,
-      "legend": 50816,
-      "ancient": 32249,
-      "divine": 32390
+      "herald": 31403,
+      "guardian": 66514,
+      "crusader": 71824,
+      "archon": 63897,
+      "legend": 47428,
+      "ancient": 30211,
+      "divine": 30272
     },
     "counters": [
       "death-prophet",
@@ -5451,7 +5851,7 @@ export const HERO_DATA: readonly HeroData[] = [
       "viper",
       "leshrac",
       "clockwerk",
-      "kez"
+      "keeper-of-the-light"
     ],
     "startItems": [
       "Iron Branch",
@@ -5484,43 +5884,43 @@ export const HERO_DATA: readonly HeroData[] = [
     "overallWin": 0.5,
     "winByBracket": {
       "herald": 0.506,
-      "guardian": 0.503,
+      "guardian": 0.504,
       "crusader": 0.504,
       "archon": 0.496,
       "legend": 0.497,
-      "ancient": 0.498,
+      "ancient": 0.499,
       "divine": 0.489
     },
     "pickByBracket": {
-      "herald": 39313,
-      "guardian": 72496,
-      "crusader": 76089,
-      "archon": 65576,
-      "legend": 49489,
-      "ancient": 32107,
-      "divine": 32355
+      "herald": 36711,
+      "guardian": 68334,
+      "crusader": 71803,
+      "archon": 61490,
+      "legend": 46131,
+      "ancient": 29982,
+      "divine": 30373
     },
     "counters": [
       "death-prophet",
       "ancient-apparition",
       "witch-doctor",
       "dragon-knight",
-      "necrophos",
-      "bane"
+      "bane",
+      "faceless-void"
     ],
     "weakAgainst": [
       "treant-protector",
       "lycan",
       "dazzle",
-      "clinkz",
       "monkey-king",
+      "clinkz",
       "ring-master"
     ],
     "startItems": [
       "Tango",
       "Circlet",
-      "Mantle of Intelligence",
       "Blood Grenade",
+      "Mantle of Intelligence",
       "Iron Branch",
       "Sentry Ward"
     ],
@@ -5548,26 +5948,26 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.495,
     "winByBracket": {
-      "herald": 0.504,
-      "guardian": 0.495,
-      "crusader": 0.495,
-      "archon": 0.496,
-      "legend": 0.492,
-      "ancient": 0.495,
-      "divine": 0.486
+      "herald": 0.499,
+      "guardian": 0.494,
+      "crusader": 0.497,
+      "archon": 0.493,
+      "legend": 0.494,
+      "ancient": 0.494,
+      "divine": 0.489
     },
     "pickByBracket": {
-      "herald": 24315,
-      "guardian": 46236,
-      "crusader": 49256,
-      "archon": 44768,
-      "legend": 34678,
-      "ancient": 22883,
-      "divine": 24697
+      "herald": 22706,
+      "guardian": 42836,
+      "crusader": 45662,
+      "archon": 41333,
+      "legend": 31832,
+      "ancient": 21142,
+      "divine": 22945
     },
     "counters": [
-      "weaver",
       "lina",
+      "weaver",
       "lifestealer",
       "sand-king",
       "viper",
@@ -5579,7 +5979,7 @@ export const HERO_DATA: readonly HeroData[] = [
       "marci",
       "winter-wyvern",
       "zeus",
-      "phantom-lancer"
+      "crystal-maiden"
     ],
     "startItems": [
       "Iron Branch",
@@ -5612,22 +6012,22 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.498,
     "winByBracket": {
-      "herald": 0.511,
-      "guardian": 0.499,
+      "herald": 0.509,
+      "guardian": 0.498,
       "crusader": 0.492,
-      "archon": 0.498,
-      "legend": 0.496,
-      "ancient": 0.495,
-      "divine": 0.505
+      "archon": 0.495,
+      "legend": 0.498,
+      "ancient": 0.494,
+      "divine": 0.508
     },
     "pickByBracket": {
-      "herald": 29525,
-      "guardian": 63326,
-      "crusader": 72158,
-      "archon": 65608,
-      "legend": 49190,
-      "ancient": 30884,
-      "divine": 31434
+      "herald": 27462,
+      "guardian": 58768,
+      "crusader": 67111,
+      "archon": 61205,
+      "legend": 46183,
+      "ancient": 28960,
+      "divine": 29558
     },
     "counters": [
       "muerta",
@@ -5674,24 +6074,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Disabler",
       "Escape"
     ],
-    "overallWin": 0.523,
+    "overallWin": 0.525,
     "winByBracket": {
-      "herald": 0.506,
-      "guardian": 0.521,
-      "crusader": 0.524,
-      "archon": 0.528,
-      "legend": 0.524,
-      "ancient": 0.525,
-      "divine": 0.52
+      "herald": 0.511,
+      "guardian": 0.522,
+      "crusader": 0.527,
+      "archon": 0.529,
+      "legend": 0.526,
+      "ancient": 0.526,
+      "divine": 0.522
     },
     "pickByBracket": {
-      "herald": 34791,
-      "guardian": 85815,
-      "crusader": 113783,
-      "archon": 119983,
-      "legend": 101720,
-      "ancient": 72400,
-      "divine": 81880
+      "herald": 33112,
+      "guardian": 81937,
+      "crusader": 108154,
+      "archon": 113480,
+      "legend": 95456,
+      "ancient": 67930,
+      "divine": 76935
     },
     "counters": [
       "tinker",
@@ -5705,8 +6105,8 @@ export const HERO_DATA: readonly HeroData[] = [
       "bounty-hunter",
       "io",
       "clinkz",
-      "treant-protector",
       "broodmother",
+      "treant-protector",
       "chen"
     ],
     "startItems": [
@@ -5714,8 +6114,8 @@ export const HERO_DATA: readonly HeroData[] = [
       "Tango",
       "Faerie Fire",
       "Blood Grenade",
-      "Observer Ward",
-      "Magic Stick"
+      "Gauntlets of Strength",
+      "Observer Ward"
     ],
     "coreItems": [
       "Aghanim's Shard",
@@ -5739,37 +6139,37 @@ export const HERO_DATA: readonly HeroData[] = [
     "overallWin": 0.501,
     "winByBracket": {
       "herald": 0.513,
-      "guardian": 0.506,
+      "guardian": 0.508,
       "crusader": 0.504,
-      "archon": 0.498,
-      "legend": 0.491,
-      "ancient": 0.489,
-      "divine": 0.486
+      "archon": 0.499,
+      "legend": 0.49,
+      "ancient": 0.488,
+      "divine": 0.485
     },
     "pickByBracket": {
-      "herald": 74339,
-      "guardian": 136891,
-      "crusader": 139943,
-      "archon": 115686,
-      "legend": 78529,
-      "ancient": 45198,
-      "divine": 37492
+      "herald": 69719,
+      "guardian": 128668,
+      "crusader": 131351,
+      "archon": 108775,
+      "legend": 73220,
+      "ancient": 42319,
+      "divine": 35145
     },
     "counters": [
       "weaver",
+      "grimstroke",
       "witch-doctor",
       "faceless-void",
-      "grimstroke",
-      "lich",
-      "death-prophet"
+      "death-prophet",
+      "lich"
     ],
     "weakAgainst": [
       "ember-spirit",
       "nature-s-prophet",
-      "crystal-maiden",
       "earthshaker",
-      "luna",
-      "ring-master"
+      "crystal-maiden",
+      "drow-ranger",
+      "terrorblade"
     ],
     "startItems": [
       "Iron Branch",
@@ -5801,27 +6201,42 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.547,
     "winByBracket": {
-      "herald": 0.559,
+      "herald": 0.561,
       "guardian": 0.552,
-      "crusader": 0.549,
-      "archon": 0.543,
-      "legend": 0.545,
-      "ancient": 0.537,
-      "divine": 0.532
+      "crusader": 0.55,
+      "archon": 0.544,
+      "legend": 0.543,
+      "ancient": 0.538,
+      "divine": 0.534
     },
     "pickByBracket": {
-      "herald": 36162,
-      "guardian": 70744,
-      "crusader": 72406,
-      "archon": 62527,
-      "legend": 45177,
-      "ancient": 29010,
-      "divine": 28557
+      "herald": 33721,
+      "guardian": 66285,
+      "crusader": 68552,
+      "archon": 59019,
+      "legend": 42453,
+      "ancient": 27368,
+      "divine": 27457
     },
     "counters": [],
-    "weakAgainst": [],
-    "startItems": [],
-    "coreItems": []
+    "weakAgainst": [
+      "mars"
+    ],
+    "startItems": [
+      "Iron Branch",
+      "Quelling Blade",
+      "Tango",
+      "Magic Stick",
+      "Circlet",
+      "Faerie Fire"
+    ],
+    "coreItems": [
+      "Blade of Alacrity",
+      "Sacred Relic",
+      "Talisman of Evasion",
+      "Yasha",
+      "Radiance"
+    ]
   },
   {
     "id": "spirit-breaker",
@@ -5837,29 +6252,56 @@ export const HERO_DATA: readonly HeroData[] = [
       "Durable",
       "Escape"
     ],
-    "overallWin": 0.516,
+    "overallWin": 0.517,
     "winByBracket": {
       "herald": 0.518,
-      "guardian": 0.517,
-      "crusader": 0.517,
+      "guardian": 0.519,
+      "crusader": 0.519,
       "archon": 0.517,
       "legend": 0.512,
-      "ancient": 0.517,
-      "divine": 0.511
+      "ancient": 0.518,
+      "divine": 0.513
     },
     "pickByBracket": {
-      "herald": 47477,
-      "guardian": 86728,
-      "crusader": 90762,
-      "archon": 80852,
-      "legend": 60199,
-      "ancient": 38486,
-      "divine": 39249
+      "herald": 44318,
+      "guardian": 81273,
+      "crusader": 85311,
+      "archon": 75875,
+      "legend": 56415,
+      "ancient": 36336,
+      "divine": 37370
     },
-    "counters": [],
-    "weakAgainst": [],
-    "startItems": [],
-    "coreItems": []
+    "counters": [
+      "clinkz",
+      "ancient-apparition",
+      "death-prophet",
+      "phantom-lancer",
+      "silencer",
+      "earthshaker"
+    ],
+    "weakAgainst": [
+      "treant-protector",
+      "keeper-of-the-light",
+      "huskar",
+      "monkey-king",
+      "viper",
+      "marci"
+    ],
+    "startItems": [
+      "Iron Branch",
+      "Tango",
+      "Boots of Speed",
+      "Blood Grenade",
+      "Sentry Ward",
+      "Observer and Sentry Wards"
+    ],
+    "coreItems": [
+      "Claymore",
+      "Blitz Knuckles",
+      "Drum of Endurance",
+      "Phase Boots",
+      "Shadow Blade"
+    ]
   },
   {
     "id": "storm-spirit",
@@ -5875,24 +6317,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Initiator",
       "Disabler"
     ],
-    "overallWin": 0.473,
+    "overallWin": 0.471,
     "winByBracket": {
-      "herald": 0.471,
-      "guardian": 0.465,
-      "crusader": 0.47,
-      "archon": 0.47,
-      "legend": 0.477,
-      "ancient": 0.477,
-      "divine": 0.483
+      "herald": 0.466,
+      "guardian": 0.463,
+      "crusader": 0.469,
+      "archon": 0.472,
+      "legend": 0.475,
+      "ancient": 0.474,
+      "divine": 0.485
     },
     "pickByBracket": {
-      "herald": 20816,
-      "guardian": 41645,
-      "crusader": 46640,
-      "archon": 43104,
-      "legend": 34575,
-      "ancient": 24033,
-      "divine": 27906
+      "herald": 20405,
+      "guardian": 40136,
+      "crusader": 44410,
+      "archon": 40849,
+      "legend": 32397,
+      "ancient": 22554,
+      "divine": 26088
     },
     "counters": [
       "legion-commander",
@@ -5915,8 +6357,8 @@ export const HERO_DATA: readonly HeroData[] = [
       "Tango",
       "Observer Ward",
       "Faerie Fire",
-      "Circlet",
-      "Magic Wand"
+      "Magic Wand",
+      "Circlet"
     ],
     "coreItems": [
       "Ogre Axe",
@@ -5940,24 +6382,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Durable",
       "Nuker"
     ],
-    "overallWin": 0.502,
+    "overallWin": 0.503,
     "winByBracket": {
-      "herald": 0.496,
-      "guardian": 0.498,
-      "crusader": 0.504,
-      "archon": 0.501,
-      "legend": 0.511,
-      "ancient": 0.507,
-      "divine": 0.507
+      "herald": 0.495,
+      "guardian": 0.497,
+      "crusader": 0.501,
+      "archon": 0.503,
+      "legend": 0.513,
+      "ancient": 0.509,
+      "divine": 0.514
     },
     "pickByBracket": {
-      "herald": 18407,
-      "guardian": 30274,
-      "crusader": 28558,
-      "archon": 22320,
-      "legend": 16003,
-      "ancient": 9795,
-      "divine": 9512
+      "herald": 17675,
+      "guardian": 28616,
+      "crusader": 26945,
+      "archon": 21206,
+      "legend": 15233,
+      "ancient": 9429,
+      "divine": 9109
     },
     "counters": [
       "morphling",
@@ -5965,14 +6407,14 @@ export const HERO_DATA: readonly HeroData[] = [
       "skywrath-mage",
       "chaos-knight",
       "legion-commander",
-      "zeus"
+      "axe"
     ],
     "weakAgainst": [
       "kunkka",
       "brewmaster",
       "lycan",
-      "bane",
       "earthshaker",
+      "bane",
       "necrophos"
     ],
     "startItems": [
@@ -6002,24 +6444,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Nuker",
       "Disabler"
     ],
-    "overallWin": 0.508,
+    "overallWin": 0.509,
     "winByBracket": {
-      "herald": 0.509,
-      "guardian": 0.514,
-      "crusader": 0.51,
+      "herald": 0.51,
+      "guardian": 0.513,
+      "crusader": 0.511,
       "archon": 0.507,
-      "legend": 0.504,
-      "ancient": 0.505,
-      "divine": 0.502
+      "legend": 0.506,
+      "ancient": 0.502,
+      "divine": 0.504
     },
     "pickByBracket": {
-      "herald": 34529,
-      "guardian": 62280,
-      "crusader": 63635,
-      "archon": 54984,
-      "legend": 41164,
-      "ancient": 27385,
-      "divine": 29191
+      "herald": 32332,
+      "guardian": 58754,
+      "crusader": 59890,
+      "archon": 51627,
+      "legend": 38394,
+      "ancient": 25734,
+      "divine": 27338
     },
     "counters": [
       "vengeful-spirit",
@@ -6037,8 +6479,21 @@ export const HERO_DATA: readonly HeroData[] = [
       "beastmaster",
       "clockwerk"
     ],
-    "startItems": [],
-    "coreItems": []
+    "startItems": [
+      "Iron Branch",
+      "Tango",
+      "Blood Grenade",
+      "Faerie Fire",
+      "Sentry Ward",
+      "Observer and Sentry Wards"
+    ],
+    "coreItems": [
+      "Staff of Wizardry",
+      "Arcane Boots",
+      "Aether Lens",
+      "Glimmer Cape",
+      "Pavise"
+    ]
   },
   {
     "id": "templar-assassin",
@@ -6051,32 +6506,32 @@ export const HERO_DATA: readonly HeroData[] = [
       "Carry",
       "Escape"
     ],
-    "overallWin": 0.46,
+    "overallWin": 0.461,
     "winByBracket": {
       "herald": 0.45,
       "guardian": 0.451,
-      "crusader": 0.458,
-      "archon": 0.462,
-      "legend": 0.468,
-      "ancient": 0.473,
-      "divine": 0.467
+      "crusader": 0.457,
+      "archon": 0.466,
+      "legend": 0.47,
+      "ancient": 0.476,
+      "divine": 0.465
     },
     "pickByBracket": {
-      "herald": 13812,
-      "guardian": 25750,
-      "crusader": 26289,
-      "archon": 22946,
-      "legend": 17605,
-      "ancient": 11925,
-      "divine": 13943
+      "herald": 12852,
+      "guardian": 24045,
+      "crusader": 24559,
+      "archon": 21435,
+      "legend": 16248,
+      "ancient": 11062,
+      "divine": 12899
     },
     "counters": [
       "weaver",
       "dark-seer",
       "kunkka",
       "anti-mage",
-      "winter-wyvern",
-      "sven"
+      "phantom-assassin",
+      "batrider"
     ],
     "weakAgainst": [
       "grimstroke",
@@ -6116,27 +6571,54 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.476,
     "winByBracket": {
-      "herald": 0.484,
-      "guardian": 0.457,
-      "crusader": 0.474,
-      "archon": 0.484,
-      "legend": 0.475,
-      "ancient": 0.482,
-      "divine": 0.492
+      "herald": 0.485,
+      "guardian": 0.46,
+      "crusader": 0.471,
+      "archon": 0.482,
+      "legend": 0.478,
+      "ancient": 0.477,
+      "divine": 0.493
     },
     "pickByBracket": {
-      "herald": 12812,
-      "guardian": 21221,
-      "crusader": 20032,
-      "archon": 16684,
-      "legend": 12472,
-      "ancient": 8557,
-      "divine": 12405
+      "herald": 12111,
+      "guardian": 20288,
+      "crusader": 19187,
+      "archon": 15929,
+      "legend": 11927,
+      "ancient": 8181,
+      "divine": 11779
     },
-    "counters": [],
-    "weakAgainst": [],
-    "startItems": [],
-    "coreItems": []
+    "counters": [
+      "death-prophet",
+      "kunkka",
+      "bristleback",
+      "phantom-lancer",
+      "razor",
+      "magnus"
+    ],
+    "weakAgainst": [
+      "chen",
+      "phoenix",
+      "morphling",
+      "abaddon",
+      "primal-beast",
+      "spirit-breaker"
+    ],
+    "startItems": [
+      "Iron Branch",
+      "Tango",
+      "Quelling Blade",
+      "Magic Stick",
+      "Faerie Fire",
+      "Circlet"
+    ],
+    "coreItems": [
+      "Blade of Alacrity",
+      "Yasha",
+      "Diadem",
+      "Manta Style",
+      "Dragon Lance"
+    ]
   },
   {
     "id": "tidehunter",
@@ -6154,25 +6636,39 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.5,
     "winByBracket": {
-      "herald": 0.503,
-      "guardian": 0.505,
-      "crusader": 0.5,
-      "archon": 0.5,
+      "herald": 0.502,
+      "guardian": 0.503,
+      "crusader": 0.502,
+      "archon": 0.502,
       "legend": 0.496,
-      "ancient": 0.498,
-      "divine": 0.492
+      "ancient": 0.497,
+      "divine": 0.494
     },
     "pickByBracket": {
-      "herald": 22340,
-      "guardian": 46747,
-      "crusader": 53885,
-      "archon": 49952,
-      "legend": 39239,
-      "ancient": 26540,
-      "divine": 29351
+      "herald": 20808,
+      "guardian": 43339,
+      "crusader": 49874,
+      "archon": 46374,
+      "legend": 36256,
+      "ancient": 24763,
+      "divine": 27360
     },
-    "counters": [],
-    "weakAgainst": [],
+    "counters": [
+      "faceless-void",
+      "mirana",
+      "dark-willow",
+      "spirit-breaker",
+      "necrophos",
+      "sven"
+    ],
+    "weakAgainst": [
+      "treant-protector",
+      "clockwerk",
+      "clinkz",
+      "huskar",
+      "grimstroke",
+      "bane"
+    ],
     "startItems": [
       "Gauntlets of Strength",
       "Iron Branch",
@@ -6201,29 +6697,29 @@ export const HERO_DATA: readonly HeroData[] = [
       "Durable",
       "Escape"
     ],
-    "overallWin": 0.444,
+    "overallWin": 0.447,
     "winByBracket": {
-      "herald": 0.447,
-      "guardian": 0.446,
-      "crusader": 0.449,
-      "archon": 0.438,
-      "legend": 0.445,
-      "ancient": 0.441,
-      "divine": 0.446
+      "herald": 0.452,
+      "guardian": 0.442,
+      "crusader": 0.453,
+      "archon": 0.44,
+      "legend": 0.447,
+      "ancient": 0.445,
+      "divine": 0.449
     },
     "pickByBracket": {
-      "herald": 10535,
-      "guardian": 21721,
-      "crusader": 25057,
-      "archon": 24646,
-      "legend": 20399,
-      "ancient": 14689,
-      "divine": 17840
+      "herald": 9948,
+      "guardian": 20228,
+      "crusader": 23241,
+      "archon": 22734,
+      "legend": 18615,
+      "ancient": 13440,
+      "divine": 16154
     },
     "counters": [
       "morphling",
-      "lina",
       "anti-mage",
+      "lina",
       "witch-doctor",
       "centaur-warrunner",
       "troll-warlord"
@@ -6266,27 +6762,28 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.472,
     "winByBracket": {
-      "herald": 0.444,
-      "guardian": 0.459,
-      "crusader": 0.472,
-      "archon": 0.476,
-      "legend": 0.482,
+      "herald": 0.445,
+      "guardian": 0.458,
+      "crusader": 0.468,
+      "archon": 0.48,
+      "legend": 0.476,
       "ancient": 0.488,
       "divine": 0.5
     },
     "pickByBracket": {
-      "herald": 14934,
-      "guardian": 27895,
-      "crusader": 27833,
-      "archon": 23267,
-      "legend": 17944,
-      "ancient": 11853,
-      "divine": 13816
+      "herald": 14165,
+      "guardian": 26229,
+      "crusader": 26109,
+      "archon": 21953,
+      "legend": 16760,
+      "ancient": 11336,
+      "divine": 13186
     },
     "counters": [
       "invoker",
       "beastmaster",
-      "dragon-knight"
+      "dragon-knight",
+      "axe"
     ],
     "weakAgainst": [
       "dawnbreaker",
@@ -6327,24 +6824,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Durable",
       "Disabler"
     ],
-    "overallWin": 0.447,
+    "overallWin": 0.449,
     "winByBracket": {
-      "herald": 0.454,
-      "guardian": 0.443,
+      "herald": 0.453,
+      "guardian": 0.447,
       "crusader": 0.447,
-      "archon": 0.444,
+      "archon": 0.443,
       "legend": 0.449,
-      "ancient": 0.443,
-      "divine": 0.455
+      "ancient": 0.444,
+      "divine": 0.461
     },
     "pickByBracket": {
-      "herald": 16501,
-      "guardian": 29615,
-      "crusader": 32666,
-      "archon": 31712,
-      "legend": 26170,
-      "ancient": 19231,
-      "divine": 23403
+      "herald": 15541,
+      "guardian": 27633,
+      "crusader": 30151,
+      "archon": 29429,
+      "legend": 23912,
+      "ancient": 17650,
+      "divine": 21684
     },
     "counters": [
       "death-prophet",
@@ -6352,29 +6849,29 @@ export const HERO_DATA: readonly HeroData[] = [
       "tinker",
       "bristleback",
       "void-spirit",
-      "sand-king"
+      "dark-seer"
     ],
     "weakAgainst": [
       "bane",
       "naga-siren",
       "lycan",
       "enigma",
-      "kez",
+      "oracle",
       "largo"
     ],
     "startItems": [
       "Iron Branch",
       "Tango",
-      "Magic Stick",
       "Quelling Blade",
+      "Magic Stick",
       "Circlet",
       "Gauntlets of Strength"
     ],
     "coreItems": [
       "Claymore",
       "Blitz Knuckles",
-      "Shadow Blade",
       "Echo Sabre",
+      "Shadow Blade",
       "Ogre Axe"
     ]
   },
@@ -6392,24 +6889,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Disabler",
       "Escape"
     ],
-    "overallWin": 0.502,
+    "overallWin": 0.503,
     "winByBracket": {
-      "herald": 0.483,
-      "guardian": 0.484,
-      "crusader": 0.49,
-      "archon": 0.503,
-      "legend": 0.504,
-      "ancient": 0.514,
+      "herald": 0.489,
+      "guardian": 0.486,
+      "crusader": 0.492,
+      "archon": 0.506,
+      "legend": 0.503,
+      "ancient": 0.507,
       "divine": 0.534
     },
     "pickByBracket": {
-      "herald": 9783,
-      "guardian": 18854,
-      "crusader": 21123,
-      "archon": 20578,
-      "legend": 16722,
-      "ancient": 12797,
-      "divine": 19814
+      "herald": 9189,
+      "guardian": 17793,
+      "crusader": 19953,
+      "archon": 19156,
+      "legend": 15551,
+      "ancient": 11901,
+      "divine": 18529
     },
     "counters": [
       "monkey-king",
@@ -6417,7 +6914,7 @@ export const HERO_DATA: readonly HeroData[] = [
       "razor",
       "spirit-breaker",
       "gyrocopter",
-      "centaur-warrunner"
+      "windranger"
     ],
     "weakAgainst": [],
     "startItems": [
@@ -6449,29 +6946,29 @@ export const HERO_DATA: readonly HeroData[] = [
       "Disabler",
       "Durable"
     ],
-    "overallWin": 0.514,
+    "overallWin": 0.512,
     "winByBracket": {
-      "herald": 0.527,
+      "herald": 0.523,
       "guardian": 0.517,
-      "crusader": 0.521,
-      "archon": 0.499,
-      "legend": 0.503,
-      "ancient": 0.502,
-      "divine": 0.5
+      "crusader": 0.522,
+      "archon": 0.498,
+      "legend": 0.501,
+      "ancient": 0.495,
+      "divine": 0.495
     },
     "pickByBracket": {
-      "herald": 15801,
-      "guardian": 19599,
-      "crusader": 16357,
-      "archon": 12266,
-      "legend": 8324,
-      "ancient": 5145,
-      "divine": 4452
+      "herald": 14829,
+      "guardian": 18584,
+      "crusader": 15260,
+      "archon": 11478,
+      "legend": 7755,
+      "ancient": 4792,
+      "divine": 4295
     },
     "counters": [
       "silencer",
-      "medusa",
       "dark-willow",
+      "medusa",
       "lifestealer",
       "tidehunter",
       "bristleback"
@@ -6512,24 +7009,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Disabler",
       "Nuker"
     ],
-    "overallWin": 0.482,
+    "overallWin": 0.481,
     "winByBracket": {
-      "herald": 0.452,
-      "guardian": 0.459,
-      "crusader": 0.472,
-      "archon": 0.484,
-      "legend": 0.489,
-      "ancient": 0.493,
-      "divine": 0.5
+      "herald": 0.453,
+      "guardian": 0.456,
+      "crusader": 0.471,
+      "archon": 0.482,
+      "legend": 0.486,
+      "ancient": 0.495,
+      "divine": 0.501
     },
     "pickByBracket": {
-      "herald": 8797,
-      "guardian": 19106,
-      "crusader": 26358,
-      "archon": 28369,
-      "legend": 26106,
-      "ancient": 20330,
-      "divine": 26158
+      "herald": 8176,
+      "guardian": 18129,
+      "crusader": 24748,
+      "archon": 26777,
+      "legend": 24378,
+      "ancient": 19150,
+      "divine": 24970
     },
     "counters": [
       "legion-commander",
@@ -6580,26 +7077,53 @@ export const HERO_DATA: readonly HeroData[] = [
     "overallWin": 0.498,
     "winByBracket": {
       "herald": 0.514,
-      "guardian": 0.514,
-      "crusader": 0.506,
-      "archon": 0.501,
-      "legend": 0.494,
+      "guardian": 0.517,
+      "crusader": 0.505,
+      "archon": 0.498,
+      "legend": 0.492,
       "ancient": 0.487,
-      "divine": 0.467
+      "divine": 0.471
     },
     "pickByBracket": {
-      "herald": 14706,
-      "guardian": 32200,
-      "crusader": 39334,
-      "archon": 39613,
-      "legend": 32913,
-      "ancient": 23101,
-      "divine": 24814
+      "herald": 13595,
+      "guardian": 30366,
+      "crusader": 36935,
+      "archon": 37098,
+      "legend": 30518,
+      "ancient": 21637,
+      "divine": 23098
     },
-    "counters": [],
-    "weakAgainst": [],
-    "startItems": [],
-    "coreItems": []
+    "counters": [
+      "ancient-apparition",
+      "abaddon",
+      "gyrocopter",
+      "zeus",
+      "mars",
+      "primal-beast"
+    ],
+    "weakAgainst": [
+      "treant-protector",
+      "necrophos",
+      "ursa",
+      "phoenix",
+      "monkey-king",
+      "lina"
+    ],
+    "startItems": [
+      "Iron Branch",
+      "Gauntlets of Strength",
+      "Tango",
+      "Circlet",
+      "Magic Stick",
+      "Quelling Blade"
+    ],
+    "coreItems": [
+      "Staff of Wizardry",
+      "Vitality Booster",
+      "Rod of Atos",
+      "Ogre Axe",
+      "Point Booster"
+    ]
   },
   {
     "id": "undying",
@@ -6614,40 +7138,40 @@ export const HERO_DATA: readonly HeroData[] = [
       "Disabler",
       "Nuker"
     ],
-    "overallWin": 0.521,
+    "overallWin": 0.522,
     "winByBracket": {
-      "herald": 0.515,
-      "guardian": 0.517,
+      "herald": 0.519,
+      "guardian": 0.519,
       "crusader": 0.523,
       "archon": 0.519,
       "legend": 0.527,
-      "ancient": 0.526,
-      "divine": 0.525
+      "ancient": 0.53,
+      "divine": 0.52
     },
     "pickByBracket": {
-      "herald": 31028,
-      "guardian": 60632,
-      "crusader": 65530,
-      "archon": 56624,
-      "legend": 41291,
-      "ancient": 27449,
-      "divine": 30705
+      "herald": 29047,
+      "guardian": 57241,
+      "crusader": 61454,
+      "archon": 53214,
+      "legend": 38676,
+      "ancient": 25875,
+      "divine": 28804
     },
     "counters": [
       "death-prophet",
       "weaver",
       "phantom-lancer",
       "night-stalker",
-      "lion",
-      "underlord"
+      "underlord",
+      "lion"
     ],
     "weakAgainst": [
       "monkey-king",
       "naga-siren",
       "beastmaster",
       "dark-seer",
-      "marci",
-      "earthshaker"
+      "earthshaker",
+      "marci"
     ],
     "startItems": [
       "Iron Branch",
@@ -6679,27 +7203,54 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.468,
     "winByBracket": {
-      "herald": 0.445,
+      "herald": 0.444,
       "guardian": 0.464,
-      "crusader": 0.468,
+      "crusader": 0.467,
       "archon": 0.471,
-      "legend": 0.472,
-      "ancient": 0.477,
-      "divine": 0.475
+      "legend": 0.471,
+      "ancient": 0.476,
+      "divine": 0.481
     },
     "pickByBracket": {
-      "herald": 19491,
-      "guardian": 36635,
-      "crusader": 40605,
-      "archon": 37242,
-      "legend": 28653,
-      "ancient": 18550,
-      "divine": 19332
+      "herald": 18182,
+      "guardian": 34445,
+      "crusader": 38276,
+      "archon": 34790,
+      "legend": 26997,
+      "ancient": 17467,
+      "divine": 18003
     },
-    "counters": [],
-    "weakAgainst": [],
-    "startItems": [],
-    "coreItems": []
+    "counters": [
+      "underlord",
+      "muerta",
+      "phantom-assassin",
+      "timbersaw",
+      "morphling",
+      "grimstroke"
+    ],
+    "weakAgainst": [
+      "mirana",
+      "enigma",
+      "treant-protector",
+      "alchemist",
+      "lycan",
+      "bounty-hunter"
+    ],
+    "startItems": [
+      "Iron Branch",
+      "Quelling Blade",
+      "Tango",
+      "Magic Stick",
+      "Faerie Fire",
+      "Circlet"
+    ],
+    "coreItems": [
+      "Broadsword",
+      "Mithril Hammer",
+      "Blink Dagger",
+      "Battle Fury",
+      "Skull Basher"
+    ]
   },
   {
     "id": "vengeful-spirit",
@@ -6717,38 +7268,38 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.533,
     "winByBracket": {
-      "herald": 0.535,
-      "guardian": 0.537,
-      "crusader": 0.536,
-      "archon": 0.536,
-      "legend": 0.531,
-      "ancient": 0.534,
-      "divine": 0.517
+      "herald": 0.536,
+      "guardian": 0.538,
+      "crusader": 0.535,
+      "archon": 0.535,
+      "legend": 0.533,
+      "ancient": 0.53,
+      "divine": 0.516
     },
     "pickByBracket": {
-      "herald": 24519,
-      "guardian": 50883,
-      "crusader": 60017,
-      "archon": 58575,
-      "legend": 47160,
-      "ancient": 31717,
-      "divine": 31783
+      "herald": 23552,
+      "guardian": 49323,
+      "crusader": 58787,
+      "archon": 57960,
+      "legend": 46345,
+      "ancient": 31461,
+      "divine": 31768
     },
     "counters": [
       "void-spirit",
       "slardar",
       "lich",
-      "morphling",
       "timbersaw",
+      "morphling",
       "warlock"
     ],
     "weakAgainst": [
       "techies",
       "beastmaster",
       "phoenix",
+      "batrider",
       "ring-master",
-      "dawnbreaker",
-      "batrider"
+      "dawnbreaker"
     ],
     "startItems": [
       "Iron Branch",
@@ -6780,24 +7331,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Pusher",
       "Disabler"
     ],
-    "overallWin": 0.468,
+    "overallWin": 0.467,
     "winByBracket": {
-      "herald": 0.469,
-      "guardian": 0.468,
-      "crusader": 0.468,
-      "archon": 0.47,
-      "legend": 0.469,
-      "ancient": 0.463,
-      "divine": 0.46
+      "herald": 0.467,
+      "guardian": 0.467,
+      "crusader": 0.465,
+      "archon": 0.471,
+      "legend": 0.468,
+      "ancient": 0.469,
+      "divine": 0.462
     },
     "pickByBracket": {
-      "herald": 29058,
-      "guardian": 54126,
-      "crusader": 58276,
-      "archon": 50977,
-      "legend": 36991,
-      "ancient": 22821,
-      "divine": 21114
+      "herald": 27131,
+      "guardian": 50805,
+      "crusader": 54485,
+      "archon": 47428,
+      "legend": 34391,
+      "ancient": 21315,
+      "divine": 19687
     },
     "counters": [
       "dragon-knight",
@@ -6846,26 +7397,26 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.484,
     "winByBracket": {
-      "herald": 0.483,
-      "guardian": 0.476,
-      "crusader": 0.486,
-      "archon": 0.485,
-      "legend": 0.482,
-      "ancient": 0.49,
-      "divine": 0.492
+      "herald": 0.482,
+      "guardian": 0.478,
+      "crusader": 0.487,
+      "archon": 0.486,
+      "legend": 0.483,
+      "ancient": 0.486,
+      "divine": 0.491
     },
     "pickByBracket": {
-      "herald": 38580,
-      "guardian": 53593,
-      "crusader": 49745,
-      "archon": 40530,
-      "legend": 28417,
-      "ancient": 17560,
-      "divine": 18514
+      "herald": 36065,
+      "guardian": 50223,
+      "crusader": 46468,
+      "archon": 37760,
+      "legend": 26350,
+      "ancient": 16280,
+      "divine": 17363
     },
     "counters": [
-      "silencer",
       "bristleback",
+      "silencer",
       "morphling",
       "ancient-apparition",
       "tidehunter",
@@ -6909,24 +7460,24 @@ export const HERO_DATA: readonly HeroData[] = [
       "Disabler",
       "Pusher"
     ],
-    "overallWin": 0.522,
+    "overallWin": 0.524,
     "winByBracket": {
-      "herald": 0.489,
-      "guardian": 0.51,
-      "crusader": 0.517,
-      "archon": 0.532,
+      "herald": 0.501,
+      "guardian": 0.514,
+      "crusader": 0.521,
+      "archon": 0.527,
       "legend": 0.537,
       "ancient": 0.53,
-      "divine": 0.543
+      "divine": 0.547
     },
     "pickByBracket": {
-      "herald": 4793,
-      "guardian": 8478,
-      "crusader": 8283,
-      "archon": 7156,
-      "legend": 5412,
-      "ancient": 3743,
-      "divine": 5190
+      "herald": 4542,
+      "guardian": 7981,
+      "crusader": 8147,
+      "archon": 6864,
+      "legend": 5190,
+      "ancient": 3603,
+      "divine": 4986
     },
     "counters": [
       "rubick"
@@ -6963,30 +7514,30 @@ export const HERO_DATA: readonly HeroData[] = [
       "Nuker",
       "Disabler"
     ],
-    "overallWin": 0.497,
+    "overallWin": 0.495,
     "winByBracket": {
-      "herald": 0.483,
-      "guardian": 0.489,
-      "crusader": 0.496,
-      "archon": 0.501,
-      "legend": 0.506,
+      "herald": 0.481,
+      "guardian": 0.488,
+      "crusader": 0.492,
+      "archon": 0.499,
+      "legend": 0.502,
       "ancient": 0.501,
-      "divine": 0.497
+      "divine": 0.493
     },
     "pickByBracket": {
-      "herald": 9593,
-      "guardian": 19043,
-      "crusader": 24083,
-      "archon": 25462,
-      "legend": 22863,
-      "ancient": 17293,
-      "divine": 22441
+      "herald": 8829,
+      "guardian": 17647,
+      "crusader": 22178,
+      "archon": 23512,
+      "legend": 21230,
+      "ancient": 15931,
+      "divine": 21055
     },
     "counters": [
       "zeus",
       "weaver",
-      "earthshaker",
       "sven",
+      "earthshaker",
       "dazzle",
       "muerta"
     ],
@@ -6994,9 +7545,9 @@ export const HERO_DATA: readonly HeroData[] = [
       "naga-siren",
       "nyx-assassin",
       "phoenix",
+      "magnus",
       "treant-protector",
-      "alchemist",
-      "magnus"
+      "alchemist"
     ],
     "startItems": [
       "Iron Branch",
@@ -7028,22 +7579,22 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.499,
     "winByBracket": {
-      "herald": 0.515,
-      "guardian": 0.507,
-      "crusader": 0.501,
-      "archon": 0.496,
-      "legend": 0.493,
-      "ancient": 0.491,
+      "herald": 0.51,
+      "guardian": 0.512,
+      "crusader": 0.502,
+      "archon": 0.497,
+      "legend": 0.491,
+      "ancient": 0.492,
       "divine": 0.473
     },
     "pickByBracket": {
-      "herald": 20825,
-      "guardian": 40412,
-      "crusader": 42716,
-      "archon": 36886,
-      "legend": 26208,
-      "ancient": 16135,
-      "divine": 15730
+      "herald": 19561,
+      "guardian": 37832,
+      "crusader": 40470,
+      "archon": 34786,
+      "legend": 24721,
+      "ancient": 15348,
+      "divine": 14875
     },
     "counters": [
       "sand-king",
@@ -7051,12 +7602,12 @@ export const HERO_DATA: readonly HeroData[] = [
       "ancient-apparition",
       "alchemist",
       "axe",
-      "troll-warlord"
+      "pangolier"
     ],
     "weakAgainst": [
       "keeper-of-the-light",
-      "treant-protector",
       "slark",
+      "treant-protector",
       "dazzle",
       "venomancer",
       "pudge"
@@ -7090,37 +7641,37 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.471,
     "winByBracket": {
-      "herald": 0.477,
-      "guardian": 0.466,
+      "herald": 0.478,
+      "guardian": 0.467,
       "crusader": 0.472,
       "archon": 0.47,
       "legend": 0.47,
-      "ancient": 0.467,
-      "divine": 0.473
+      "ancient": 0.468,
+      "divine": 0.47
     },
     "pickByBracket": {
-      "herald": 25628,
-      "guardian": 41161,
-      "crusader": 40855,
-      "archon": 33923,
-      "legend": 24905,
-      "ancient": 15111,
-      "divine": 15595
+      "herald": 23915,
+      "guardian": 38495,
+      "crusader": 38177,
+      "archon": 31996,
+      "legend": 23384,
+      "ancient": 14226,
+      "divine": 14810
     },
     "counters": [
-      "sven",
       "crystal-maiden",
+      "sven",
       "gyrocopter",
       "brewmaster",
       "lich",
-      "lina"
+      "queen-of-pain"
     ],
     "weakAgainst": [
       "morphling",
+      "monkey-king",
       "puck",
       "templar-assassin",
       "venomancer",
-      "monkey-king",
       "centaur-warrunner"
     ],
     "startItems": [
@@ -7153,32 +7704,32 @@ export const HERO_DATA: readonly HeroData[] = [
       "Escape",
       "Nuker"
     ],
-    "overallWin": 0.48,
+    "overallWin": 0.479,
     "winByBracket": {
-      "herald": 0.474,
-      "guardian": 0.477,
+      "herald": 0.476,
+      "guardian": 0.474,
       "crusader": 0.475,
-      "archon": 0.483,
-      "legend": 0.48,
-      "ancient": 0.488,
-      "divine": 0.49
+      "archon": 0.481,
+      "legend": 0.479,
+      "ancient": 0.487,
+      "divine": 0.489
     },
     "pickByBracket": {
-      "herald": 41324,
-      "guardian": 72918,
-      "crusader": 79682,
-      "archon": 73807,
-      "legend": 57306,
-      "ancient": 39541,
-      "divine": 44036
+      "herald": 38690,
+      "guardian": 68303,
+      "crusader": 74498,
+      "archon": 69024,
+      "legend": 53187,
+      "ancient": 36900,
+      "divine": 41154
     },
     "counters": [
       "oracle",
-      "phantom-lancer",
       "chaos-knight",
+      "phantom-lancer",
       "morphling",
-      "sand-king",
-      "lina"
+      "lina",
+      "sand-king"
     ],
     "weakAgainst": [
       "treant-protector",
@@ -7194,7 +7745,7 @@ export const HERO_DATA: readonly HeroData[] = [
       "Tango",
       "Faerie Fire",
       "Blood Grenade",
-      "Magic Stick"
+      "Observer and Sentry Wards"
     ],
     "coreItems": [
       "Mithril Hammer",
@@ -7216,29 +7767,52 @@ export const HERO_DATA: readonly HeroData[] = [
       "Disabler",
       "Nuker"
     ],
-    "overallWin": 0.494,
+    "overallWin": 0.492,
     "winByBracket": {
-      "herald": 0.479,
-      "guardian": 0.479,
-      "crusader": 0.487,
-      "archon": 0.494,
-      "legend": 0.5,
-      "ancient": 0.512,
-      "divine": 0.514
+      "herald": 0.484,
+      "guardian": 0.478,
+      "crusader": 0.482,
+      "archon": 0.49,
+      "legend": 0.499,
+      "ancient": 0.508,
+      "divine": 0.513
     },
     "pickByBracket": {
-      "herald": 12164,
-      "guardian": 22844,
-      "crusader": 24406,
-      "archon": 22376,
-      "legend": 18410,
-      "ancient": 12832,
-      "divine": 17421
+      "herald": 11368,
+      "guardian": 21292,
+      "crusader": 22595,
+      "archon": 20415,
+      "legend": 16952,
+      "ancient": 11836,
+      "divine": 16069
     },
-    "counters": [],
-    "weakAgainst": [],
-    "startItems": [],
-    "coreItems": []
+    "counters": [
+      "slardar",
+      "shadow-shaman"
+    ],
+    "weakAgainst": [
+      "snapfire",
+      "axe",
+      "ogre-magi",
+      "shadow-fiend",
+      "beastmaster",
+      "windranger"
+    ],
+    "startItems": [
+      "Iron Branch",
+      "Tango",
+      "Blood Grenade",
+      "Faerie Fire",
+      "Observer and Sentry Wards",
+      "Sentry Ward"
+    ],
+    "coreItems": [
+      "Blink Dagger",
+      "Arcane Boots",
+      "Glimmer Cape",
+      "Staff of Wizardry",
+      "Holy Locket"
+    ]
   },
   {
     "id": "witch-doctor",
@@ -7254,22 +7828,22 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.514,
     "winByBracket": {
-      "herald": 0.529,
-      "guardian": 0.524,
-      "crusader": 0.517,
-      "archon": 0.51,
+      "herald": 0.53,
+      "guardian": 0.523,
+      "crusader": 0.518,
+      "archon": 0.509,
       "legend": 0.502,
-      "ancient": 0.501,
-      "divine": 0.493
+      "ancient": 0.502,
+      "divine": 0.496
     },
     "pickByBracket": {
-      "herald": 50991,
-      "guardian": 101995,
-      "crusader": 107669,
-      "archon": 90977,
-      "legend": 63513,
-      "ancient": 37549,
-      "divine": 32421
+      "herald": 47720,
+      "guardian": 95945,
+      "crusader": 100978,
+      "archon": 85601,
+      "legend": 59469,
+      "ancient": 35254,
+      "divine": 30401
     },
     "counters": [
       "gyrocopter",
@@ -7281,11 +7855,11 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "weakAgainst": [
       "ember-spirit",
-      "razor",
       "necrophos",
       "lifestealer",
       "snapfire",
-      "clockwerk"
+      "clockwerk",
+      "sniper"
     ],
     "startItems": [
       "Iron Branch",
@@ -7319,38 +7893,38 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.548,
     "winByBracket": {
-      "herald": 0.559,
-      "guardian": 0.557,
-      "crusader": 0.552,
+      "herald": 0.561,
+      "guardian": 0.556,
+      "crusader": 0.551,
       "archon": 0.546,
-      "legend": 0.541,
-      "ancient": 0.534,
-      "divine": 0.524
+      "legend": 0.543,
+      "ancient": 0.532,
+      "divine": 0.526
     },
     "pickByBracket": {
-      "herald": 36910,
-      "guardian": 73792,
-      "crusader": 77434,
-      "archon": 65767,
-      "legend": 45887,
-      "ancient": 26723,
-      "divine": 20965
+      "herald": 34706,
+      "guardian": 69926,
+      "crusader": 73181,
+      "archon": 62210,
+      "legend": 43396,
+      "ancient": 25329,
+      "divine": 20148
     },
     "counters": [
-      "shadow-demon",
       "zeus",
       "tiny",
       "silencer",
       "abaddon",
-      "shadow-shaman"
+      "shadow-shaman",
+      "undying"
     ],
     "weakAgainst": [
       "earthshaker",
       "tusk",
       "pudge",
-      "grimstroke",
       "necrophos",
-      "lich"
+      "lich",
+      "snapfire"
     ],
     "startItems": [
       "Iron Branch",
@@ -7381,30 +7955,30 @@ export const HERO_DATA: readonly HeroData[] = [
     ],
     "overallWin": 0.515,
     "winByBracket": {
-      "herald": 0.518,
-      "guardian": 0.518,
+      "herald": 0.516,
+      "guardian": 0.519,
       "crusader": 0.517,
       "archon": 0.515,
-      "legend": 0.513,
-      "ancient": 0.513,
-      "divine": 0.508
+      "legend": 0.515,
+      "ancient": 0.512,
+      "divine": 0.51
     },
     "pickByBracket": {
-      "herald": 53209,
-      "guardian": 106781,
-      "crusader": 121439,
-      "archon": 115440,
-      "legend": 90626,
-      "ancient": 61494,
-      "divine": 67812
+      "herald": 49927,
+      "guardian": 100370,
+      "crusader": 114143,
+      "archon": 108349,
+      "legend": 85035,
+      "ancient": 57710,
+      "divine": 64451
     },
     "counters": [
       "mirana",
-      "shadow-demon",
       "slardar",
+      "shadow-demon",
       "medusa",
-      "kunkka",
-      "undying"
+      "primal-beast",
+      "viper"
     ],
     "weakAgainst": [
       "juggernaut",
@@ -7412,7 +7986,7 @@ export const HERO_DATA: readonly HeroData[] = [
       "wraith-king",
       "keeper-of-the-light",
       "beastmaster",
-      "venomancer"
+      "nyx-assassin"
     ],
     "startItems": [
       "Iron Branch",
